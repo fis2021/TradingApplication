@@ -1,6 +1,6 @@
 # IntelliJ IDEA
 *.iml
-.idea/
+/.idea/
 # Gradle
 /.gradle/
 /build/
