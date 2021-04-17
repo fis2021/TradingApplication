@@ -16,8 +16,14 @@ repositories {
 
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
+    implementation 'org.openjfx:javafx-controls:15'
+    implementation 'org.openjfx:javafx-fxml:15'
+    implementation 'org.dizitart:nitrite:3.4.3'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.10.1'
 }
 
 sourceCompatibility=11
 targetCompatibility=11
 mainClassName ='org.fis.ta.MainApp'
+
+
