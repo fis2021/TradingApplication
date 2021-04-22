@@ -20,6 +20,8 @@ dependencies {
     implementation 'org.openjfx:javafx-fxml:15'
     implementation 'org.dizitart:nitrite:3.4.3'
     implementation 'com.fasterxml.jackson.core:jackson-databind:2.10.1'
+    implementation 'org.slf4j:slf4j-api:2.0.0-alpha1'
+    implementation 'org.slf4j:slf4j-simple:2.0.0-alpha0'
 }
 
 sourceCompatibility=11

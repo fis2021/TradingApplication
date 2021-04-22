@@ -2,13 +2,14 @@ package org.fis.ta.services;
 
 import org.dizitart.no2.Nitrite;
 import org.dizitart.no2.objects.ObjectRepository;
-import org.fis.ta.exceptions.UsernameAlreadyExistsException;
+import org.fis.ta.exceptions.*;
 import org.fis.ta.model.User;
 
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Objects;
+import java.util.regex.Pattern;
 
 import static org.fis.ta.services.FileSystemService.getPathToFile;
 
@@ -24,9 +25,20 @@ public class UserService {
         userRepository = database.getRepository(User.class);
     }
 
-    public static void addUser(String username, String password, String firstName, String lastName) throws UsernameAlreadyExistsException {
+
+
+    public static void addUser(String username, String password, String confirmPassword, String firstName, String lastName, String email, String phoneNumber) throws UsernameAlreadyExistsException, PasswordDoesntMatchException, EmailNotValidException, EmptyFieldException, PhoneNumberNotValidException {
+        checkNotEmptyFields(username, password, confirmPassword, firstName, lastName, email, phoneNumber);
         checkUserDoesNotAlreadyExist(username);
-        userRepository.insert(new User(username, encodePassword(username, password), firstName, lastName));
+        checkPasswordMatch(password, confirmPassword);
+        checkEmailIsValid(email);
+        checkPhoneNumber(phoneNumber);
+        userRepository.insert(new User(username, encodePassword(username, password), firstName, lastName, email, phoneNumber));
+    }
+
+    public static void checkNotEmptyFields(String username, String password, String confirmPassword, String firstName, String lastName, String email, String phoneNumber) throws EmptyFieldException{
+        if(username.isEmpty() | password.isEmpty() | confirmPassword.isEmpty() | firstName.isEmpty() | lastName.isEmpty() | email.isEmpty() | phoneNumber.isEmpty())
+            throw new EmptyFieldException();
     }
 
     private static void checkUserDoesNotAlreadyExist(String username) throws UsernameAlreadyExistsException {
@@ -35,6 +47,33 @@ public class UserService {
                 throw new UsernameAlreadyExistsException(username);
         }
     }
+
+    private static void checkPasswordMatch(String password, String confirmPassword) throws PasswordDoesntMatchException {
+        if(!password.equals(confirmPassword))
+            throw new PasswordDoesntMatchException();
+    }
+
+    public static void checkEmailIsValid(String email) throws EmailNotValidException {
+        String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\."+
+                "[a-zA-Z0-9_+&*-]+)*@" +
+                "(?:[a-zA-Z0-9-]+\\.)+[a-z" +
+                "A-Z]{2,7}$";
+
+        Pattern pat = Pattern.compile(emailRegex);
+            if (!pat.matcher(email).matches())
+                throw new EmailNotValidException();
+    }
+
+    private static void checkPhoneNumber(String phoneNumber)throws PhoneNumberNotValidException {
+        String phoneNumberRegex ="^\\+(?:[0-9] ?){6,14}[0-9]$";
+
+        Pattern pat = Pattern.compile(phoneNumberRegex);
+
+        if (!pat.matcher(phoneNumber).matches())
+            throw new PhoneNumberNotValidException();
+    }
+
+
 
     private static String encodePassword(String salt, String password) {
         MessageDigest md = getMessageDigest();

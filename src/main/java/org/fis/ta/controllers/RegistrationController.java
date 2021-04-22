@@ -8,17 +8,24 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import org.fis.ta.exceptions.UsernameAlreadyExistsException;
+import org.fis.ta.exceptions.*;
 import org.fis.ta.services.UserService;
 
 import java.io.IOException;
+import java.util.Objects;
 
 public class RegistrationController {
 
+
     @FXML
     private Text registrationMessage;
+
     @FXML
     private PasswordField passwordField;
+
+    @FXML
+    private TextField confirmPasswordField;
+
     @FXML
     private TextField usernameField;
 
@@ -29,10 +36,22 @@ public class RegistrationController {
     private TextField lastNameField;
 
     @FXML
+    private TextField emailField;
+
+    @FXML
+    private TextField phoneNumberField;
+
+    public RegistrationController() {
+    }
+
+
+    @FXML
     public void handleLoginAction(){
         try {
+            /*MainApp m = new MainApp();
+            m.changeScene("login.fxml");*/
             Stage stage =(Stage) registrationMessage.getScene().getWindow();
-            Parent viewRegisterRoot = FXMLLoader.load(getClass().getResource("../fxml/login.fxml"));
+            Parent viewRegisterRoot = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("login.fxml")));
             Scene scene = new Scene(viewRegisterRoot, 700, 500);
             stage.setScene(scene);
         } catch (IOException e) {
@@ -43,11 +62,11 @@ public class RegistrationController {
     @FXML
     public void handleRegisterAction() {
         try {
-            UserService.addUser(usernameField.getText(), passwordField.getText(), firstNameField.getText(), lastNameField.getText());
+
+            UserService.addUser(usernameField.getText(), passwordField.getText(), confirmPasswordField.getText(), firstNameField.getText(), lastNameField.getText(), emailField.getText(), phoneNumberField.getText());
             registrationMessage.setText("Account created successfully!");
 
-
-        }catch (UsernameAlreadyExistsException e) {
+        }catch (UsernameAlreadyExistsException | PasswordDoesntMatchException | EmailNotValidException | EmptyFieldException | PhoneNumberNotValidException e){
             registrationMessage.setText(e.getMessage());
         }
     }
