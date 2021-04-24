@@ -4,25 +4,37 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import org.fis.ta.services.FileSystemService;
+import org.fis.ta.services.UserService;
+
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.Objects;
 
 import java.io.IOException;
 
 public class MainApp extends Application {
 
-    @Override
     public void start(Stage primaryStage) throws IOException {
         Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("login.fxml"));
         primaryStage.setTitle("Trading Application");
         primaryStage.setScene(new Scene(root, 380, 275));
         primaryStage.show();
-
     }
 
-    public static void main(String[] args) {
-        launch();
-    }
+    private void initDirectory() {
+        Path applicationHomePath = FileSystemService.APPLICATION_HOME_PATH;
+        if (!Files.exists(applicationHomePath))
+            applicationHomePath.toFile().mkdirs();
 
+
+    }
+    /*
+    public void changeScene(String fxml) throws IOException {
+        Stage primaryStage = null;
+        Parent loginpane =FXMLLoader.load(getClass().getResource(fxml));
+        primaryStage.getScene().setRoot(loginpane);
+
+    }*/
 }
