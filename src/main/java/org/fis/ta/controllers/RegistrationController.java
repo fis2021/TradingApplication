@@ -51,8 +51,8 @@ public class RegistrationController {
             /*MainApp m = new MainApp();
             m.changeScene("login.fxml");*/
             Stage stage =(Stage) registrationMessage.getScene().getWindow();
-            Parent viewRegisterRoot = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("login.fxml")));
-            Scene scene = new Scene(viewRegisterRoot, 700, 500);
+            Parent viewRegisterRoot = FXMLLoader.load(getClass().getClassLoader().getResource("login.fxml"));
+            Scene scene = new Scene(viewRegisterRoot, 380, 275);
             stage.setScene(scene);
         } catch (IOException e) {
             e.printStackTrace();

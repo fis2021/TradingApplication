@@ -30,11 +30,4 @@ public class MainApp extends Application {
 
 
     }
-    /*
-    public void changeScene(String fxml) throws IOException {
-        Stage primaryStage = null;
-        Parent loginpane =FXMLLoader.load(getClass().getResource(fxml));
-        primaryStage.getScene().setRoot(loginpane);
-
-    }*/
 }
