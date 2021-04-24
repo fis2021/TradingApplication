@@ -9,6 +9,7 @@ import org.fis.ta.model.User;
 import org.fis.ta.services.FileSystemService;
 import org.fis.ta.services.UserService;
 
+import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Objects;
@@ -24,6 +25,7 @@ public class MainApp extends Application {
         primaryStage.setTitle("Trading Application");
         primaryStage.setScene(new Scene(root, 380, 275));
         primaryStage.show();
+        System.out.println(FileSystemService.APPLICATION_HOME_PATH);
 
     }
 

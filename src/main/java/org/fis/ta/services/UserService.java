@@ -36,6 +36,17 @@ public class UserService {
         userRepository.insert(new User(username, encodePassword(username, password), firstName, lastName, email, phoneNumber));
     }
 
+    public static boolean checkLoginCredentials(String username, String password){
+        for(User user : userRepository.find()){
+            if(Objects.equals(username,user.getUsername())){
+                if(Objects.equals(user.getPassword(),encodePassword(user.getUsername(),password))){
+                    return true;
+                }
+            }
+        }
+        return false;
+
+    }
     public static void checkNotEmptyFields(String username, String password, String confirmPassword, String firstName, String lastName, String email, String phoneNumber) throws EmptyFieldException{
         if(username.isEmpty() | password.isEmpty() | confirmPassword.isEmpty() | firstName.isEmpty() | lastName.isEmpty() | email.isEmpty() | phoneNumber.isEmpty())
             throw new EmptyFieldException();

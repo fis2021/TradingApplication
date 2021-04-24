@@ -6,12 +6,13 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="275.0" prefWidth="380.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.fis.ta.controllers.LoginController">
    <children>
       <PasswordField fx:id="passwordField" layoutX="103.0" layoutY="147.0" prefHeight="42.0" prefWidth="173.0" promptText="Password" />
       <TextField fx:id="usernameField" layoutX="102.0" layoutY="95.0" prefHeight="42.0" prefWidth="173.0" promptText="Username..." AnchorPane.leftAnchor="102.0" AnchorPane.rightAnchor="105.0" AnchorPane.topAnchor="95.0" />
-      <Button layoutX="102.0" layoutY="209.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="70.0" text="Login" textFill="#0b0b0b" AnchorPane.bottomAnchor="34.0" AnchorPane.leftAnchor="102.0" AnchorPane.rightAnchor="208.0">
+      <Button layoutX="102.0" layoutY="209.0" mnemonicParsing="false" onAction="#handleLoginAction" prefHeight="32.0" prefWidth="70.0" text="Login" textFill="#0b0b0b" AnchorPane.bottomAnchor="34.0" AnchorPane.leftAnchor="102.0" AnchorPane.rightAnchor="208.0">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
@@ -26,5 +27,6 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
+      <Text fx:id="loginMessage" layoutX="161.0" layoutY="265.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
    </children>
 </AnchorPane>

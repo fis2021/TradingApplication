@@ -6,8 +6,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import org.fis.ta.MainApp;
+import org.fis.ta.services.UserService;
 
 import java.io.IOException;
 import java.util.Objects;
@@ -19,6 +21,9 @@ public class LoginController {
 
     @FXML
     private TextField usernameField;
+
+    @FXML
+    private Text loginMessage;
     private Stage Stage;
 
     @FXML
@@ -28,6 +33,14 @@ public class LoginController {
         Parent viewRegisterPage = FXMLLoader.load(getClass().getClassLoader().getResource("register.fxml"));
         Scene scene = new Scene(viewRegisterPage,380,275);
         stage.setScene(scene);
+    }
+    @FXML
+    public void handleLoginAction(){
+        if(UserService.checkLoginCredentials(usernameField.getText(),passwordField.getText())){
+            loginMessage.setText("Login succesful!");
+        }
+        else
+            loginMessage.setText("Account does not exist!");
     }
 
 }
