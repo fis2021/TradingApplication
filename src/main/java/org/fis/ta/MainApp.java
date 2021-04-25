@@ -5,23 +5,28 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import org.fis.ta.model.User;
 import org.fis.ta.services.FileSystemService;
 import org.fis.ta.services.UserService;
 
+import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Objects;
 
+import java.io.IOException;
+
 public class MainApp extends Application {
 
-    @Override
-    public void start(Stage primaryStage) throws Exception {
+    public void start(Stage primaryStage) throws IOException {
         initDirectory();
         UserService.initDatabase();
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("register.fxml")));
-        primaryStage.setTitle("Trading application");
-        primaryStage.setScene(new Scene(root, 500, 500));
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("login.fxml"));
+        primaryStage.setTitle("Trading Application");
+        primaryStage.setScene(new Scene(root, 380, 275));
         primaryStage.show();
+        System.out.println(FileSystemService.APPLICATION_HOME_PATH);
+
     }
 
     private void initDirectory() {
@@ -31,11 +36,4 @@ public class MainApp extends Application {
 
 
     }
-    /*
-    public void changeScene(String fxml) throws IOException {
-        Stage primaryStage = null;
-        Parent loginpane =FXMLLoader.load(getClass().getResource(fxml));
-        primaryStage.getScene().setRoot(loginpane);
-
-    }*/
 }
