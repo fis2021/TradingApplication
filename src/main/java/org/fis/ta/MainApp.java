@@ -33,7 +33,5 @@ public class MainApp extends Application {
         Path applicationHomePath = FileSystemService.APPLICATION_HOME_PATH;
         if (!Files.exists(applicationHomePath))
             applicationHomePath.toFile().mkdirs();
-
-
     }
 }
