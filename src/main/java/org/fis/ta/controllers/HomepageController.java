@@ -1,14 +1,11 @@
 package org.fis.ta.controllers;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
-import javafx.scene.text.Text;
-import javafx.stage.Stage;
 
-import java.awt.*;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 public class HomepageController {
 
@@ -20,5 +17,8 @@ public class HomepageController {
 
     }
 
+    public void loadMessage(String username){
+        greetingLabel.setText("Hello "+ username);
+    }
 }
 
