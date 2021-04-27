@@ -23,7 +23,7 @@ public class MainApp extends Application {
         UserService.initDatabase();
         Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("itempage.fxml"));
         primaryStage.setTitle("Trading Application");
-        primaryStage.setScene(new Scene(root, 380, 275));
+        primaryStage.setScene(new Scene(root, 919, 643));
         primaryStage.show();
         System.out.println(FileSystemService.APPLICATION_HOME_PATH);
 
