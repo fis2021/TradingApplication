@@ -47,8 +47,12 @@ public class HomepageController {
     }
 
     @FXML
-    void handleLogoutAction() {
-
+    void handleLogoutAction() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("login.fxml"));
+        root=loader.load();
+        stage=(Stage) greetingLabel.getScene().getWindow();
+        scene=new Scene(root,380,275);
+        stage.setScene(scene);
     }
 
     public void loadMessage(String username){
