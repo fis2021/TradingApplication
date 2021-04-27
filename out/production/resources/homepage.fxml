@@ -14,17 +14,17 @@
    <top>
       <HBox prefHeight="70.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
-            <Label fx:id="greetingLabel" prefHeight="38.0" prefWidth="104.0" text="e">
+            <Label fx:id="greetingLabel" prefHeight="38.0" prefWidth="254.0">
                <HBox.margin>
                   <Insets left="20.0" top="20.0" />
                </HBox.margin>
                <font>
-                  <Font size="24.0" />
+                  <Font size="21.0" />
                </font>
             </Label>
             <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleLogoutAction" prefHeight="30.0" prefWidth="71.0" text="Log Out">
                <HBox.margin>
-                  <Insets left="330.0" right="30.0" top="20.0" />
+                  <Insets left="250.0" right="30.0" top="20.0" />
                </HBox.margin>
             </Button>
          </children>
@@ -41,17 +41,17 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="95.0" text="Button">
+            <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="95.0" text="Categories">
                <GridPane.margin>
                   <Insets left="260.0" />
                </GridPane.margin>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="95.0" text="Button" GridPane.rowIndex="2">
+            <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="95.0" text="Your history" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets left="260.0" />
                </GridPane.margin>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="95.0" text="Button" GridPane.rowIndex="1">
+            <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="95.0" text="Advertisments" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets left="260.0" />
                </GridPane.margin>
