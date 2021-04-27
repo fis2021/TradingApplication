@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="643.0" prefWidth="919.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <center>
+      <AnchorPane mouseTransparent="true" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fx:id="itemImage" fitHeight="301.0" fitWidth="442.0" layoutX="88.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true" />
+            <ScrollPane layoutX="87.0" layoutY="365.0" prefHeight="200.0" prefWidth="443.0">
+               <content>
+                  <TextArea fx:id="DescriptionArea" prefHeight="200.0" prefWidth="443.0" />
+               </content></ScrollPane>
+            <Button layoutX="14.0" layoutY="188.0" mnemonicParsing="false" onAction="#handlePrevPhotoAction" text="Previous" />
+            <Button layoutX="544.0" layoutY="188.0" mnemonicParsing="false" onAction="#handleNextPhotoAction" prefHeight="26.0" prefWidth="58.0" text="Next" />
+         </children>
+      </AnchorPane>
+   </center>
+   <right>
+      <VBox prefHeight="643.0" prefWidth="214.0" BorderPane.alignment="CENTER">
+         <children>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" />
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" />
+         </children>
+      </VBox>
+   </right>
+</BorderPane>

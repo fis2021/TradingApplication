@@ -41,17 +41,17 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="95.0" text="Categories">
+            <Button mnemonicParsing="false" onAction="#handleCategoriesAction" prefHeight="45.0" prefWidth="95.0" text="Categories">
                <GridPane.margin>
                   <Insets left="260.0" />
                </GridPane.margin>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="95.0" text="Your history" GridPane.rowIndex="2">
+            <Button mnemonicParsing="false" onAction="#handleHistoryAction" prefHeight="45.0" prefWidth="95.0" text="Your history" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets left="260.0" />
                </GridPane.margin>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="95.0" text="Advertisments" GridPane.rowIndex="1">
+            <Button mnemonicParsing="false" onAction="#handleAdvertismentsAction" prefHeight="45.0" prefWidth="95.0" text="Advertisments" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets left="260.0" />
                </GridPane.margin>

@@ -21,7 +21,7 @@ public class MainApp extends Application {
     public void start(Stage primaryStage) throws IOException {
         initDirectory();
         UserService.initDatabase();
-        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("login.fxml"));
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("itempage.fxml"));
         primaryStage.setTitle("Trading Application");
         primaryStage.setScene(new Scene(root, 380, 275));
         primaryStage.show();
