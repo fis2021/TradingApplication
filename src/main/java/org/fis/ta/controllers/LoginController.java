@@ -35,9 +35,12 @@ public class LoginController {
         stage.setScene(scene);
     }
     @FXML
-    public void handleLoginAction(){
+    public void handleLoginAction() throws IOException {
         if(UserService.checkLoginCredentials(usernameField.getText(),passwordField.getText())){
-            loginMessage.setText("Login succesful!");
+            Stage stage = (Stage) passwordField.getScene().getWindow();
+            Parent viewHomepageRoot = FXMLLoader.load(getClass().getClassLoader().getResource("homepage.fxml"));
+            Scene scene = new Scene(viewHomepageRoot,600,600);
+            stage.setScene(scene);
         }
         else
             loginMessage.setText("Account does not exist!");
