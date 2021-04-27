@@ -12,7 +12,6 @@ import org.fis.ta.MainApp;
 import org.fis.ta.services.UserService;
 
 import java.io.IOException;
-import java.util.Objects;
 
 public class LoginController {
 
@@ -24,7 +23,9 @@ public class LoginController {
 
     @FXML
     private Text loginMessage;
-    private Stage Stage;
+    private Stage stage;
+    private Parent root;
+    private Scene scene;
 
     @FXML
     void handleRegisterAction() throws IOException {
@@ -35,9 +36,18 @@ public class LoginController {
         stage.setScene(scene);
     }
     @FXML
-    public void handleLoginAction(){
+    public void handleLoginAction() throws IOException {
         if(UserService.checkLoginCredentials(usernameField.getText(),passwordField.getText())){
-            loginMessage.setText("Login succesful!");
+            String username = usernameField.getText();
+            FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("homepage.fxml"));
+            root=loader.load();
+
+            HomepageController hc = loader.getController();
+            hc.loadMessage(username);
+
+            stage = (Stage) passwordField.getScene().getWindow();
+            scene = new Scene(root,600,600);
+            stage.setScene(scene);
         }
         else
             loginMessage.setText("Account does not exist!");

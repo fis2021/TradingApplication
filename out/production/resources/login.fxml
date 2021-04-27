@@ -27,6 +27,6 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <Text fx:id="loginMessage" layoutX="161.0" layoutY="265.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+      <Text fx:id="loginMessage" layoutX="161.0" layoutY="265.0" strokeType="OUTSIDE" strokeWidth="0.0" />
    </children>
 </AnchorPane>
