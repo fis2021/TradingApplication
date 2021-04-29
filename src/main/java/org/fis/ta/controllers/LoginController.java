@@ -15,12 +15,12 @@ import java.io.IOException;
 
 public class LoginController {
 
+    private static String username;
     @FXML
     private PasswordField passwordField;
 
     @FXML
     private TextField usernameField;
-
     @FXML
     private Text loginMessage;
     private Stage stage;
@@ -38,7 +38,7 @@ public class LoginController {
     @FXML
     public void handleLoginAction() throws IOException {
         if(UserService.checkLoginCredentials(usernameField.getText(),passwordField.getText())){
-            String username = usernameField.getText();
+            username = usernameField.getText();
             FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("homepage.fxml"));
             root=loader.load();
 
@@ -53,4 +53,6 @@ public class LoginController {
             loginMessage.setText("Account does not exist!");
     }
 
+
+    public static String getUsername(){ return username; }
 }
