@@ -3,9 +3,8 @@ package org.fis.ta.services;
 
 import org.dizitart.no2.Nitrite;
 import org.dizitart.no2.objects.ObjectRepository;
+import org.fis.ta.exceptions.PriceNotValidException;
 import org.fis.ta.model.Item;
-import org.fis.ta.model.User;
-import org.fis.ta.exceptions.*;
 
 import java.util.regex.Pattern;
 
@@ -23,9 +22,9 @@ public class ItemService {
         itemRepository = database.getRepository(Item.class);
     }
 
-    public static void addItem(String name, User owner, String price, String category) throws PriceNotValidException{
+    public static void addItem(String owner, String name,  String price, String category) throws PriceNotValidException{
         checkPrice(price);
-        itemRepository.insert(new Item(name, owner, price, category));
+        itemRepository.insert(new Item(owner, name, price, category));
     }
 
     private static void checkPrice(String price)throws PriceNotValidException {
