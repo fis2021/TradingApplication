@@ -9,6 +9,7 @@ import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import org.fis.ta.exceptions.EmptyFieldException;
+import org.fis.ta.exceptions.NoFileSelectedException;
 import org.fis.ta.exceptions.PriceNotValidException;
 import org.fis.ta.services.ItemService;
 
@@ -37,14 +38,23 @@ public class AddItemController {
     private final ArrayList<String> images = new ArrayList<>();
 
     public void handleFileChooser() {
-        FileChooser fc = new FileChooser();
-        fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("Images", "*.png"));
-        List<File> f = fc.showOpenMultipleDialog(null);
-        if(f != null){
-            for (File file : f) {
-                images.add(file.getAbsolutePath());
+        try{
+            FileChooser fc = new FileChooser();
+            fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("Images", "*.png"));
+            List<File> f = fc.showOpenMultipleDialog(null);
+            if(!(f == null)){
+                for (File file : f) {
+                    images.add(file.getAbsolutePath());
+                }
             }
+            else{
+                throw new NoFileSelectedException();
+            }
+
+        }catch (NoFileSelectedException e){
+            addItemMessage.setText(e.getMessage());
         }
+
     }
 
 
@@ -55,7 +65,7 @@ public class AddItemController {
             ItemService.addItem(LoginController.getUsername(), nameField.getText(), categoryField.getText(), descriptionField.getText(), images, priceField.getText());
             addItemMessage.setText("Item added successfully!");
 
-        }catch (PriceNotValidException | EmptyFieldException e){
+        }catch (PriceNotValidException | EmptyFieldException | NoFileSelectedException e){
             addItemMessage.setText(e.getMessage());
         }
     }
@@ -65,7 +75,7 @@ public class AddItemController {
         try {
             Stage stage =(Stage) addItemMessage.getScene().getWindow();
             Parent viewRegisterRoot = FXMLLoader.load(getClass().getClassLoader().getResource("homepage.fxml"));
-            Scene scene = new Scene(viewRegisterRoot, 380, 275);
+            Scene scene = new Scene(viewRegisterRoot, 600, 600);
             stage.setScene(scene);
         } catch (IOException e) {
             e.printStackTrace();

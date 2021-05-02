@@ -51,7 +51,7 @@
                   <Insets left="260.0" />
                </GridPane.margin>
             </Button>
-            <Button mnemonicParsing="false" onAction="#handleAdvertismentsAction" prefHeight="45.0" prefWidth="95.0" text="Advertisments" GridPane.rowIndex="1">
+            <Button mnemonicParsing="false" onAction="#handleAddItemAction" prefHeight="45.0" prefWidth="95.0" text="Add item" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets left="260.0" />
                </GridPane.margin>
