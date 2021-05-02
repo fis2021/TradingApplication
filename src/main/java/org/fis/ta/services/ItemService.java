@@ -3,8 +3,7 @@ package org.fis.ta.services;
 
 import org.dizitart.no2.Nitrite;
 import org.dizitart.no2.objects.ObjectRepository;
-import org.fis.ta.exceptions.EmptyFieldException;
-import org.fis.ta.exceptions.PriceNotValidException;
+import org.fis.ta.exceptions.*;
 import org.fis.ta.model.Item;
 
 import java.util.ArrayList;
@@ -24,9 +23,10 @@ public class ItemService {
         itemRepository = database.getRepository(Item.class);
     }
 
-    public static void addItem(String owner, String name, String category, String description, ArrayList<String> images, String price) throws PriceNotValidException, EmptyFieldException{
+    public static void addItem(String owner, String name, String category, String description, ArrayList<String> images, String price) throws PriceNotValidException, EmptyFieldException, NoFileSelectedException{
         checkNotEmptyFields(name, category, description, price);
         checkPrice(price);
+        checkIfImageInserted(images);
         itemRepository.insert(new Item(owner, name, category, description, images, price));
     }
 
@@ -42,6 +42,14 @@ public class ItemService {
     public static void checkNotEmptyFields(String name, String category, String description, String price) throws EmptyFieldException {
         if(name.isEmpty() | category.isEmpty() | description.isEmpty() | price.isEmpty() )
             throw new EmptyFieldException();
+    }
+
+    public static void checkIfImageInserted(ArrayList<String> images) throws NoFileSelectedException {
+        if(images.isEmpty()){
+            throw new NoFileSelectedException();
+        }
+
+
     }
 
     public static Item getCurrentItem(int ID){

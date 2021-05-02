@@ -38,7 +38,7 @@ public class HomepageController {
 
     @FXML
 
-    void handleAdvertismentsAction() throws IOException {
+    void handleAddItemAction() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("addItem.fxml"));
         root=loader.load();
         stage=(Stage) greetingLabel.getScene().getWindow();
