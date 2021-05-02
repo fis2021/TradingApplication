@@ -10,6 +10,7 @@ public class User {
     private String lastName;
     private String email;
     private String phoneNumber;
+    private User currentUser;
 
 
     public User(String username, String password, String firstName, String lastName, String email, String phoneNumber) {

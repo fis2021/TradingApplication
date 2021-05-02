@@ -7,8 +7,10 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<BorderPane fx:controller="org.fis.ta.controllers.ItempageController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="643.0" prefWidth="919.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="643.0" prefWidth="919.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.fis.ta.controllers.ItempageController">
    <center>
       <AnchorPane mouseTransparent="true" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
@@ -25,8 +27,46 @@
    <right>
       <VBox prefHeight="643.0" prefWidth="214.0" BorderPane.alignment="CENTER">
          <children>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" />
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" />
+            <AnchorPane prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <Text fx:id="nameField" layoutX="22.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="161.33678817749023">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="usernameField" layoutX="23.0" layoutY="106.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="emailField" layoutX="22.0" layoutY="141.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="26.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Seller information:">
+                     <font>
+                        <Font size="21.0" />
+                     </font></Text>
+                  <Text fx:id="phoneField" layoutX="22.0" layoutY="180.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Text>
+               </children></AnchorPane>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <Text fx:id="itemnameField" layoutX="80.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="41.3367919921875">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="priceField" layoutX="80.0" layoutY="136.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+               </children></AnchorPane>
          </children>
       </VBox>
    </right>
