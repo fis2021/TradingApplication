@@ -63,7 +63,7 @@ public class Item {
         this.price = price;
     }
     public void setCategory(String category) { this.category = category;}
-    public int setCounter(int counter){
+    public void setCounter(int counter){
         this.counter=counter;
     }
 
