@@ -43,24 +43,25 @@ public class ItempageController {
     @FXML private Text itemnameField;
     @FXML private Text priceField;
 
+    private Item currentItem;
+
+
     @FXML
     void handleNextPhotoAction(ActionEvent event) {
-        Item item = ItemService.getCurrentItem(ID);
-        item.setCounter(item.getCounter()+1);
-        System.out.println(item.getCounter());
+        if(currentItem.getCounter()<currentItem.getImages().size()-1) {
+            currentItem.setCounter(currentItem.getCounter() + 1);
+            itemImage.setImage(new Image("file:" + currentItem.getImages().get(currentItem.getCounter())));
+        }
     }
 
     @FXML
     void handlePrevPhotoAction() {
-        Item item = ItemService.getCurrentItem(ID);
-        item.setCounter(item.getCounter()-1);
-        System.out.println(item.getCounter());
+        if(currentItem.getCounter()>0) {
+            currentItem.setCounter(currentItem.getCounter() - 1);
+            itemImage.setImage(new Image("file:" + currentItem.getImages().get(currentItem.getCounter())));
+        }
     }
 
-    @FXML
-    void testAction(ActionEvent event) {
-        System.out.println("Test");
-    }
     void loadItempage(User user, Item item){
         nameField.setText(user.getFirstName() + " " + user.getLastName());
         usernameField.setText("@"+user.getUsername());
@@ -69,12 +70,14 @@ public class ItempageController {
         itemnameField.setText(item.getName());
         priceField.setText(item.getPrice());
         DescriptionArea.setText(item.getDescription());
-        loadPhoto(item);
+        currentItem=item;
+        loadPhoto();
+        System.out.println(currentItem.getImages().size());
     }
 
-    void loadPhoto(Item item){
-        ID=item.getID();
-        itemImage.setImage(new Image("file:" +item.getImages().get(0)));
+    void loadPhoto(){
+        ID=currentItem.getID();
+        itemImage.setImage(new Image("file:" +currentItem.getImages().get(0)));
         System.out.println(ID);
     }
 
