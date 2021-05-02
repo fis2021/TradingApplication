@@ -5,22 +5,20 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import org.fis.ta.model.User;
 import org.fis.ta.services.FileSystemService;
+import org.fis.ta.services.ItemService;
 import org.fis.ta.services.UserService;
 
-import java.io.File;
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.Objects;
-
-import java.io.IOException;
 
 public class MainApp extends Application {
 
     public void start(Stage primaryStage) throws IOException {
         initDirectory();
         UserService.initDatabase();
+        ItemService.initDatabase();
         Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("login.fxml"));
         primaryStage.setTitle("Trading Application");
         primaryStage.setScene(new Scene(root, 380, 275));
