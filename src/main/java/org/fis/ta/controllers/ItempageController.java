@@ -50,7 +50,7 @@ public class ItempageController {
     void handleNextPhotoAction(ActionEvent event) {
         if(currentItem.getCounter()<currentItem.getImages().size()-1) {
             currentItem.setCounter(currentItem.getCounter() + 1);
-            itemImage.setImage(new Image("file:" + currentItem.getImages().get(currentItem.getCounter())));
+            itemImage.setImage(new Image("file:" + currentItem.getImages().get(currentItem.getCounter()),523,425,false,false));
         }
     }
 
@@ -58,7 +58,7 @@ public class ItempageController {
     void handlePrevPhotoAction() {
         if(currentItem.getCounter()>0) {
             currentItem.setCounter(currentItem.getCounter() - 1);
-            itemImage.setImage(new Image("file:" + currentItem.getImages().get(currentItem.getCounter())));
+            itemImage.setImage(new Image("file:" + currentItem.getImages().get(currentItem.getCounter()),523,425,false,false));
         }
     }
 
@@ -70,6 +70,8 @@ public class ItempageController {
         itemnameField.setText(item.getName());
         priceField.setText(item.getPrice());
         DescriptionArea.setText(item.getDescription());
+        DescriptionArea.setEditable(false);
+        DescriptionArea.setWrapText(true);
         currentItem=item;
         loadPhoto();
         System.out.println(currentItem.getImages().size());
@@ -77,7 +79,7 @@ public class ItempageController {
 
     void loadPhoto(){
         ID=currentItem.getID();
-        itemImage.setImage(new Image("file:" +currentItem.getImages().get(0)));
+        itemImage.setImage(new Image("file:" +currentItem.getImages().get(0),523,425,false,false));
         System.out.println(ID);
     }
 

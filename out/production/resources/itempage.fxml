@@ -42,14 +42,19 @@
                </children></AnchorPane>
             <AnchorPane prefHeight="200.0" prefWidth="200.0">
                <children>
-                  <Text fx:id="itemnameField" layoutX="-5.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="220.53656005859375">
+                  <Text fx:id="itemnameField" layoutX="16.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="199.736572265625">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Text>
-                  <Text fx:id="priceField" layoutX="-8.0" layoutY="98.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="225.20513153076172">
+                  <Text fx:id="priceField" layoutX="15.0" layoutY="137.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="201.20513153076172">
                      <font>
                         <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="20.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Item specifications:">
+                     <font>
+                        <Font size="21.0" />
                      </font>
                   </Text>
                </children></AnchorPane>
