@@ -1,7 +1,6 @@
 package org.fis.ta.services;
 
 
-import javafx.scene.image.Image;
 import org.dizitart.no2.Nitrite;
 import org.dizitart.no2.objects.ObjectRepository;
 import org.fis.ta.exceptions.EmptyFieldException;
@@ -25,7 +24,7 @@ public class ItemService {
         itemRepository = database.getRepository(Item.class);
     }
 
-    public static void addItem(String owner, String name, String category, String description, ArrayList<Image> images, String price) throws PriceNotValidException, EmptyFieldException{
+    public static void addItem(String owner, String name, String category, String description, ArrayList<String> images, String price) throws PriceNotValidException, EmptyFieldException{
         checkNotEmptyFields(name, category, description, price);
         checkPrice(price);
         itemRepository.insert(new Item(owner, name, category, description, images, price));

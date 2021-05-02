@@ -1,7 +1,6 @@
 package org.fis.ta.model;
 
 
-import javafx.scene.image.Image;
 import org.dizitart.no2.objects.Id;
 
 import java.util.ArrayList;
@@ -14,14 +13,14 @@ public class Item {
     private String name;
     private String description;
     private String category;
-    private ArrayList<Image> images;
+    private ArrayList<String> images = new ArrayList<>();
     private String owner;
     private String price;
     private int counter =0;
 
 
 
-    public Item(String owner, String name, String category, String description, ArrayList<Image> images, String price)
+    public Item(String owner, String name, String category, String description, ArrayList<String> images, String price)
     {
         this.ID = count;
         count++;
@@ -38,7 +37,7 @@ public class Item {
     public int getID() { return ID; }
     public String getName() { return name; }
     public String getDescription() { return description; }
-    public ArrayList<Image> getImages() { return images; }
+    public ArrayList<String> getImages() { return images; }
     public String getOwner() { return owner; }
     public String getPrice() { return price; }
     public String getCategory() { return category;}
@@ -53,7 +52,7 @@ public class Item {
     public void setDescription(String description) {
         this.description = description;
     }
-    public void setImages(ArrayList<Image> images) {
+    public void setImages(ArrayList<String> images) {
         this.images = images;
     }
     public void setOwner(String owner) {

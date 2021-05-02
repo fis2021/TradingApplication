@@ -5,7 +5,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -14,10 +13,9 @@ import org.fis.ta.exceptions.PriceNotValidException;
 import org.fis.ta.services.ItemService;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class AddItemController {
     @FXML
@@ -36,19 +34,16 @@ public class AddItemController {
     private TextField descriptionField;
 
     @FXML
-    private ArrayList<Image> images;
+    private final ArrayList<String> images = new ArrayList<>();
+
     public void handleFileChooser() {
-        try {
-            FileChooser fc = new FileChooser();
-            fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("Images", "*.png"));
-            ArrayList<File> f = (ArrayList<File>) fc.showOpenMultipleDialog(null);
+        FileChooser fc = new FileChooser();
+        fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("Images", "*.png"));
+        List<File> f = fc.showOpenMultipleDialog(null);
+        if(f != null){
             for (File file : f) {
-                FileInputStream input = new FileInputStream(file.getAbsolutePath());
-                images.add(new Image(input));
+                images.add(file.getAbsolutePath());
             }
-        }catch (FileNotFoundException e)
-        {
-            addItemMessage.setText(e.getMessage());
         }
     }
 
