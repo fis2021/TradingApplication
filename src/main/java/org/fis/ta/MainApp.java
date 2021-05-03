@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import org.fis.ta.controllers.LoginController;
 import org.fis.ta.services.FileSystemService;
 import org.fis.ta.services.ItemService;
 import org.fis.ta.services.UserService;
@@ -23,8 +24,6 @@ public class MainApp extends Application {
         primaryStage.setTitle("Trading Application");
         primaryStage.setScene(new Scene(root, 380, 275));
         primaryStage.show();
-        System.out.println(FileSystemService.APPLICATION_HOME_PATH);
-
     }
 
     private void initDirectory() {
