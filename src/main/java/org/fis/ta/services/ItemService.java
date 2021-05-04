@@ -3,7 +3,9 @@ package org.fis.ta.services;
 
 import org.dizitart.no2.Nitrite;
 import org.dizitart.no2.objects.ObjectRepository;
-import org.fis.ta.exceptions.*;
+import org.fis.ta.exceptions.EmptyFieldException;
+import org.fis.ta.exceptions.NoFileSelectedException;
+import org.fis.ta.exceptions.PriceNotValidException;
 import org.fis.ta.model.Item;
 
 import java.util.ArrayList;
@@ -16,11 +18,15 @@ public class ItemService {
     private static ObjectRepository<Item> itemRepository;
 
     public static void initDatabase() {
-        Nitrite database = Nitrite.builder()
-                .filePath(getPathToFile("trading-application-items.db").toFile())
-                .openOrCreate("test", "test");
-
+        Nitrite database = Nitrite.builder().
+                filePath(getPathToFile("trading-application-items.db").toFile()).
+                openOrCreate("test", "test");
         itemRepository = database.getRepository(Item.class);
+        int count = 0;
+        for (Item item : itemRepository.find()) {
+            count++;
+        }
+        Item.setCount(count);
     }
 
     public static void addItem(String owner, String name, String category, String description, ArrayList<String> images, String price) throws PriceNotValidException, EmptyFieldException, NoFileSelectedException{

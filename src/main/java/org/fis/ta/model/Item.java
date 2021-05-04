@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class Item {
     @Id
     private int ID;
-    private static int count=0;
+    private static int count;
     private String name;
     private String description;
     private String category;
@@ -40,6 +40,7 @@ public class Item {
     public String getOwner() { return owner; }
     public String getPrice() { return price; }
     public String getCategory() { return category;}
+    public static int getCount() { return count; }
 
 
     public void setName(String name) {
@@ -58,6 +59,8 @@ public class Item {
         this.price = price;
     }
     public void setCategory(String category) { this.category = category;}
+
+    public static void setCount(int count){ Item.count = count; }
 
 
 
