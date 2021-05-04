@@ -40,6 +40,7 @@ public class UserService {
         for(User user : userRepository.find()){
             if(Objects.equals(username,user.getUsername())){
                 if(Objects.equals(user.getPassword(),encodePassword(user.getUsername(),password))){
+
                     return true;
                 }
             }
@@ -105,6 +106,16 @@ public class UserService {
             throw new IllegalStateException("SHA-512 does not exist!");
         }
         return md;
+    }
+
+    public static User getCurrentUser(String username){
+        User aux = new User();
+        for(User user: userRepository.find()){
+            if (Objects.equals(username, user.getUsername())){
+                aux=user;
+            }
+        }
+        return aux;
     }
 
 
