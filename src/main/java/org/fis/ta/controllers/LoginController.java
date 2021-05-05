@@ -42,13 +42,13 @@ public class LoginController {
     public void handleLoginAction() throws IOException {
         if(UserService.checkLoginCredentials(usernameField.getText(),passwordField.getText())){
             username = usernameField.getText();
-            FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("homepage.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("itempage.fxml"));
             root=loader.load();
-           // ItempageController ic = loader.getController();
-           // User aux= UserService.getCurrentUser(usernameField.getText());
-            HomepageController hc = loader.getController();
-            //ic.loadItempage(aux, ItemService.getCurrentItem(0));
-            hc.loadMessage(username);
+            ItempageController ic = loader.getController();
+            User aux= UserService.getCurrentUser(usernameField.getText());
+            //HomepageController hc = loader.getController();
+            ic.loadItempage(aux, ItemService.getCurrentItem(1));
+            //hc.loadMessage(username);
 
             stage = (Stage) passwordField.getScene().getWindow();
             scene = new Scene(root,1280,720);
