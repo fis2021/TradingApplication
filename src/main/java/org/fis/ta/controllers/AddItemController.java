@@ -47,7 +47,7 @@ public class AddItemController {
                     images.add(file.getAbsolutePath());
                 }
             }
-            else{
+            else {
                 throw new NoFileSelectedException();
             }
 
@@ -63,7 +63,7 @@ public class AddItemController {
     public void handleAddAction(){
         try {
             ItemService.addItem(LoginController.getUsername(), nameField.getText(), categoryField.getText(), descriptionField.getText(), images, priceField.getText());
-            addItemMessage.setText("Item added successfully!");
+            addItemMessage.setText("Item added successfully!" );
 
         }catch (PriceNotValidException | EmptyFieldException | NoFileSelectedException e){
             addItemMessage.setText(e.getMessage());
