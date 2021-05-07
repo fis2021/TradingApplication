@@ -16,7 +16,7 @@ public class Item {
     private ArrayList<String> images = new ArrayList<>();
     private String owner;
     private String price;
-
+    private int counter =0;
 
 
     public Item(String owner, String name, String category, String description, ArrayList<String> images, String price)
@@ -43,6 +43,8 @@ public class Item {
 
     public static int getCount() { return count; }
 
+    public int getCounter(){return counter;}
+
 
 
     public void setName(String name) {
@@ -64,7 +66,7 @@ public class Item {
 
 
     public static void setCount(int count){ Item.count = count; }
-
-
+    public void setCounter(int counter)
+    {this.counter=counter;}
 
 }
