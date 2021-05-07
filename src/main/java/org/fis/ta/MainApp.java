@@ -5,7 +5,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import org.fis.ta.controllers.LoginController;
 import org.fis.ta.services.FileSystemService;
 import org.fis.ta.services.ItemService;
 import org.fis.ta.services.UserService;
@@ -20,9 +19,9 @@ public class MainApp extends Application {
         initDirectory();
         UserService.initDatabase();
         ItemService.initDatabase();
-        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("login.fxml"));
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("categoryPage.fxml"));
         primaryStage.setTitle("Trading Application");
-        primaryStage.setScene(new Scene(root, 380, 275));
+        primaryStage.setScene(new Scene(root, 600, 600));
         primaryStage.show();
     }
 

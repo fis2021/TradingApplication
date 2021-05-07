@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="org.fis.ta.controllers.CategoryPageController"
+            prefHeight="400.0" prefWidth="600.0">
+
+    <Label text="Cars, motorcycles and boats" layoutX="80.0" layoutY="180.0"/>
+    <Label text="Real estates" layoutX="370.0" layoutY="180.0"/>
+    <Label text="Electronics and appliances" layoutX="80.0" layoutY="380.0"/>
+    <Label text="Sport" layoutX="380.0" layoutY="380.0"/>
+
+
+    <Button onAction="#handleAutoAction" layoutX="50.0" layoutY="50.0" mnemonicParsing="false">
+        <font>
+            <Font size="3.0" />
+        </font>
+        <graphic>
+            <ImageView fitHeight="130.0" fitWidth="200.0">
+                    <Image url="images/autoturisme.png" />
+            </ImageView>
+        </graphic>
+    </Button>
+
+    <Button onAction="#handleEstateAction" layoutX="300.0" layoutY="50.0" mnemonicParsing="false">
+
+        <font>
+            <Font size="3.0" />
+        </font>
+        <graphic>
+            <ImageView fitHeight="130.0" fitWidth="200.0">
+                    <Image url="images/imobiliare.png" />
+            </ImageView>
+        </graphic>
+    </Button>
+
+    <Button onAction="#handleElectrinocsAction" layoutX="50.0" layoutY="230.0" mnemonicParsing="false">
+
+        <font>
+            <Font size="3.0" />
+        </font>
+        <graphic>
+            <ImageView fitHeight="150.0" fitWidth="200.0" >
+                    <Image url="images/phone.png" />
+            </ImageView>
+        </graphic>
+    </Button>
+
+    <Button onAction="#handleSportAction" layoutX="300.0" layoutY="230.0" mnemonicParsing="false">
+
+        <font>
+            <Font size="3.0" />
+        </font>
+        <graphic>
+            <ImageView fitHeight="150.0" fitWidth="200.0">
+                    <Image url="images/sport.png" />
+            </ImageView>
+        </graphic>
+    </Button>
+
+
+</AnchorPane>
