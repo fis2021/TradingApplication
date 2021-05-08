@@ -3,19 +3,23 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.*?>
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="org.fis.ta.controllers.CategoryPageController"
             prefHeight="400.0" prefWidth="600.0">
 
-    <Label text="Cars, motorcycles and boats" layoutX="80.0" layoutY="180.0"/>
-    <Label text="Real estates" layoutX="370.0" layoutY="180.0"/>
-    <Label text="Electronics and appliances" layoutX="80.0" layoutY="380.0"/>
-    <Label text="Sport" layoutX="380.0" layoutY="380.0"/>
+    <Text fx:id="categoryMessage"/>
+
+    <Label text="Cars, motorcycles and boats" layoutX="80.0" layoutY="205.0"/>
+    <Label text="Real estates" layoutX="370.0" layoutY="205.0"/>
+    <Label text="Electronics and appliances" layoutX="80.0" layoutY="405.0"/>
+    <Label text="Sport" layoutX="380.0" layoutY="405.0"/>
+
+    <Button onAction="#handleBackAction" text="Back" layoutX="50.0" layoutY="25.0"/>
 
 
-    <Button onAction="#handleAutoAction" layoutX="50.0" layoutY="50.0" mnemonicParsing="false">
+    <Button onAction="#handleAutoAction" layoutX="50.0" layoutY="75.0" mnemonicParsing="false">
         <font>
             <Font size="3.0" />
         </font>
@@ -26,7 +30,7 @@
         </graphic>
     </Button>
 
-    <Button onAction="#handleEstateAction" layoutX="300.0" layoutY="50.0" mnemonicParsing="false">
+    <Button onAction="#handleEstateAction" layoutX="300.0" layoutY="75.0" mnemonicParsing="false">
 
         <font>
             <Font size="3.0" />
@@ -38,7 +42,7 @@
         </graphic>
     </Button>
 
-    <Button onAction="#handleElectrinocsAction" layoutX="50.0" layoutY="230.0" mnemonicParsing="false">
+    <Button onAction="#handleElectronicsAction" layoutX="50.0" layoutY="255.0" mnemonicParsing="false">
 
         <font>
             <Font size="3.0" />
@@ -50,7 +54,7 @@
         </graphic>
     </Button>
 
-    <Button onAction="#handleSportAction" layoutX="300.0" layoutY="230.0" mnemonicParsing="false">
+    <Button onAction="#handleSportAction" layoutX="300.0" layoutY="255.0" mnemonicParsing="false">
 
         <font>
             <Font size="3.0" />
