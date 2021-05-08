@@ -9,8 +9,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import org.fis.ta.MainApp;
-import org.fis.ta.model.User;
-import org.fis.ta.services.ItemService;
 import org.fis.ta.services.UserService;
 
 import java.io.IOException;
@@ -42,13 +40,13 @@ public class LoginController {
     public void handleLoginAction() throws IOException {
         if(UserService.checkLoginCredentials(usernameField.getText(),passwordField.getText())){
             username = usernameField.getText();
-            FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("itempage.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("homepage.fxml"));
             root=loader.load();
-            ItempageController ic = loader.getController();
+            /*ItempageController ic = loader.getController();
             User aux= UserService.getCurrentUser(usernameField.getText());
             //HomepageController hc = loader.getController();
             ic.loadItempage(aux, ItemService.getCurrentItem(1));
-            //hc.loadMessage(username);
+            //hc.loadMessage(username);*/
 
             stage = (Stage) passwordField.getScene().getWindow();
             scene = new Scene(root,1280,720);

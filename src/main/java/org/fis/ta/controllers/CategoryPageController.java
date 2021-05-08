@@ -72,8 +72,8 @@ public class CategoryPageController {
     public void handleBackAction(ActionEvent actionEvent) {
         try {
             Stage stage =(Stage) categoryMessage.getScene().getWindow();
-            Parent viewRegisterRoot = FXMLLoader.load(getClass().getClassLoader().getResource("login.fxml"));
-            Scene scene = new Scene(viewRegisterRoot, 380, 275);
+            Parent viewRegisterRoot = FXMLLoader.load(getClass().getClassLoader().getResource("homepage.fxml"));
+            Scene scene = new Scene(viewRegisterRoot, 600, 600);
             stage.setScene(scene);
         } catch (IOException e) {
             e.printStackTrace();
