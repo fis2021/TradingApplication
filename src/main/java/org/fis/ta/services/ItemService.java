@@ -19,12 +19,16 @@ public class ItemService {
         Nitrite database = Nitrite.builder()
                 .filePath(getPathToFile("trading-application-items.db").toFile())
                 .openOrCreate("test", "test");
-
         itemRepository = database.getRepository(Item.class);
+        int count = 0;
+        for (Item item : itemRepository.find()) {
+            count++;
+        }
+        Item.setCount(count);
     }
 
     public static void addItem(String owner, String name, String category, String description, ArrayList<String> images, String price) throws PriceNotValidException, EmptyFieldException, NoFileSelectedException{
-        checkNotEmptyFields(name, category, description, price);
+        checkNotEmptyFields(name, description, price);
         checkPrice(price);
         checkIfImageInserted(images);
         itemRepository.insert(new Item(owner, name, category, description, images, price));
@@ -39,8 +43,8 @@ public class ItemService {
             throw new PriceNotValidException();
     }
 
-    public static void checkNotEmptyFields(String name, String category, String description, String price) throws EmptyFieldException {
-        if(name.isEmpty() | category.isEmpty() | description.isEmpty() | price.isEmpty() )
+    public static void checkNotEmptyFields(String name, String description, String price) throws EmptyFieldException {
+        if(name.isEmpty() | description.isEmpty() | price.isEmpty() )
             throw new EmptyFieldException();
     }
 
@@ -48,8 +52,6 @@ public class ItemService {
         if(images.isEmpty()){
             throw new NoFileSelectedException();
         }
-
-
     }
 
     public static Item getCurrentItem(int ID){

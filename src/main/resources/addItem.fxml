@@ -4,6 +4,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Text?>
+
 <GridPane alignment="center" hgap="10" prefHeight="400" prefWidth="600" vgap="10" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.fis.ta.controllers.AddItemController">
     <padding>
         <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
@@ -17,7 +18,7 @@
     <TextField fx:id="priceField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
 
     <Label text="Item category:" GridPane.columnIndex="0" GridPane.rowIndex="3" />
-    <ChoiceBox fx:id="categoryField" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+    <ChoiceBox fx:id="categoryField" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3" value = "Sport">
     </ChoiceBox>
 
     <Label text="Item description:" GridPane.columnIndex="0" GridPane.rowIndex="4" />
@@ -38,7 +39,5 @@
     </HBox>
 
     <Text fx:id="addItemMessage" GridPane.columnIndex="1" GridPane.rowIndex="9" />
-
-
 
 </GridPane>
