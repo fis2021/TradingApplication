@@ -3,9 +3,7 @@ package org.fis.ta.services;
 
 import org.dizitart.no2.Nitrite;
 import org.dizitart.no2.objects.ObjectRepository;
-import org.fis.ta.exceptions.EmptyFieldException;
-import org.fis.ta.exceptions.NoFileSelectedException;
-import org.fis.ta.exceptions.PriceNotValidException;
+import org.fis.ta.exceptions.*;
 import org.fis.ta.model.Item;
 
 import java.util.ArrayList;
@@ -18,9 +16,9 @@ public class ItemService {
     private static ObjectRepository<Item> itemRepository;
 
     public static void initDatabase() {
-        Nitrite database = Nitrite.builder().
-                filePath(getPathToFile("trading-application-items.db").toFile()).
-                openOrCreate("test", "test");
+        Nitrite database = Nitrite.builder()
+                .filePath(getPathToFile("trading-application-items.db").toFile())
+                .openOrCreate("test", "test");
         itemRepository = database.getRepository(Item.class);
         int count = 0;
         for (Item item : itemRepository.find()) {
@@ -30,7 +28,7 @@ public class ItemService {
     }
 
     public static void addItem(String owner, String name, String category, String description, ArrayList<String> images, String price) throws PriceNotValidException, EmptyFieldException, NoFileSelectedException{
-        checkNotEmptyFields(name, category, description, price);
+        checkNotEmptyFields(name, description, price);
         checkPrice(price);
         checkIfImageInserted(images);
         itemRepository.insert(new Item(owner, name, category, description, images, price));
@@ -45,8 +43,8 @@ public class ItemService {
             throw new PriceNotValidException();
     }
 
-    public static void checkNotEmptyFields(String name, String category, String description, String price) throws EmptyFieldException {
-        if(name.isEmpty() | category.isEmpty() | description.isEmpty() | price.isEmpty() )
+    public static void checkNotEmptyFields(String name, String description, String price) throws EmptyFieldException {
+        if(name.isEmpty() | description.isEmpty() | price.isEmpty() )
             throw new EmptyFieldException();
     }
 
@@ -54,8 +52,6 @@ public class ItemService {
         if(images.isEmpty()){
             throw new NoFileSelectedException();
         }
-
-
     }
 
     public static Item getCurrentItem(int ID){
