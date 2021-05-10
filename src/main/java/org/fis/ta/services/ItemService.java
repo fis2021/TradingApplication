@@ -34,6 +34,7 @@ public class ItemService {
         checkPrice(price);
         checkIfImageInserted(images);
         itemRepository.insert(new Item(owner, name, category, description, images, price));
+        UserService.getCurrentUser(owner).getItemsList().add(new Item(owner,name,category,description,images,price));
     }
 
     private static void checkPrice(String price)throws PriceNotValidException {

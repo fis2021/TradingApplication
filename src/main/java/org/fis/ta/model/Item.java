@@ -1,6 +1,8 @@
 package org.fis.ta.model;
 
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import org.dizitart.no2.objects.Id;
 
 import java.util.ArrayList;
@@ -68,5 +70,12 @@ public class Item {
     public static void setCount(int count){ Item.count = count; }
     public void setCounter(int counter)
     {this.counter=counter;}
+
+    public ObservableList<Item> getItems(){
+        ObservableList<Item> items = FXCollections.observableArrayList();
+
+
+        return items;
+    }
 
 }

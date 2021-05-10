@@ -2,6 +2,9 @@ package org.fis.ta.model;
 
 import org.dizitart.no2.objects.Id;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
 public class User {
     @Id
     private String username;
@@ -10,8 +13,7 @@ public class User {
     private String lastName;
     private String email;
     private String phoneNumber;
-    private User currentUser;
-
+    private ArrayList<Item> itemsList;
 
     public User(String username, String password, String firstName, String lastName, String email, String phoneNumber) {
         this.username = username;
@@ -31,6 +33,7 @@ public class User {
     public String getLastName() { return lastName; }
     public String getEmail() { return email; }
     public String getPhoneNumber() { return phoneNumber; }
+    public ArrayList<Item> getItemsList() {return itemsList;}
 
 
     public void setUsername(String username) { this.username = username; }
