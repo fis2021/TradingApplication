@@ -67,9 +67,13 @@ public class Item {
     public void setCategory(String category) { this.category = category;}
     
 
-    public static void setCount(int count){ Item.count = count; }
+    public static void setCount(int count){ Item.count = count;}
     public void setCounter(int counter)
     {this.counter=counter;}
+
+    public String toString(){
+        return this.name;
+    }
 
 
 

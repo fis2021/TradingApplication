@@ -15,7 +15,7 @@ public class User {
     private String lastName;
     private String email;
     private String phoneNumber;
-    private ArrayList<Item> itemsList;
+    private ArrayList<Item> itemsList = new ArrayList<>();
 
     public User(String username, String password, String firstName, String lastName, String email, String phoneNumber) {
         this.username = username;
@@ -28,7 +28,6 @@ public class User {
 
     public User() {
     }
-
     public String getUsername() { return username; }
     public String getPassword() { return password; }
     public String getFirstName() { return firstName; }
@@ -44,6 +43,7 @@ public class User {
     public void setLastName(String lastName) { this.lastName = lastName; }
     public void setEmail(String email) { this.email = email; }
     public void setPhoneNumber(String phoneNumber) { this.phoneNumber = phoneNumber; }
+    public void addItem(Item item){itemsList.add(item);}
 
 
     @Override

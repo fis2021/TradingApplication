@@ -45,13 +45,18 @@ public class HomepageController {
         scene=new Scene(root,600,600);
         stage.setScene(scene);
     }
+
+
     @FXML
     void handleSaleslistAction() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("addItem.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("saleslist.fxml"));
         root=loader.load();
+        SaleslistController sc = loader.getController();
+        sc.loadSaleslistPage();
         stage=(Stage) greetingLabel.getScene().getWindow();
-        scene=new Scene(root,600,600);
+        scene=new Scene(root,919,643);
         stage.setScene(scene);
+
     }
 
     @FXML
