@@ -19,6 +19,7 @@ public class Item {
     private String owner;
     private String price;
     private int counter =0;
+    private String thumbnail;
 
 
     public Item(String owner, String name, String category, String description, ArrayList<String> images, String price)
@@ -31,6 +32,7 @@ public class Item {
         this.owner = owner;
         this.price = price;
         this.category = category;
+        this.thumbnail=images.get(0);
     }
     public Item()
     { }

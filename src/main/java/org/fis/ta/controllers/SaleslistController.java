@@ -48,10 +48,13 @@ public class SaleslistController {
         username=LoginController.getUsername();
         nameColumn.setText("Name");
         priceColumn.setText("Price");
+        photoColumn.setText("Photo");
         nameColumn.setMinWidth(200);
         priceColumn.setMinWidth(100);
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
         priceColumn.setCellValueFactory(new PropertyValueFactory<>("price"));
+        photoColumn.setCellValueFactory(new PropertyValueFactory<>("images"));
+        photoColumn.setMinWidth(200);
         table.setItems(UserService.getCurrentUser(username).getItems());
     }
 }
