@@ -1,5 +1,7 @@
 package org.fis.ta.model;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import org.dizitart.no2.objects.Id;
 
 import java.lang.reflect.Array;
@@ -61,5 +63,11 @@ public class User {
         int result = username != null ? username.hashCode() : 0;
         result = 31 * result + (password != null ? password.hashCode() : 0);
         return result;
+    }
+
+    public ObservableList<Item> getItems(){
+        ObservableList<Item> items = FXCollections.observableArrayList();
+        items.addAll(itemsList);
+        return items;
     }
 }

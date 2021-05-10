@@ -71,11 +71,6 @@ public class Item {
     public void setCounter(int counter)
     {this.counter=counter;}
 
-    public ObservableList<Item> getItems(){
-        ObservableList<Item> items = FXCollections.observableArrayList();
 
-
-        return items;
-    }
 
 }
