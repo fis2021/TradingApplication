@@ -27,6 +27,10 @@ public class ItemService {
         Item.setCount(count);
     }
 
+    public static ObjectRepository<Item> getItemRepository(){
+        return itemRepository;
+    }
+
     public static void addItem(String owner, String name, String category, String description, ArrayList<String> images, String price) throws PriceNotValidException, EmptyFieldException, NoFileSelectedException{
         checkNotEmptyFields(name, description, price);
         checkPrice(price);
