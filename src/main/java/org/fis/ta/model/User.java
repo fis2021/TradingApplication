@@ -3,6 +3,7 @@ package org.fis.ta.model;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import org.dizitart.no2.objects.Id;
+import org.fis.ta.services.ItemService;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -15,7 +16,6 @@ public class User {
     private String lastName;
     private String email;
     private String phoneNumber;
-    private ArrayList<Item> itemsList = new ArrayList<>();
 
     public User(String username, String password, String firstName, String lastName, String email, String phoneNumber) {
         this.username = username;
@@ -34,7 +34,7 @@ public class User {
     public String getLastName() { return lastName; }
     public String getEmail() { return email; }
     public String getPhoneNumber() { return phoneNumber; }
-    public ArrayList<Item> getItemsList() {return itemsList;}
+
 
 
     public void setUsername(String username) { this.username = username; }
@@ -43,7 +43,6 @@ public class User {
     public void setLastName(String lastName) { this.lastName = lastName; }
     public void setEmail(String email) { this.email = email; }
     public void setPhoneNumber(String phoneNumber) { this.phoneNumber = phoneNumber; }
-    public void addItem(Item item){itemsList.add(item);}
 
 
     @Override
@@ -67,7 +66,7 @@ public class User {
 
     public ObservableList<Item> getItems(){
         ObservableList<Item> items = FXCollections.observableArrayList();
-        items.addAll(itemsList);
+        items.addAll(ItemService.loadItemList());
         return items;
     }
 }

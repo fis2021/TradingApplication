@@ -53,8 +53,5 @@ public class SaleslistController {
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
         priceColumn.setCellValueFactory(new PropertyValueFactory<>("price"));
         table.setItems(UserService.getCurrentUser(username).getItems());
-        for(Item item : UserService.getCurrentUser(username).getItemsList()){
-            System.out.println(item.getName());
-        }
     }
 }
