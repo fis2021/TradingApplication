@@ -1,6 +1,7 @@
 package org.fis.ta.services;
 
 
+import javafx.scene.image.ImageView;
 import org.dizitart.no2.Nitrite;
 import org.dizitart.no2.objects.ObjectRepository;
 import org.fis.ta.controllers.LoginController;
@@ -10,7 +11,10 @@ import org.fis.ta.exceptions.PriceNotValidException;
 import org.fis.ta.model.Item;
 import org.fis.ta.model.User;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.regex.Pattern;
 
 import static org.fis.ta.services.FileSystemService.getPathToFile;
@@ -45,7 +49,10 @@ public class ItemService {
         checkNotEmptyFields(name, category, description, price);
         checkPrice(price);
         checkIfImageInserted(images);
-        Item item = new Item(owner,name,category,description,images,price);
+        Calendar calendar = Calendar.getInstance();
+        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+        String date = formatter.format(calendar.getTime());
+        Item item = new Item(owner,name,category,description,images,price,date);
         itemRepository.insert(item);
     }
 

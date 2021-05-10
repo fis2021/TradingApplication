@@ -13,6 +13,8 @@
           <TableColumn fx:id="photoColumn" prefWidth="75.0" text="C1" />
           <TableColumn fx:id="nameColumn" prefWidth="75.0" text="C2" />
             <TableColumn fx:id="priceColumn" prefWidth="75.0" text="C3" />
+            <TableColumn fx:id="categoryColumn" prefWidth="75.0" text="Column X" />
+            <TableColumn fx:id="dateColumn" prefWidth="75.0" text="Column X" />
         </columns>
       </TableView>
    </center>

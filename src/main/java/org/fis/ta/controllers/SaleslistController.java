@@ -13,7 +13,9 @@ import org.fis.ta.model.User;
 import org.fis.ta.services.UserService;
 
 import javax.swing.text.html.ImageView;
+import java.awt.*;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class SaleslistController {
 
@@ -28,6 +30,11 @@ public class SaleslistController {
 
     @FXML
     private TableColumn<Item, String> priceColumn;
+
+    @FXML
+    private TableColumn<Item, String> dateColumn;
+    @FXML
+    private TableColumn<Item, String> categoryColumn;
 
     private Stage stage;
     private Scene scene;
@@ -48,13 +55,17 @@ public class SaleslistController {
         username=LoginController.getUsername();
         nameColumn.setText("Name");
         priceColumn.setText("Price");
-        photoColumn.setText("Photo");
-        nameColumn.setMinWidth(200);
-        priceColumn.setMinWidth(100);
+        dateColumn.setText("Added on:");
+        categoryColumn.setText("Category");
+        photoColumn.setText("");
+        nameColumn.setMinWidth(210);
+        priceColumn.setMinWidth(210);
+        dateColumn.setMinWidth(210);
+        categoryColumn.setMinWidth(210);
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
         priceColumn.setCellValueFactory(new PropertyValueFactory<>("price"));
-        photoColumn.setCellValueFactory(new PropertyValueFactory<>("images"));
-        photoColumn.setMinWidth(200);
+        dateColumn.setCellValueFactory(new PropertyValueFactory<>("dateAdded"));
+        categoryColumn.setCellValueFactory(new PropertyValueFactory<>("category"));
         table.setItems(UserService.getCurrentUser(username).getItems());
     }
 }
