@@ -9,8 +9,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import org.fis.ta.MainApp;
-import org.fis.ta.model.User;
-import org.fis.ta.services.ItemService;
 import org.fis.ta.services.UserService;
 
 import java.io.IOException;
@@ -49,7 +47,6 @@ public class LoginController {
             HomepageController hc = loader.getController();
             //ic.loadItempage(aux, ItemService.getCurrentItem(1));
             hc.loadMessage(username);
-
             stage = (Stage) passwordField.getScene().getWindow();
             scene = new Scene(root,600,400);
             stage.setScene(scene);

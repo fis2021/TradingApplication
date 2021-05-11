@@ -71,7 +71,6 @@ public class Item {
     }
     public void setCategory(String category) { this.category = category;}
     public void setDateAdded(String date){this.dateAdded=date;}
-    
 
     public static void setCount(int count){ Item.count = count;}
     public void setCounter(int counter)

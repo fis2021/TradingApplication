@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
@@ -29,13 +30,18 @@ public class AddItemController {
     private TextField priceField;
 
     @FXML
-    private TextField categoryField;
+    private ChoiceBox<String> categoryField;
 
     @FXML
     private TextField descriptionField;
 
     @FXML
     private final ArrayList<String> images = new ArrayList<>();
+
+    @FXML
+    public void initialize() {
+        categoryField.getItems().addAll( "Cars, motorcycles and boats", "Real estates", "Electronics and appliances", "Sport");
+    }
 
     public void handleFileChooser() {
         try{
@@ -47,7 +53,7 @@ public class AddItemController {
                     images.add(file.getAbsolutePath());
                 }
             }
-            else {
+            else{
                 throw new NoFileSelectedException();
             }
 
@@ -62,8 +68,8 @@ public class AddItemController {
     @FXML
     public void handleAddAction(){
         try {
-            ItemService.addItem(LoginController.getUsername(), nameField.getText(), categoryField.getText(), descriptionField.getText(), images, priceField.getText());
-            addItemMessage.setText("Item added successfully!" );
+            ItemService.addItem(LoginController.getUsername(), nameField.getText(), categoryField.getValue(), descriptionField.getText(), images, priceField.getText());
+            addItemMessage.setText("Item added successfully!");
 
         }catch (PriceNotValidException | EmptyFieldException | NoFileSelectedException e){
             addItemMessage.setText(e.getMessage());
