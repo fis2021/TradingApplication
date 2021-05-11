@@ -1,13 +1,19 @@
 package org.fis.ta.controllers;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import javafx.util.Callback;
+import org.dizitart.no2.objects.ObjectRepository;
 import org.fis.ta.model.Item;
 import org.fis.ta.model.User;
 import org.fis.ta.services.UserService;
@@ -35,6 +41,7 @@ public class SaleslistController {
     private TableColumn<Item, String> dateColumn;
     @FXML
     private TableColumn<Item, String> categoryColumn;
+    private static final ObjectRepository<User> users = UserService.getUserRepository();
 
     private Stage stage;
     private Scene scene;
@@ -43,16 +50,30 @@ public class SaleslistController {
     @FXML
 
     public void handleHomepageAction() throws IOException {
-        FXMLLoader loader=new FXMLLoader(getClass().getClassLoader().getResource("homepage.fxml"));
-        root=loader.load();
+        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("homepage.fxml"));
+        root = loader.load();
         HomepageController hc = loader.getController();
         hc.loadMessage(username);
         stage = (Stage) table.getScene().getWindow();
-        scene = new Scene(root,600,400);
+        scene = new Scene(root, 600, 400);
         stage.setScene(scene);
     }
-    public void loadSaleslistPage(){
-        username=LoginController.getUsername();
+
+    @FXML
+
+    public void goToItempage() throws IOException {
+
+        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("itempage.fxml"));
+        root=loader.load();
+        ItempageController ic = loader.getController();
+        ic.loadItempage(UserService.getCurrentUser(username),table.getSelectionModel().getSelectedItem());
+        stage=(Stage) table.getScene().getWindow();
+        scene=new Scene(root,919,643);
+        stage.setScene(scene);
+    }
+
+    public void loadSaleslistPage() {
+        username = LoginController.getUsername();
         nameColumn.setText("Name");
         priceColumn.setText("Price");
         dateColumn.setText("Added on:");
