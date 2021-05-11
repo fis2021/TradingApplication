@@ -49,7 +49,7 @@ public class LoginController {
             //hc.loadMessage(username);*/
 
             stage = (Stage) passwordField.getScene().getWindow();
-            scene = new Scene(root,1280,720);
+            scene = new Scene(root,600,600);
             stage.setScene(scene);
         }
         else
