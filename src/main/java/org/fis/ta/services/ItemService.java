@@ -64,4 +64,9 @@ public class ItemService {
         }
         return aux;
     }
+
+    public static ObjectRepository<Item> getItemRepository(){
+        return itemRepository;
+    }
+
 }
