@@ -1,7 +1,13 @@
 package org.fis.ta.model;
 
 
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.scene.control.Button;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+
 import org.dizitart.no2.objects.Id;
 
 import java.io.FileInputStream;
@@ -20,9 +26,10 @@ public class Item {
     private String owner;
     private String price;
     private int counter =0;
+    private String dateAdded;
 
 
-    public Item(String owner, String name, String category, String description, ArrayList<String> images, String price)
+    public Item(String owner, String name, String category, String description, ArrayList<String> images, String price,String dateAdded)
     {
         this.ID = count;
         count++;
@@ -32,6 +39,7 @@ public class Item {
         this.owner = owner;
         this.price = price;
         this.category = category;
+        this.dateAdded=dateAdded;
     }
     public Item()
     { }
@@ -43,7 +51,7 @@ public class Item {
     public String getOwner() { return owner; }
     public String getPrice() { return price; }
     public String getCategory() { return category;}
-
+    public String getDateAdded(){return dateAdded;}
     public static int getCount() { return count; }
 
     public int getCounter(){return counter;}
@@ -66,9 +74,9 @@ public class Item {
         this.price = price;
     }
     public void setCategory(String category) { this.category = category;}
+    public void setDateAdded(String date){this.dateAdded=date;}
 
-
-    public static void setCount(int count){ Item.count = count; }
+    public static void setCount(int count){ Item.count = count;}
     public void setCounter(int counter)
     {this.counter=counter;}
 
@@ -84,5 +92,12 @@ public class Item {
         return image;
 
     }
+
+    public String toString(){
+        return this.name;
+    }
+
+
+
 
 }

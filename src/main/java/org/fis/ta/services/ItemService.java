@@ -1,12 +1,23 @@
 package org.fis.ta.services;
 
 
+import javafx.scene.image.ImageView;
 import org.dizitart.no2.Nitrite;
 import org.dizitart.no2.objects.ObjectRepository;
-import org.fis.ta.exceptions.*;
-import org.fis.ta.model.Item;
+import org.fis.ta.controllers.LoginController;
+import org.fis.ta.exceptions.EmptyFieldException;
+import org.fis.ta.exceptions.NoFileSelectedException;
+import org.fis.ta.exceptions.PriceNotValidException;
 
+import org.fis.ta.exceptions.*;
+
+import org.fis.ta.model.Item;
+import org.fis.ta.model.User;
+
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.regex.Pattern;
 
 import static org.fis.ta.services.FileSystemService.getPathToFile;
@@ -27,15 +38,30 @@ public class ItemService {
         Item.setCount(count);
     }
 
+
     public static ObjectRepository<Item> getItemRepository(){
         return itemRepository;
+    }
+
+    public static ArrayList<Item> loadItemList(){
+        ArrayList<Item> list = new ArrayList<>();
+        for(Item item:itemRepository.find()){
+            if(UserService.getCurrentUser(LoginController.getUsername()).getUsername().equals(item.getOwner())){
+                list.add(item);
+            }
+        }
+        return list;
     }
 
     public static void addItem(String owner, String name, String category, String description, ArrayList<String> images, String price) throws PriceNotValidException, EmptyFieldException, NoFileSelectedException{
         checkNotEmptyFields(name, description, price);
         checkPrice(price);
         checkIfImageInserted(images);
-        itemRepository.insert(new Item(owner, name, category, description, images, price));
+        Calendar calendar = Calendar.getInstance();
+        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+        String date = formatter.format(calendar.getTime());
+        Item item = new Item(owner,name,category,description,images,price,date);
+        itemRepository.insert(item);
     }
 
     private static void checkPrice(String price)throws PriceNotValidException {
@@ -58,14 +84,4 @@ public class ItemService {
         }
     }
 
-    public static Item getCurrentItem(int ID){
-        Item aux = new Item();
-        for(Item item:itemRepository.find()){
-            if(ID == item.getID())
-            {
-                aux=item;
-            }
-        }
-        return aux;
-    }
 }
