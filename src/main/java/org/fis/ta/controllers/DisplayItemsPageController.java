@@ -27,6 +27,10 @@ public class DisplayItemsPageController {
     private static final ObjectRepository<Item> items = ItemService.getItemRepository();
     private static final ObjectRepository<User> users = UserService.getUserRepository();
 
+    private Stage stage;
+    private Scene scene;
+    private Parent root;
+
     @FXML
     private Text displayMessage;
 
@@ -87,19 +91,12 @@ public class DisplayItemsPageController {
                     {
                         btn.setOnAction((ActionEvent event) -> {
                             try {
-                                Item selectedItem = getTableView().getItems().get(getIndex());
-                                for (User user : users.find()) {
-                                    if (selectedItem.getOwner().equals(user.getUsername())){
-
-                                        //ItempageController.loadItempage(user,selectedItem);
-                                        break;
-                                    }
-
-                                }
-
-                                Stage stage =(Stage) displayMessage.getScene().getWindow();
-                                Parent viewRegisterRoot = FXMLLoader.load(getClass().getClassLoader().getResource("itempage.fxml"));
-                                Scene scene = new Scene(viewRegisterRoot, 600, 600);
+                                FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("itempage.fxml"));
+                                root=loader.load();
+                                ItempageController ic = loader.getController();
+                                ic.loadItempage(UserService.getCurrentUser(getTableView().getItems().get(getIndex()).getOwner()),getTableView().getItems().get(getIndex()));
+                                stage=(Stage) itemsTableView.getScene().getWindow();
+                                scene=new Scene(root,919,643);
                                 stage.setScene(scene);
                             } catch (IOException e) {
                                 e.printStackTrace();
