@@ -26,6 +26,9 @@
                <HBox.margin>
                   <Insets left="250.0" right="30.0" top="20.0" />
                </HBox.margin>
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
             </Button>
          </children>
       </HBox>
@@ -39,22 +42,40 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
             <Button mnemonicParsing="false" onAction="#handleCategoriesAction" prefHeight="45.0" prefWidth="95.0" text="Categories">
                <GridPane.margin>
                   <Insets left="260.0" />
                </GridPane.margin>
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
             </Button>
             <Button mnemonicParsing="false" onAction="#handleHistoryAction" prefHeight="45.0" prefWidth="95.0" text="Your history" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets left="260.0" />
                </GridPane.margin>
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
             </Button>
             <Button mnemonicParsing="false" onAction="#handleAddItemAction" prefHeight="45.0" prefWidth="95.0" text="Add item" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets left="260.0" />
                </GridPane.margin>
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#handleSaleslistAction" prefHeight="45.0" prefWidth="95.0" text="Your items" GridPane.rowIndex="3">
+               <GridPane.margin>
+                  <Insets left="260.0" />
+               </GridPane.margin>
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
             </Button>
          </children>
       </GridPane>
