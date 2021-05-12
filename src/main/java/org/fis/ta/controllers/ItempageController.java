@@ -6,15 +6,18 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import org.fis.ta.MainApp;
 import org.fis.ta.model.Item;
 import org.fis.ta.model.User;
 import org.fis.ta.services.ItemService;
+import org.fis.ta.services.UserService;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -40,11 +43,17 @@ public class ItempageController {
     @FXML
     private Text phoneField;
 
+    @FXML
+    private Button manageButton;
+
     @FXML private Text itemnameField;
     @FXML private Text priceField;
 
     private Item currentItem;
-
+    private Parent root;
+    private Stage stage;
+    private Scene scene;
+    private FXMLLoader loader;
 
     @FXML
     void handleNextPhotoAction(ActionEvent event) {
@@ -62,6 +71,18 @@ public class ItempageController {
         }
     }
 
+    @FXML
+    void handleManageAction() throws IOException {
+        loader = new FXMLLoader(getClass().getClassLoader().getResource("manageItem.fxml"));
+        root=loader.load();
+        scene=new Scene(root,200,200);
+        stage.setScene(scene);
+        stage.setTitle("Manage item");
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setResizable(false);
+        stage.showAndWait();
+    }
+
     void loadItempage(User user, Item item){
         nameField.setText(user.getFirstName() + " " + user.getLastName());
         usernameField.setText("@"+user.getUsername());
@@ -73,6 +94,12 @@ public class ItempageController {
         DescriptionArea.setEditable(false);
         DescriptionArea.setWrapText(true);
         currentItem=item;
+
+        if(currentItem.getOwner().equals(LoginController.getUsername()))
+            manageButton.setVisible(true);
+        else
+            manageButton.setVisible(false);
+
         loadPhoto();
         System.out.println(currentItem.getImages().size());
     }
