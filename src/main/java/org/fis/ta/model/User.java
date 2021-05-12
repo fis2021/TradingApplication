@@ -1,6 +1,12 @@
 package org.fis.ta.model;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import org.dizitart.no2.objects.Id;
+import org.fis.ta.services.ItemService;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 
 public class User {
     @Id
@@ -10,8 +16,6 @@ public class User {
     private String lastName;
     private String email;
     private String phoneNumber;
-    private User currentUser;
-
 
     public User(String username, String password, String firstName, String lastName, String email, String phoneNumber) {
         this.username = username;
@@ -24,13 +28,13 @@ public class User {
 
     public User() {
     }
-
     public String getUsername() { return username; }
     public String getPassword() { return password; }
     public String getFirstName() { return firstName; }
     public String getLastName() { return lastName; }
     public String getEmail() { return email; }
     public String getPhoneNumber() { return phoneNumber; }
+
 
 
     public void setUsername(String username) { this.username = username; }
@@ -58,5 +62,11 @@ public class User {
         int result = username != null ? username.hashCode() : 0;
         result = 31 * result + (password != null ? password.hashCode() : 0);
         return result;
+    }
+
+    public ObservableList<Item> getItems(){
+        ObservableList<Item> items = FXCollections.observableArrayList();
+        items.addAll(ItemService.loadItemList());
+        return items;
     }
 }
