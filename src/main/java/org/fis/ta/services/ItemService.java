@@ -38,6 +38,11 @@ public class ItemService {
         Item.setCount(count);
     }
 
+
+    public static ObjectRepository<Item> getItemRepository(){
+        return itemRepository;
+    }
+
     public static ArrayList<Item> loadItemList(){
         ArrayList<Item> list = new ArrayList<>();
         for(Item item:itemRepository.find()){
