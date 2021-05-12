@@ -37,6 +37,10 @@ public class PersonalItemListController {
         addButtonToTable();
     }
 
+    private Stage stage;
+    private Scene scene;
+    private Parent root;
+
 
     TableColumn<ImageView, ImageView> col1 = new TableColumn<>("Picture");
     TableColumn<Item, String> col2 = new TableColumn<>("Name");
@@ -87,18 +91,12 @@ public class PersonalItemListController {
                     {
                         btn.setOnAction((ActionEvent event) -> {
                             try {
-                                /*Item selectedItem = getTableView().getItems().get(getIndex());
-                                for (User user : users.find()) {
-                                    if (selectedItem.getOwner().equals(user.getUsername())){
-
-                                        //ItempageController.loadItempage(user,selectedItem);
-                                        break;
-                                    }
-                                }*/
-
-                                Stage stage =(Stage) personalListMessage.getScene().getWindow();
-                                Parent viewRegisterRoot = FXMLLoader.load(getClass().getClassLoader().getResource("itempage.fxml"));
-                                Scene scene = new Scene(viewRegisterRoot, 600, 600);
+                                FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("itempage.fxml"));
+                                root=loader.load();
+                                ItempageController ic = loader.getController();
+                                ic.loadItempage(UserService.getCurrentUser(LoginController.getUsername()),getTableView().getItems().get(getIndex()));
+                                stage=(Stage) personalItemsTableView.getScene().getWindow();
+                                scene=new Scene(root,919,643);
                                 stage.setScene(scene);
                             } catch (IOException e) {
                                 e.printStackTrace();
