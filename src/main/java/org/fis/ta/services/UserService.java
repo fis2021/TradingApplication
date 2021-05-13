@@ -122,7 +122,4 @@ public class UserService {
         return userRepository;
     }
 
-    public static ObjectRepository<User> getUserRepository() {
-        return userRepository;
-    }
 }

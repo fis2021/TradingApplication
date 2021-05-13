@@ -1,23 +1,17 @@
 package org.fis.ta.services;
 
 
-import javafx.scene.image.ImageView;
 import org.dizitart.no2.Nitrite;
 import org.dizitart.no2.objects.ObjectRepository;
 import org.fis.ta.controllers.LoginController;
 import org.fis.ta.exceptions.EmptyFieldException;
 import org.fis.ta.exceptions.NoFileSelectedException;
 import org.fis.ta.exceptions.PriceNotValidException;
-
-import org.fis.ta.exceptions.*;
-
 import org.fis.ta.model.Item;
-import org.fis.ta.model.User;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.regex.Pattern;
 
 import static org.fis.ta.services.FileSystemService.getPathToFile;
@@ -36,11 +30,6 @@ public class ItemService {
             count++;
         }
         Item.setCount(count);
-    }
-
-
-    public static ObjectRepository<Item> getItemRepository(){
-        return itemRepository;
     }
 
     public static ArrayList<Item> loadItemList(){
