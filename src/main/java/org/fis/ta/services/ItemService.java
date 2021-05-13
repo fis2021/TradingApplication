@@ -71,6 +71,7 @@ public class ItemService {
             }
         item.setSold(true);
         item.setNewOwner(newOwner);
+        itemRepository.update(item);
         return "Item will arrive to you in "+ days +"days after it's current owner send it";
     }
 

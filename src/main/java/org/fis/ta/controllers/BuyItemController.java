@@ -75,7 +75,7 @@ public class BuyItemController {
         }
     }
 
-    public void sendItem(Item item){
+    public void loadBuyPage(Item item){
         this.currentItem = item;
     }
 }
