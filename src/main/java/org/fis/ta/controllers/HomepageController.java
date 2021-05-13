@@ -18,6 +18,11 @@ public class HomepageController {
     Stage stage;
     Scene scene;
 
+    public Label getLabel()
+    {
+        return greetingLabel;
+    }
+
 
     @FXML
     void handleHistoryAction() throws IOException {

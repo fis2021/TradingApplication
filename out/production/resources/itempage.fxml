@@ -58,6 +58,14 @@
                      </font>
                   </Text>
                </children></AnchorPane>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <Button fx:id="manageButton" layoutX="71.0" layoutY="58.0" mnemonicParsing="false" onAction="#handleManageAction" text="Manage">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font></Button>
+               </children>
+            </AnchorPane>
          </children>
       </VBox>
    </right>

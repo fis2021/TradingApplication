@@ -54,6 +54,7 @@ public class ItempageController {
     private Stage stage;
     private Scene scene;
     private FXMLLoader loader;
+    private Stage manageStage;
 
     @FXML
     void handleNextPhotoAction(ActionEvent event) {
@@ -73,17 +74,23 @@ public class ItempageController {
 
     @FXML
     void handleManageAction() throws IOException {
-        loader = new FXMLLoader(getClass().getClassLoader().getResource("manageItem.fxml"));
-        root=loader.load();
-        scene=new Scene(root,200,200);
-        stage.setScene(scene);
-        stage.setTitle("Manage item");
-        stage.initModality(Modality.APPLICATION_MODAL);
-        stage.setResizable(false);
-        stage.showAndWait();
+
+        manageStage.showAndWait();
     }
 
-    void loadItempage(User user, Item item){
+    public void loadManageWindow() throws IOException {
+        loader=new FXMLLoader(getClass().getClassLoader().getResource("manageItem.fxml"));
+        root=loader.load();
+        manageStage=new Stage();
+        manageStage.initModality(Modality.APPLICATION_MODAL);
+        manageStage.setTitle("Manage item");
+        manageStage.setResizable(false);
+        manageStage.centerOnScreen();
+        scene = new Scene(root,600,400);
+        manageStage.setScene(scene);
+    }
+
+    void loadItempage(User user, Item item) throws IOException {
         nameField.setText(user.getFirstName() + " " + user.getLastName());
         usernameField.setText("@"+user.getUsername());
         emailField.setText(user.getEmail());
@@ -101,7 +108,7 @@ public class ItempageController {
             manageButton.setVisible(false);
 
         loadPhoto();
-        System.out.println(currentItem.getImages().size());
+        loadManageWindow();
     }
 
     void loadPhoto(){
