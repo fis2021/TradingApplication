@@ -43,6 +43,8 @@ public class ManageItemController {
         Rectangle2D primScreenBounds = Screen.getPrimary().getVisualBounds();
         stage.setX((primScreenBounds.getWidth() - stage.getWidth())/2);
         stage.setY((primScreenBounds.getHeight()-stage.getHeight())/2);
+        EditItemController eic = loader.getController();
+        eic.loadEditFields();
     }
 
 }

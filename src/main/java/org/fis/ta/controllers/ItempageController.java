@@ -80,6 +80,9 @@ public class ItempageController {
     void handleManageAction() throws IOException {
         loadManageWindow();
         manageStage.showAndWait();
+        Rectangle2D primScreenBounds = Screen.getPrimary().getVisualBounds();
+        manageStage.setX((primScreenBounds.getWidth() - manageStage.getWidth())/2);
+        manageStage.setY((primScreenBounds.getHeight()-manageStage.getHeight())/2);
         thisStage=(Stage) usernameField.getScene().getWindow();
     }
 
@@ -92,9 +95,7 @@ public class ItempageController {
         manageStage.setResizable(false);
         scene = new Scene(root,600,400);
         manageStage.setScene(scene);
-        Rectangle2D primScreenBounds = Screen.getPrimary().getVisualBounds();
-        manageStage.setX((primScreenBounds.getWidth() - manageStage.getWidth())/2);
-        manageStage.setY((primScreenBounds.getHeight()-manageStage.getHeight())/2);
+
     }
 
     void loadItempage(User user, Item item) throws IOException {

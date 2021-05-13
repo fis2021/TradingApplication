@@ -34,12 +34,13 @@ public class DeleteAlertBoxController {
        Parent root;
        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("saleslist.fxml"));
        root=loader.load();
+
        Stage bgStage = SaleslistController.getThisStage();
        Scene scene = new Scene(root,919,643);
        bgStage.setScene(scene);
-        Rectangle2D primScreenBounds = Screen.getPrimary().getVisualBounds();
-        bgStage.setX((primScreenBounds.getWidth() - bgStage.getWidth())/2);
-        bgStage.setY((primScreenBounds.getHeight()-bgStage.getHeight())/2);
+       Rectangle2D primScreenBounds = Screen.getPrimary().getVisualBounds();
+       bgStage.setX((primScreenBounds.getWidth() - bgStage.getWidth())/2);
+       bgStage.setY((primScreenBounds.getHeight()-bgStage.getHeight())/2);
     }
 
 }
