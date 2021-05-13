@@ -3,6 +3,7 @@ package org.fis.ta.controllers;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -12,6 +13,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.stage.Modality;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 import org.fis.ta.MainApp;
 import org.fis.ta.model.Item;
@@ -88,9 +90,11 @@ public class ItempageController {
         manageStage.initModality(Modality.APPLICATION_MODAL);
         manageStage.setTitle("Manage item");
         manageStage.setResizable(false);
-        manageStage.centerOnScreen();
         scene = new Scene(root,600,400);
         manageStage.setScene(scene);
+        Rectangle2D primScreenBounds = Screen.getPrimary().getVisualBounds();
+        manageStage.setX((primScreenBounds.getWidth() - manageStage.getWidth())/2);
+        manageStage.setY((primScreenBounds.getHeight()-manageStage.getHeight())/2);
     }
 
     void loadItempage(User user, Item item) throws IOException {

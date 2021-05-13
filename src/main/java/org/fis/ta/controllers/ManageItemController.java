@@ -2,9 +2,11 @@ package org.fis.ta.controllers;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 import org.fis.ta.model.Item;
 
@@ -26,9 +28,9 @@ public class ManageItemController {
         scene = new Scene(root,600,400);
         stage = (Stage) button.getScene().getWindow();
         stage.setScene(scene);
-        stage.centerOnScreen();
-        stage.setResizable(false);
-        stage.show();
+        Rectangle2D primScreenBounds = Screen.getPrimary().getVisualBounds();
+        stage.setX((primScreenBounds.getWidth() - stage.getWidth())/2);
+        stage.setY((primScreenBounds.getHeight()-stage.getHeight())/2);
     }
 
     @FXML
@@ -38,16 +40,9 @@ public class ManageItemController {
         scene = new Scene(root,600,400);
         stage = (Stage) button.getScene().getWindow();
         stage.setScene(scene);
-        stage.centerOnScreen();
-        stage.setResizable(false);
-        stage.show();
-    }
-
-    public Item getCurrentItem() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("itempage.fxml"));
-        Parent root = loader.load();
-        ItempageController ic = loader.getController();
-        return ic.getCurrentItem();
+        Rectangle2D primScreenBounds = Screen.getPrimary().getVisualBounds();
+        stage.setX((primScreenBounds.getWidth() - stage.getWidth())/2);
+        stage.setY((primScreenBounds.getHeight()-stage.getHeight())/2);
     }
 
 }

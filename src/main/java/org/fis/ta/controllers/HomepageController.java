@@ -2,9 +2,11 @@ package org.fis.ta.controllers;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -31,6 +33,9 @@ public class HomepageController {
         stage=(Stage) greetingLabel.getScene().getWindow();
         scene=new Scene(root,600,600);
         stage.setScene(scene);
+        Rectangle2D primScreenBounds = Screen.getPrimary().getVisualBounds();
+        stage.setX((primScreenBounds.getWidth() - stage.getWidth())/2);
+        stage.setY((primScreenBounds.getHeight()-stage.getHeight())/2);
     }
     @FXML
     void handleCategoriesAction() throws IOException {
@@ -39,6 +44,9 @@ public class HomepageController {
         stage=(Stage) greetingLabel.getScene().getWindow();
         scene=new Scene(root,600,600);
         stage.setScene(scene);
+        Rectangle2D primScreenBounds = Screen.getPrimary().getVisualBounds();
+        stage.setX((primScreenBounds.getWidth() - stage.getWidth())/2);
+        stage.setY((primScreenBounds.getHeight()-stage.getHeight())/2);
     }
 
     @FXML
@@ -49,6 +57,9 @@ public class HomepageController {
         stage=(Stage) greetingLabel.getScene().getWindow();
         scene=new Scene(root,600,600);
         stage.setScene(scene);
+        Rectangle2D primScreenBounds = Screen.getPrimary().getVisualBounds();
+        stage.setX((primScreenBounds.getWidth() - stage.getWidth())/2);
+        stage.setY((primScreenBounds.getHeight()-stage.getHeight())/2);
     }
 
 
@@ -61,6 +72,9 @@ public class HomepageController {
         stage=(Stage) greetingLabel.getScene().getWindow();
         scene=new Scene(root,919,643);
         stage.setScene(scene);
+        Rectangle2D primScreenBounds = Screen.getPrimary().getVisualBounds();
+        stage.setX((primScreenBounds.getWidth() - stage.getWidth())/2);
+        stage.setY((primScreenBounds.getHeight()-stage.getHeight())/2);
 
     }
 
@@ -71,6 +85,9 @@ public class HomepageController {
         stage=(Stage) greetingLabel.getScene().getWindow();
         scene=new Scene(root,380,275);
         stage.setScene(scene);
+        Rectangle2D primScreenBounds = Screen.getPrimary().getVisualBounds();
+        stage.setX((primScreenBounds.getWidth() - stage.getWidth())/2);
+        stage.setY((primScreenBounds.getHeight()-stage.getHeight())/2);
     }
 
     public void loadMessage(String username){

@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TableCell;
@@ -11,6 +12,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import org.dizitart.no2.objects.ObjectRepository;
@@ -61,6 +63,9 @@ public class SaleslistController {
         stage = (Stage) table.getScene().getWindow();
         scene = new Scene(root, 600, 400);
         stage.setScene(scene);
+        Rectangle2D primScreenBounds = Screen.getPrimary().getVisualBounds();
+        stage.setX((primScreenBounds.getWidth() - stage.getWidth())/2);
+        stage.setY((primScreenBounds.getHeight()-stage.getHeight())/2);
     }
 
     @FXML
@@ -74,6 +79,9 @@ public class SaleslistController {
         stage=(Stage) table.getScene().getWindow();
         scene=new Scene(root,919,643);
         stage.setScene(scene);
+        Rectangle2D primScreenBounds = Screen.getPrimary().getVisualBounds();
+        stage.setX((primScreenBounds.getWidth() - stage.getWidth())/2);
+        stage.setY((primScreenBounds.getHeight()-stage.getHeight())/2);
         thisStage=stage;
     }
 
