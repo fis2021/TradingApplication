@@ -49,12 +49,14 @@ public class ItempageController {
     @FXML private Text itemnameField;
     @FXML private Text priceField;
 
+    private static Item thisItem;
     private Item currentItem;
     private Parent root;
     private Stage stage;
     private Scene scene;
     private FXMLLoader loader;
     private Stage manageStage;
+    private static Stage thisStage;
 
     @FXML
     void handleNextPhotoAction(ActionEvent event) {
@@ -76,6 +78,7 @@ public class ItempageController {
     void handleManageAction() throws IOException {
         loadManageWindow();
         manageStage.showAndWait();
+        thisStage=(Stage) usernameField.getScene().getWindow();
     }
 
     public void loadManageWindow() throws IOException {
@@ -91,6 +94,7 @@ public class ItempageController {
     }
 
     void loadItempage(User user, Item item) throws IOException {
+        thisItem=item;
         nameField.setText(user.getFirstName() + " " + user.getLastName());
         usernameField.setText("@"+user.getUsername());
         emailField.setText(user.getEmail());
@@ -116,6 +120,15 @@ public class ItempageController {
         itemImage.setImage(new Image("file:" +currentItem.getImages().get(0),523,425,false,false));
         System.out.println(ID);
     }
+    String getName(){
+        return this.nameField.getText();
+    }
 
+    public static Item getCurrentItem(){
+        return thisItem;
+    }
+    public static Stage getStage(){
+        return thisStage;
+    }
 }
 

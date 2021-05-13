@@ -46,9 +46,13 @@ public class SaleslistController {
     private Stage stage;
     private Scene scene;
     private Parent root;
+    private static Stage thisStage;
 
+    public static Stage getThisStage()
+    {
+        return thisStage;
+    }
     @FXML
-
     public void handleHomepageAction() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("homepage.fxml"));
         root = loader.load();
@@ -70,6 +74,7 @@ public class SaleslistController {
         stage=(Stage) table.getScene().getWindow();
         scene=new Scene(root,919,643);
         stage.setScene(scene);
+        thisStage=stage;
     }
 
     public void loadSaleslistPage() {

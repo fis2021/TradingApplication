@@ -7,17 +7,17 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.fis.ta.controllers.DeleteAlertBoxController">
    <children>
-      <Text layoutX="88.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Are you sure you want to delete the item?" wrappingWidth="423.37225341796875">
+      <Text fx:id="text" layoutX="88.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Are you sure you want to delete the item?" wrappingWidth="423.37225341796875">
          <font>
             <Font name="Arial Black" size="18.0" />
          </font>
       </Text>
-      <Button layoutX="150.0" layoutY="209.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="67.0" text="YES" textFill="#0eac33">
+      <Button layoutX="150.0" layoutY="209.0" mnemonicParsing="false" onAction="#handleYesAction" prefHeight="51.0" prefWidth="67.0" text="YES" textFill="#0eac33">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
-      <Button layoutX="375.0" layoutY="209.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="67.0" text="NO" textFill="#d20505">
+      <Button layoutX="375.0" layoutY="209.0" mnemonicParsing="false" onAction="#handleNoAction" prefHeight="51.0" prefWidth="67.0" text="NO" textFill="#d20505">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>

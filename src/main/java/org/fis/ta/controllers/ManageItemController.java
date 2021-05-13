@@ -6,6 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
+import org.fis.ta.model.Item;
 
 import java.io.IOException;
 
@@ -40,6 +41,13 @@ public class ManageItemController {
         stage.centerOnScreen();
         stage.setResizable(false);
         stage.show();
+    }
+
+    public Item getCurrentItem() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("itempage.fxml"));
+        Parent root = loader.load();
+        ItempageController ic = loader.getController();
+        return ic.getCurrentItem();
     }
 
 }

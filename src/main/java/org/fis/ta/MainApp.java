@@ -22,6 +22,8 @@ public class MainApp extends Application {
         Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("login.fxml"));
         primaryStage.setTitle("Trading Application");
         primaryStage.setScene(new Scene(root, 380, 275));
+        primaryStage.setResizable(false);
+        primaryStage.centerOnScreen();
         primaryStage.show();
     }
 

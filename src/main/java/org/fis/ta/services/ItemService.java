@@ -58,6 +58,9 @@ public class ItemService {
         Item item = new Item(owner,name,category,description,images,price,date);
         itemRepository.insert(item);
     }
+    public static void deleteItem(Item item){
+        itemRepository.remove(item);
+    }
 
     private static void checkPrice(String price)throws PriceNotValidException {
         String priceRegex ="\\d{1,3}(?:[.,]\\d{3})*(?:[.,]\\d{2})";
@@ -77,6 +80,9 @@ public class ItemService {
         if(images.isEmpty()){
             throw new NoFileSelectedException();
         }
+    }
+    public static ObjectRepository<Item> getItemRepository(){
+        return itemRepository;
     }
 
 }
