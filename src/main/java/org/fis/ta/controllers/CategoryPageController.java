@@ -14,21 +14,21 @@ import java.io.IOException;
 
 public class CategoryPageController {
 
-    private String category;
+    private static String category;
 
     @FXML
     private Text categoryMessage;
 
 
     public void setCategory(String category) { this.category = category; }
-    public String getCategory(){ return category; }
+    public static String getCategory(){ return category; }
 
     public void handleSportAction(ActionEvent actionEvent) {
         setCategory("Sport");
         try {
             Stage stage =(Stage) categoryMessage.getScene().getWindow();
             Parent viewRegisterRoot = FXMLLoader.load(getClass().getClassLoader().getResource("displayItemsPage.fxml"));
-            Scene scene = new Scene(viewRegisterRoot, 380, 275);
+            Scene scene = new Scene(viewRegisterRoot, 600, 600);
             stage.setScene(scene);
             Rectangle2D primScreenBounds = Screen.getPrimary().getVisualBounds();
             stage.setX((primScreenBounds.getWidth() - stage.getWidth())/2);
@@ -43,7 +43,7 @@ public class CategoryPageController {
         try {
             Stage stage =(Stage) categoryMessage.getScene().getWindow();
             Parent viewRegisterRoot = FXMLLoader.load(getClass().getClassLoader().getResource("displayItemsPage.fxml"));
-            Scene scene = new Scene(viewRegisterRoot, 380, 275);
+            Scene scene = new Scene(viewRegisterRoot, 600, 600);
             stage.setScene(scene);
             Rectangle2D primScreenBounds = Screen.getPrimary().getVisualBounds();
             stage.setX((primScreenBounds.getWidth() - stage.getWidth())/2);
@@ -58,7 +58,7 @@ public class CategoryPageController {
         try {
             Stage stage =(Stage) categoryMessage.getScene().getWindow();
             Parent viewRegisterRoot = FXMLLoader.load(getClass().getClassLoader().getResource("displayItemsPage.fxml"));
-            Scene scene = new Scene(viewRegisterRoot, 380, 275);
+            Scene scene = new Scene(viewRegisterRoot, 600, 600);
             stage.setScene(scene);
             Rectangle2D primScreenBounds = Screen.getPrimary().getVisualBounds();
             stage.setX((primScreenBounds.getWidth() - stage.getWidth())/2);
@@ -73,7 +73,7 @@ public class CategoryPageController {
         try {
             Stage stage =(Stage) categoryMessage.getScene().getWindow();
             Parent viewRegisterRoot = FXMLLoader.load(getClass().getClassLoader().getResource("displayItemsPage.fxml"));
-            Scene scene = new Scene(viewRegisterRoot, 380, 275);
+            Scene scene = new Scene(viewRegisterRoot, 600, 600);
             stage.setScene(scene);
             Rectangle2D primScreenBounds = Screen.getPrimary().getVisualBounds();
             stage.setX((primScreenBounds.getWidth() - stage.getWidth())/2);

@@ -119,8 +119,8 @@ public class UserService {
         return aux;
     }
 
-
-    public static ObjectRepository<User> getUserRepository() {
+    public static ObjectRepository<User> getUserRepository(){
         return userRepository;
     }
+
 }

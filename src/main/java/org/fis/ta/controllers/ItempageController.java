@@ -12,6 +12,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
+
 import javafx.stage.Modality;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
@@ -23,6 +24,10 @@ import org.fis.ta.services.UserService;
 
 import java.io.IOException;
 import java.util.ArrayList;
+
+import org.fis.ta.model.Item;
+import org.fis.ta.model.User;
+
 
 public class ItempageController {
 
@@ -122,7 +127,7 @@ public class ItempageController {
 
     void loadPhoto(){
         ID=currentItem.getID();
-        itemImage.setImage(new Image("file:" +currentItem.getImages().get(0),523,425,false,false));
+        itemImage.setImage(new Image("file:" + currentItem.getImages().get(0),523,425,false,false));
         System.out.println(ID);
     }
     String getName(){

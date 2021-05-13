@@ -38,6 +38,11 @@ public class ItemService {
         Item.setCount(count);
     }
 
+
+    public static ObjectRepository<Item> getItemRepository(){
+        return itemRepository;
+    }
+
     public static ArrayList<Item> loadItemList(){
         ArrayList<Item> list = new ArrayList<>();
         for(Item item:itemRepository.find()){
@@ -81,8 +86,18 @@ public class ItemService {
             throw new NoFileSelectedException();
         }
     }
-    public static ObjectRepository<Item> getItemRepository(){
-        return itemRepository;
+
+    public static Item getCurrentItem(int ID){
+        Item aux = new Item();
+        for(Item item:itemRepository.find()){
+            if(ID == item.getID())
+            {
+                aux=item;
+            }
+        }
+        return aux;
     }
+
+
 
 }

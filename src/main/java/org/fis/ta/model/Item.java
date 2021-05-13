@@ -1,13 +1,17 @@
 package org.fis.ta.model;
 
 
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+
 import org.dizitart.no2.objects.Id;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 
@@ -77,9 +81,23 @@ public class Item {
     public void setCounter(int counter)
     {this.counter=counter;}
 
+    public Image getImage() throws FileNotFoundException {
+        Image image = null;
+        try {
+            FileInputStream input = new FileInputStream(images.get(0));
+            image = new Image(input);
+            return image;
+        } catch (FileNotFoundException e) {
+            
+        }
+        return image;
+
+    }
+
     public String toString(){
         return this.name;
     }
+
 
 
 

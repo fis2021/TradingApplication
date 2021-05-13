@@ -22,25 +22,24 @@ import org.fis.ta.services.UserService;
 
 import java.io.IOException;
 
-public class DisplayItemsPageController {
+public class PersonalItemListController {
 
     private static final ObjectRepository<Item> items = ItemService.getItemRepository();
     private static final ObjectRepository<User> users = UserService.getUserRepository();
-
-    private Stage stage;
-    private Scene scene;
-    private Parent root;
+    @FXML
+    private Text personalListMessage;
 
     @FXML
-    private Text displayMessage;
-
-    @FXML
-    private TableView itemsTableView;
+    private TableView personalItemsTableView;
     @FXML
     private void initialize(){
         fillTable();
         addButtonToTable();
     }
+
+    private Stage stage;
+    private Scene scene;
+    private Parent root;
 
 
     TableColumn<ImageView, ImageView> col1 = new TableColumn<>("Picture");
@@ -57,19 +56,20 @@ public class DisplayItemsPageController {
         col3.setMinWidth(100);
         col3.setCellValueFactory(new PropertyValueFactory<>("price"));
 
-        if(itemsTableView.getColumns()!=null){
-            itemsTableView.getColumns().add(col1);
-            itemsTableView.getColumns().add(col2);
-            itemsTableView.getColumns().add(col3);
+        if(personalItemsTableView.getColumns()!=null){
+            personalItemsTableView.getColumns().add(col1);
+            personalItemsTableView.getColumns().add(col2);
+            personalItemsTableView.getColumns().add(col3);
         }
 
 
 
         for(Item item : items.find()){
-            if(item.getCategory().equals(CategoryPageController.getCategory())) {
-                itemsTableView.getItems().add(item);
+            if(item.getOwner().equals(LoginController.getUsername())) {
+                personalItemsTableView.getItems().add(item);
+
                 /*try{
-                    ImageView imageView = new ImageView(item.getImage());
+                    ImageView imageView = new ImageView(item.getImage());                //to add image in first col of the table
                     itemsTableView.getItems().add(imageView);
                 }catch (FileNotFoundException e){}*/
 
@@ -80,7 +80,7 @@ public class DisplayItemsPageController {
 
 
     private void addButtonToTable() {
-        TableColumn<Item, Void> colBtn = new TableColumn("Button Column");
+        TableColumn<Item, Void> colBtn = new TableColumn("");
 
         Callback<TableColumn<Item, Void>, TableCell<Item, Void>> cellFactory = new Callback<TableColumn<Item, Void>, TableCell<Item, Void>>() {
             @Override
@@ -94,8 +94,8 @@ public class DisplayItemsPageController {
                                 FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("itempage.fxml"));
                                 root=loader.load();
                                 ItempageController ic = loader.getController();
-                                ic.loadItempage(UserService.getCurrentUser(getTableView().getItems().get(getIndex()).getOwner()),getTableView().getItems().get(getIndex()));
-                                stage=(Stage) itemsTableView.getScene().getWindow();
+                                ic.loadItempage(UserService.getCurrentUser(LoginController.getUsername()),getTableView().getItems().get(getIndex()));
+                                stage=(Stage) personalItemsTableView.getScene().getWindow();
                                 scene=new Scene(root,919,643);
                                 stage.setScene(scene);
                             } catch (IOException e) {
@@ -120,7 +120,7 @@ public class DisplayItemsPageController {
 
         colBtn.setCellFactory(cellFactory);
 
-        itemsTableView.getColumns().add(colBtn);
+        personalItemsTableView.getColumns().add(colBtn);
 
     }
 
@@ -128,12 +128,13 @@ public class DisplayItemsPageController {
 
     public void handleBackAction(ActionEvent actionEvent) {
         try {
-            Stage stage =(Stage) displayMessage.getScene().getWindow();
-            Parent viewRegisterRoot = FXMLLoader.load(getClass().getClassLoader().getResource("categoryPage.fxml"));
+            Stage stage =(Stage) personalListMessage.getScene().getWindow();
+            Parent viewRegisterRoot = FXMLLoader.load(getClass().getClassLoader().getResource("homepage.fxml"));
             Scene scene = new Scene(viewRegisterRoot, 600, 600);
             stage.setScene(scene);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
 }
