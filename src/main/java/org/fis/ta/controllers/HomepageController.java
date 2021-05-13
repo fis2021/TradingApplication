@@ -21,7 +21,7 @@ public class HomepageController {
 
     @FXML
     void handleHistoryAction() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource(""));
+        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("personalItemList.fxml"));
         root=loader.load();
         stage=(Stage) greetingLabel.getScene().getWindow();
         scene=new Scene(root,600,600);

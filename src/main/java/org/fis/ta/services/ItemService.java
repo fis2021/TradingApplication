@@ -84,4 +84,19 @@ public class ItemService {
         }
     }
 
+    public static Item getCurrentItem(int ID){
+        Item aux = new Item();
+        for(Item item:itemRepository.find()){
+            if(ID == item.getID())
+            {
+                aux=item;
+            }
+        }
+        return aux;
+    }
+
+    public static ObjectRepository<Item> getItemRepository(){
+        return itemRepository;
+    }
+
 }
