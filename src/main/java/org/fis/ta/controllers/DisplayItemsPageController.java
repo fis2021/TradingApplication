@@ -66,7 +66,7 @@ public class DisplayItemsPageController {
 
 
         for(Item item : items.find()){
-            if(item.getCategory().equals(CategoryPageController.getCategory())) {
+            if(item.getCategory().equals(CategoryPageController.getCategory()) & !item.isSold()) {
                 itemsTableView.getItems().add(item);
                 /*try{
                     ImageView imageView = new ImageView(item.getImage());

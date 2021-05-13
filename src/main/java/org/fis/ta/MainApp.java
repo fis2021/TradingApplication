@@ -19,7 +19,7 @@ public class MainApp extends Application {
         initDirectory();
         UserService.initDatabase();
         ItemService.initDatabase();
-        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("buyItemPage.fxml"));
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("login.fxml"));
         primaryStage.setTitle("Trading Application");
         primaryStage.setScene(new Scene(root, 380, 275));
         primaryStage.show();

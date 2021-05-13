@@ -2,12 +2,7 @@ package org.fis.ta.model;
 
 
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.scene.control.Button;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-
 import org.dizitart.no2.objects.Id;
 
 import java.io.FileInputStream;
@@ -27,6 +22,8 @@ public class Item {
     private String price;
     private int counter =0;
     private String dateAdded;
+    private boolean sold;
+    private String newOwner;
 
 
     public Item(String owner, String name, String category, String description, ArrayList<String> images, String price,String dateAdded)
@@ -40,6 +37,8 @@ public class Item {
         this.price = price;
         this.category = category;
         this.dateAdded=dateAdded;
+        this.sold = false;
+        this.newOwner = "";
     }
     public Item()
     { }
@@ -53,10 +52,9 @@ public class Item {
     public String getCategory() { return category;}
     public String getDateAdded(){return dateAdded;}
     public static int getCount() { return count; }
-
+    public boolean isSold() { return sold; }
     public int getCounter(){return counter;}
-
-
+    public String getNewOwner() { return newOwner; }
 
     public void setName(String name) {
         this.name = name;
@@ -75,10 +73,11 @@ public class Item {
     }
     public void setCategory(String category) { this.category = category;}
     public void setDateAdded(String date){this.dateAdded=date;}
-
+    public void setSold(boolean sold) { this.sold = sold; }
     public static void setCount(int count){ Item.count = count;}
-    public void setCounter(int counter)
-    {this.counter=counter;}
+    public void setCounter(int counter) {this.counter=counter;}
+
+    public void setNewOwner(String newOwner) { this.newOwner = newOwner; }
 
     public Image getImage() throws FileNotFoundException {
         Image image = null;

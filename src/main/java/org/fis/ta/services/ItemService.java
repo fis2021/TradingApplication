@@ -43,7 +43,9 @@ public class ItemService {
     }
 
     public static void addItem(String owner, String name, String category, String description, ArrayList<String> images, String price) throws PriceNotValidException, EmptyFieldException, NoFileSelectedException{
-        checkNotEmptyFields(name, description, price);
+        checkNotEmptyFields(name);
+        checkNotEmptyFields(description);
+        checkNotEmptyFields(price);
         checkPrice(price);
         checkIfImageInserted(images);
         Calendar calendar = Calendar.getInstance();
@@ -51,6 +53,25 @@ public class ItemService {
         String date = formatter.format(calendar.getTime());
         Item item = new Item(owner,name,category,description,images,price,date);
         itemRepository.insert(item);
+    }
+
+    public static String buyItem(Item item, String delivery, String country, String city, String street, String houseNumber, String fastDelivery, String newOwner)throws  EmptyFieldException{
+        checkNotEmptyFields(delivery);
+        checkNotEmptyFields(country);
+        checkNotEmptyFields(city);
+        checkNotEmptyFields(street);
+        checkNotEmptyFields(houseNumber);
+        int days = 7;
+            if(delivery.equals("Courier delivery")){
+                if(fastDelivery.equals("true")){
+                    days = 1;
+                } else{
+                    days = 2;
+                }
+            }
+        item.setSold(true);
+        item.setNewOwner(newOwner);
+        return "Item will arrive to you in "+ days +"days after it's current owner send it";
     }
 
     private static void checkPrice(String price)throws PriceNotValidException {
@@ -62,8 +83,8 @@ public class ItemService {
             throw new PriceNotValidException();
     }
 
-    public static void checkNotEmptyFields(String name, String description, String price) throws EmptyFieldException {
-        if(name.isEmpty() | description.isEmpty() | price.isEmpty() )
+    public static void checkNotEmptyFields(String field) throws EmptyFieldException {
+        if(field.isEmpty()  )
             throw new EmptyFieldException();
     }
 

@@ -2,35 +2,80 @@ package org.fis.ta.controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
+import org.fis.ta.exceptions.EmptyFieldException;
+import org.fis.ta.model.Item;
+import org.fis.ta.services.ItemService;
+
+import java.io.IOException;
 
 public class BuyItemController {
 
     @FXML
-    public Text addItemMessage;
+    private Text buyItemMessage;
 
     @FXML
-    public ChoiceBox deliveryField;
+    private ChoiceBox<String> deliveryField;
     @FXML
-    public TextField countryField;
+    private TextField countryField;
     @FXML
-    public TextField cityField;
+    private TextField cityField;
     @FXML
-    public TextField streetField;
+    private TextField streetField;
     @FXML
-    public TextField houseNumberField;
+    private TextField houseNumberField;
     @FXML
-    public CheckBox fastDeliveryField;
+    private CheckBox fastDeliveryField;
+    @FXML
+    private Label fastDeliveryText;
 
+    private Item currentItem;
 
     @FXML
-    public void handleBuyAction(ActionEvent actionEvent) {
+    public void initialize() {
+        deliveryField.getItems().addAll( "Courier delivery","Post delivery");
+        fastDeliveryField.setVisible(false);
+        fastDeliveryText.setVisible(false);
+    }
+
+    public void visible(){
+        if(deliveryField.getValue().equals("courier delivery")){
+            fastDeliveryField.setVisible(true);
+        }else{
+            fastDeliveryField.setVisible(false);
+        }
+    }
+
+    @FXML
+    public void handleBuyAction(ActionEvent actionEvent){
+        try {
+            buyItemMessage.setText(ItemService.buyItem(currentItem, deliveryField.getValue(), countryField.getText(), cityField.getText(), streetField.getText(), houseNumberField.getText(), fastDeliveryField.getText(), LoginController.getUsername()));
+        }catch (EmptyFieldException e){
+            buyItemMessage.setText(e.getMessage());
+        }
     }
 
     @FXML
     public void handleBackAction(ActionEvent actionEvent) {
+        try {
+            Stage stage =(Stage) buyItemMessage.getScene().getWindow();
+            Parent viewRegisterRoot = FXMLLoader.load(getClass().getClassLoader().getResource("homepage.fxml"));
+            Scene scene = new Scene(viewRegisterRoot, 600, 600);
+            stage.setScene(scene);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void sendItem(Item item){
+        this.currentItem = item;
     }
 }

@@ -13,11 +13,11 @@
     </padding>
 
     <Label text="Delivery:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
-    <ChoiceBox fx:id="deliveryField" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="0" value = "Choose">
+    <ChoiceBox fx:id="deliveryField" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="0" value = "Post delivery">
     </ChoiceBox>
 
     <CheckBox fx:id="fastDeliveryField" GridPane.columnIndex="1" GridPane.rowIndex="1"> </CheckBox>
-    <Label text="Fast Delivery" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+    <Label fx:id = "fastDeliveryText" text="Fast Delivery" GridPane.columnIndex="0" GridPane.rowIndex="1" />
 
     <Label text="Address" GridPane.columnIndex="0" GridPane.rowIndex="2" />
 
@@ -33,7 +33,7 @@
     <Label text="Number:" GridPane.columnIndex="0" GridPane.rowIndex="6" />
     <TextField fx:id="houseNumberField" GridPane.columnIndex="1" GridPane.rowIndex="6" />
 
-    <Text fx:id="addItemMessage" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+    <Text fx:id="buyItemMessage" GridPane.columnIndex="1" GridPane.rowIndex="9" />
 
     <HBox alignment="bottom_right" spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="10">
         <Button onAction="#handleBuyAction" text="Buy" />
