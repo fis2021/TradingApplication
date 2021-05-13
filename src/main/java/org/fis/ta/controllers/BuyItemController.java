@@ -2,6 +2,7 @@ package org.fis.ta.controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
@@ -21,10 +22,11 @@ public class BuyItemController {
     public TextField streetField;
     @FXML
     public TextField houseNumberField;
+    @FXML
+    public CheckBox fastDeliveryField;
 
 
     @FXML
-
     public void handleBuyAction(ActionEvent actionEvent) {
     }
 

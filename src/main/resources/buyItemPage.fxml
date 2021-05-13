@@ -16,6 +16,9 @@
     <ChoiceBox fx:id="deliveryField" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="0" value = "Choose">
     </ChoiceBox>
 
+    <CheckBox fx:id="fastDeliveryField" GridPane.columnIndex="1" GridPane.rowIndex="1"> </CheckBox>
+    <Label text="Fast Delivery" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+
     <Label text="Address" GridPane.columnIndex="0" GridPane.rowIndex="2" />
 
     <Label text="Country:" GridPane.columnIndex="0" GridPane.rowIndex="3" />
