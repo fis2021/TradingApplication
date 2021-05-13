@@ -74,7 +74,7 @@ public class ItempageController {
 
     @FXML
     void handleManageAction() throws IOException {
-
+        loadManageWindow();
         manageStage.showAndWait();
     }
 
