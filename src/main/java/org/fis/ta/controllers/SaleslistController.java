@@ -31,7 +31,7 @@ public class SaleslistController {
     @FXML
     private TableView<Item> table;
     @FXML
-    private TableColumn<Item, ImageView> photoColumn;
+    private TableColumn<Item, ImageView> ownerColumn;
 
     @FXML
     private TableColumn<Item, String> nameColumn;
@@ -64,6 +64,7 @@ public class SaleslistController {
         stage = (Stage) table.getScene().getWindow();
         scene = new Scene(root, 600, 400);
         stage.setScene(scene);
+        ItempageController.setLastScene("saleslist");
         Rectangle2D primScreenBounds = Screen.getPrimary().getVisualBounds();
         stage.setX((primScreenBounds.getWidth() - stage.getWidth())/2);
         stage.setY((primScreenBounds.getHeight()-stage.getHeight())/2);
@@ -94,15 +95,17 @@ public class SaleslistController {
         priceColumn.setText("Price");
         dateColumn.setText("Added on:");
         categoryColumn.setText("Category");
-        photoColumn.setText("");
-        nameColumn.setMinWidth(210);
-        priceColumn.setMinWidth(210);
-        dateColumn.setMinWidth(210);
-        categoryColumn.setMinWidth(210);
+        ownerColumn.setText("Seller");
+        ownerColumn.setMinWidth(200);
+        nameColumn.setMinWidth(200);
+        priceColumn.setMinWidth(200);
+        dateColumn.setMinWidth(200);
+        categoryColumn.setMinWidth(200);
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
         priceColumn.setCellValueFactory(new PropertyValueFactory<>("price"));
         dateColumn.setCellValueFactory(new PropertyValueFactory<>("dateAdded"));
         categoryColumn.setCellValueFactory(new PropertyValueFactory<>("category"));
+        ownerColumn.setCellValueFactory(new PropertyValueFactory<>("owner"));
         table.setItems(UserService.getCurrentUser(username).getItems());
     }
 }

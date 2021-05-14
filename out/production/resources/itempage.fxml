@@ -1,15 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.TextArea?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="643.0" prefWidth="919.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.fis.ta.controllers.ItempageController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="643.0" prefWidth="919.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.fis.ta.controllers.ItempageController">
    <right>
       <VBox prefHeight="643.0" prefWidth="214.0" BorderPane.alignment="CENTER">
          <children>
@@ -58,6 +54,13 @@
                      </font>
                   </Text>
                </children></AnchorPane>
+
+            <Button fx:id="buyButton" mnemonicParsing="false" onAction="#handleBuyAction" text="Buy">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Button>
+
             <AnchorPane prefHeight="200.0" prefWidth="200.0">
                <children>
                   <Button fx:id="manageButton" layoutX="71.0" layoutY="58.0" mnemonicParsing="false" onAction="#handleManageAction" text="Manage">
@@ -66,6 +69,7 @@
                      </font></Button>
                </children>
             </AnchorPane>
+
          </children>
       </VBox>
    </right>
@@ -85,4 +89,11 @@
          </right>
       </BorderPane>
    </center>
+   <top>
+      <AnchorPane prefHeight="27.0" prefWidth="919.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button layoutX="23.0" layoutY="1.0" mnemonicParsing="false" onAction="#handleBackAction" text="Back" />
+         </children>
+      </AnchorPane>
+   </top>
 </BorderPane>
