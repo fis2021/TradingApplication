@@ -4,7 +4,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Rectangle2D;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -12,21 +11,13 @@ import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
-
 import javafx.stage.Modality;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
-import org.fis.ta.MainApp;
 import org.fis.ta.model.Item;
 import org.fis.ta.model.User;
-import org.fis.ta.services.ItemService;
-import org.fis.ta.services.UserService;
 
 import java.io.IOException;
-import java.util.ArrayList;
-
-import org.fis.ta.model.Item;
-import org.fis.ta.model.User;
 
 
 public class ItempageController {
