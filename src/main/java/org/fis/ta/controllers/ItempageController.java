@@ -78,7 +78,7 @@ public class ItempageController {
             loader = new FXMLLoader(getClass().getClassLoader().getResource("displayItemsPage.fxml"));
             root = loader.load();
             stage = (Stage) priceField.getScene().getWindow();
-            scene = new Scene(root,919,643);
+            scene = new Scene(root,600,400);
             stage.setScene(scene);
             Rectangle2D primScreenBounds = Screen.getPrimary().getVisualBounds();
             stage.setX((primScreenBounds.getWidth() - stage.getWidth())/2);
