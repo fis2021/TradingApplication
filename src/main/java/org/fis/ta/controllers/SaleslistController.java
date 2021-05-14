@@ -54,6 +54,7 @@ public class SaleslistController {
     {
         return thisStage;
     }
+
     @FXML
     public void handleHomepageAction() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("homepage.fxml"));
@@ -76,13 +77,16 @@ public class SaleslistController {
         FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("itempage.fxml"));
         root=loader.load();
         ItempageController ic = loader.getController();
-        ic.loadItempage(UserService.getCurrentUser(username),table.getSelectionModel().getSelectedItem());
-        stage=(Stage) table.getScene().getWindow();
-        scene=new Scene(root,919,643);
-        stage.setScene(scene);
-        Rectangle2D primScreenBounds = Screen.getPrimary().getVisualBounds();
-        stage.setX((primScreenBounds.getWidth() - stage.getWidth())/2);
-        stage.setY((primScreenBounds.getHeight()-stage.getHeight())/2);
+        if(table.getSelectionModel().getSelectedItem()!=null) {
+            ic.loadItempage(UserService.getCurrentUser(username), table.getSelectionModel().getSelectedItem());
+            stage = (Stage) table.getScene().getWindow();
+            scene = new Scene(root, 919, 643);
+            stage.setScene(scene);
+            Rectangle2D primScreenBounds = Screen.getPrimary().getVisualBounds();
+            stage.setX((primScreenBounds.getWidth() - stage.getWidth()) / 2);
+            stage.setY((primScreenBounds.getHeight() - stage.getHeight()) / 2);
+            ItempageController.setLastScene("saleslist");
+        }
         thisStage=stage;
     }
 
