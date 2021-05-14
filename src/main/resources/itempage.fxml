@@ -85,4 +85,11 @@
          </right>
       </BorderPane>
    </center>
+   <top>
+      <AnchorPane prefHeight="27.0" prefWidth="919.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button layoutX="23.0" layoutY="1.0" mnemonicParsing="false" onAction="#handleBackAction" text="Back" />
+         </children>
+      </AnchorPane>
+   </top>
 </BorderPane>
