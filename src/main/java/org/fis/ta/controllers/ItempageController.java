@@ -58,12 +58,11 @@ public class ItempageController {
     private Stage manageStage;
     private static Stage thisStage;
 
-    public static void setLastScene(String lastScene) {
-        ItempageController.lastScene = lastScene;
-    }
+
 
     private static String lastScene;
-
+    public static void setLastScene(String value) { lastScene = value;
+    }
 
     @FXML
     void handleBackAction() throws IOException {
