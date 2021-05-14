@@ -2,11 +2,13 @@ package org.fis.ta.controllers;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 import org.fis.ta.exceptions.*;
 import org.fis.ta.services.UserService;
@@ -54,6 +56,9 @@ public class RegistrationController {
             Parent viewRegisterRoot = FXMLLoader.load(getClass().getClassLoader().getResource("login.fxml"));
             Scene scene = new Scene(viewRegisterRoot, 380, 275);
             stage.setScene(scene);
+            Rectangle2D primScreenBounds = Screen.getPrimary().getVisualBounds();
+            stage.setX((primScreenBounds.getWidth() - stage.getWidth())/2);
+            stage.setY((primScreenBounds.getHeight()-stage.getHeight())/2);
         } catch (IOException e) {
             e.printStackTrace();
         }

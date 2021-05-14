@@ -23,6 +23,7 @@ public class UserService {
                 .openOrCreate("test", "test");
 
         userRepository = database.getRepository(User.class);
+        
     }
 
 
@@ -122,7 +123,4 @@ public class UserService {
         return userRepository;
     }
 
-    public static ObjectRepository<User> getUserRepository() {
-        return userRepository;
-    }
 }

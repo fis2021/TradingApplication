@@ -27,6 +27,7 @@ public class Item {
     private String price;
     private int counter =0;
     private String dateAdded;
+    private boolean isSelected = false;
 
 
     public Item(String owner, String name, String category, String description, ArrayList<String> images, String price,String dateAdded)
