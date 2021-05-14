@@ -71,7 +71,8 @@ public class DisplayItemsPageController {
         }
 
         for(Item item : items.find()){
-            if(item.getCategory().equals(CategoryPageController.getCategory())) {
+
+            if(item.getCategory().equals(CategoryPageController.getCategory()) & !item.isSold()) {
                 itemList.add(item);
                 //itemsTableView.getItems().add(item);
                 /*try{

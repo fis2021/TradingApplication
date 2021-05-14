@@ -19,8 +19,11 @@ import org.fis.ta.model.User;
 
 import java.io.IOException;
 
-
 public class ItempageController {
+
+    private Stage stage;
+    private Scene scene;
+    private Parent root;
 
     private int ID;
     @FXML
@@ -83,6 +86,9 @@ public class ItempageController {
         }
     }
 
+    @FXML
+    private Button buyButton;
+
 
     @FXML
     void handleNextPhotoAction(ActionEvent event) {
@@ -141,7 +147,15 @@ public class ItempageController {
             manageButton.setVisible(false);
 
         loadPhoto();
+        System.out.println(currentItem.getImages().size());
+      
+        if(currentItem.getOwner().equals(LoginController.getUsername()))
+            buyButton.setVisible(false);
+        else
+            buyButton.setVisible(true);
+
         loadManageWindow();
+
     }
 
     void loadPhoto(){
@@ -153,6 +167,18 @@ public class ItempageController {
         return this.nameField.getText();
     }
 
+    public void handleBuyAction(ActionEvent actionEvent) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("buyItemPage.fxml"));
+            root=loader.load();
+            BuyItemController bc = loader.getController();
+            bc.loadBuyPage(currentItem);
+            stage=(Stage) buyButton.getScene().getWindow();
+            scene=new Scene(root,919,643);
+            stage.setScene(scene);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     public static Item getCurrentItem(){
         return thisItem;
     }

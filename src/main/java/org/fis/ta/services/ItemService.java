@@ -1,23 +1,17 @@
 package org.fis.ta.services;
 
 
-import javafx.scene.image.ImageView;
 import org.dizitart.no2.Nitrite;
 import org.dizitart.no2.objects.ObjectRepository;
 import org.fis.ta.controllers.LoginController;
 import org.fis.ta.exceptions.EmptyFieldException;
 import org.fis.ta.exceptions.NoFileSelectedException;
 import org.fis.ta.exceptions.PriceNotValidException;
-
-import org.fis.ta.exceptions.*;
-
 import org.fis.ta.model.Item;
-import org.fis.ta.model.User;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.regex.Pattern;
 
 import static org.fis.ta.services.FileSystemService.getPathToFile;
@@ -38,15 +32,10 @@ public class ItemService {
         Item.setCount(count);
     }
 
-
-    public static ObjectRepository<Item> getItemRepository(){
-        return itemRepository;
-    }
-
     public static ArrayList<Item> loadItemList(){
         ArrayList<Item> list = new ArrayList<>();
         for(Item item:itemRepository.find()){
-            if(UserService.getCurrentUser(LoginController.getUsername()).getUsername().equals(item.getOwner())){
+            if(UserService.getCurrentUser(LoginController.getUsername()).getUsername().equals(item.getOwner()) & !item.isSold()){
                 list.add(item);
             }
         }
@@ -54,7 +43,9 @@ public class ItemService {
     }
 
     public static void addItem(String owner, String name, String category, String description, ArrayList<String> images, String price) throws PriceNotValidException, EmptyFieldException, NoFileSelectedException{
-        checkNotEmptyFields(name, description, price);
+        checkNotEmptyFields(name);
+        checkNotEmptyFields(description);
+        checkNotEmptyFields(price);
         checkPrice(price);
         checkIfImageInserted(images);
         Calendar calendar = Calendar.getInstance();
@@ -67,6 +58,37 @@ public class ItemService {
         itemRepository.remove(item);
     }
 
+    public static String buyItem(Item item, String delivery, String country, String city, String street, String houseNumber, Boolean fastDelivery, String newOwner)throws  EmptyFieldException{
+        checkNotEmptyFields(delivery);
+        checkNotEmptyFields(country);
+        checkNotEmptyFields(city);
+        checkNotEmptyFields(street);
+        checkNotEmptyFields(houseNumber);
+
+        item.setSold(true);
+        item.setNewOwner(newOwner);
+        itemRepository.update(item);
+        if(item.getCategory().equals("Real estates")){
+            return "Item bought!";
+        }
+        if(item.getCategory().equals("Cars, motorcycles and boats")){
+            return "Item bought!";
+        }
+        int days = 7;
+        if(delivery.equals("Courier delivery")){
+            if(fastDelivery){
+                days = 1;
+            } else{
+                days = 2;
+            }
+        }
+        if(days == 1){
+            return "Item will arrive to you in 1 day after it's current owner send it";
+        }else {
+            return "Item will arrive to you in " + days + "days after it's current owner send it";
+        }
+    }
+
     private static void checkPrice(String price)throws PriceNotValidException {
         String priceRegex ="\\d{1,3}(?:[.,]\\d{3})*(?:[.,]\\d{2})";
 
@@ -76,8 +98,8 @@ public class ItemService {
             throw new PriceNotValidException();
     }
 
-    public static void checkNotEmptyFields(String name, String description, String price) throws EmptyFieldException {
-        if(name.isEmpty() | description.isEmpty() | price.isEmpty() )
+    public static void checkNotEmptyFields(String field) throws EmptyFieldException {
+        if(field.isEmpty()  )
             throw new EmptyFieldException();
     }
 

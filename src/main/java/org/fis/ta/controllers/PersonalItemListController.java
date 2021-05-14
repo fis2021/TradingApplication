@@ -65,14 +65,16 @@ public class PersonalItemListController {
 
 
         for(Item item : items.find()){
-            if(item.getOwner().equals(LoginController.getUsername())) {
-                personalItemsTableView.getItems().add(item);
+            if(item.isSold()) {
+                if (item.getOwner().equals(LoginController.getUsername()) | item.getNewOwner().equals(LoginController.getUsername())) {
+                    personalItemsTableView.getItems().add(item);
 
                 /*try{
                     ImageView imageView = new ImageView(item.getImage());                //to add image in first col of the table
                     itemsTableView.getItems().add(imageView);
                 }catch (FileNotFoundException e){}*/
 
+                }
             }
         }
 
