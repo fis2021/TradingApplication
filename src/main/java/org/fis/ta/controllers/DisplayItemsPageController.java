@@ -134,6 +134,7 @@ public class DisplayItemsPageController {
                                 Rectangle2D primScreenBounds = Screen.getPrimary().getVisualBounds();
                                 stage.setX((primScreenBounds.getWidth() - stage.getWidth())/2);
                                 stage.setY((primScreenBounds.getHeight()-stage.getHeight())/2);
+                                ItempageController.setLastScene("display");
                             } catch (IOException e) {
                                 e.printStackTrace();
                             }
@@ -168,6 +169,9 @@ public class DisplayItemsPageController {
             Parent viewRegisterRoot = FXMLLoader.load(getClass().getClassLoader().getResource("categoryPage.fxml"));
             Scene scene = new Scene(viewRegisterRoot, 600, 600);
             stage.setScene(scene);
+            Rectangle2D primScreenBounds = Screen.getPrimary().getVisualBounds();
+            stage.setX((primScreenBounds.getWidth() - stage.getWidth())/2);
+            stage.setY((primScreenBounds.getHeight()-stage.getHeight())/2);
         } catch (IOException e) {
             e.printStackTrace();
         }
