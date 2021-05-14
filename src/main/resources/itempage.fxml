@@ -54,11 +54,22 @@
                      </font>
                   </Text>
                </children></AnchorPane>
+
             <Button fx:id="buyButton" mnemonicParsing="false" onAction="#handleBuyAction" text="Buy">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
             </Button>
+
+            <AnchorPane prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <Button fx:id="manageButton" layoutX="71.0" layoutY="58.0" mnemonicParsing="false" onAction="#handleManageAction" text="Manage">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font></Button>
+               </children>
+            </AnchorPane>
+
          </children>
       </VBox>
    </right>
@@ -78,4 +89,11 @@
          </right>
       </BorderPane>
    </center>
+   <top>
+      <AnchorPane prefHeight="27.0" prefWidth="919.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button layoutX="23.0" layoutY="1.0" mnemonicParsing="false" onAction="#handleBackAction" text="Back" />
+         </children>
+      </AnchorPane>
+   </top>
 </BorderPane>

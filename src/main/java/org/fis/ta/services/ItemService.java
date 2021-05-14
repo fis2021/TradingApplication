@@ -54,6 +54,9 @@ public class ItemService {
         Item item = new Item(owner,name,category,description,images,price,date);
         itemRepository.insert(item);
     }
+    public static void deleteItem(Item item){
+        itemRepository.remove(item);
+    }
 
     public static String buyItem(Item item, String delivery, String country, String city, String street, String houseNumber, Boolean fastDelivery, String newOwner)throws  EmptyFieldException{
         checkNotEmptyFields(delivery);
@@ -117,8 +120,6 @@ public class ItemService {
         return aux;
     }
 
-    public static ObjectRepository<Item> getItemRepository(){
-        return itemRepository;
-    }
+
 
 }

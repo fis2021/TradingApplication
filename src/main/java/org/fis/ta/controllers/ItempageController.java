@@ -3,6 +3,7 @@ package org.fis.ta.controllers;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -10,6 +11,8 @@ import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
+import javafx.stage.Modality;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 import org.fis.ta.model.Item;
 import org.fis.ta.model.User;
@@ -41,10 +44,47 @@ public class ItempageController {
     @FXML
     private Text phoneField;
 
+    @FXML
+    private Button manageButton;
+
     @FXML private Text itemnameField;
     @FXML private Text priceField;
 
+    private static Item thisItem;
     private Item currentItem;
+    private Parent root;
+    private Stage stage;
+    private Scene scene;
+    private FXMLLoader loader;
+    private Stage manageStage;
+    private static Stage thisStage;
+
+
+    @FXML
+    void handleBackAction() throws IOException {
+        if(currentItem.getOwner().equals(LoginController.getUsername())){
+            loader = new FXMLLoader(getClass().getClassLoader().getResource("saleslist.fxml"));
+            root = loader.load();
+            SaleslistController sc = loader.getController();
+            sc.loadSaleslistPage();
+            stage = (Stage) priceField.getScene().getWindow();
+            scene = new Scene(root,919,643);
+            stage.setScene(scene);
+            Rectangle2D primScreenBounds = Screen.getPrimary().getVisualBounds();
+            stage.setX((primScreenBounds.getWidth() - stage.getWidth())/2);
+            stage.setY((primScreenBounds.getHeight()-stage.getHeight())/2);
+        }
+        else{
+            loader = new FXMLLoader(getClass().getClassLoader().getResource("displayItemsPage.fxml"));
+            root = loader.load();
+            stage = (Stage) priceField.getScene().getWindow();
+            scene = new Scene(root,919,643);
+            stage.setScene(scene);
+            Rectangle2D primScreenBounds = Screen.getPrimary().getVisualBounds();
+            stage.setX((primScreenBounds.getWidth() - stage.getWidth())/2);
+            stage.setY((primScreenBounds.getHeight()-stage.getHeight())/2);
+        }
+    }
 
     @FXML
     private Button buyButton;
@@ -66,7 +106,30 @@ public class ItempageController {
         }
     }
 
-    void loadItempage(User user, Item item){
+    @FXML
+    void handleManageAction() throws IOException {
+        loadManageWindow();
+        manageStage.showAndWait();
+        Rectangle2D primScreenBounds = Screen.getPrimary().getVisualBounds();
+        manageStage.setX((primScreenBounds.getWidth() - manageStage.getWidth())/2);
+        manageStage.setY((primScreenBounds.getHeight()-manageStage.getHeight())/2);
+        thisStage=(Stage) usernameField.getScene().getWindow();
+    }
+
+    public void loadManageWindow() throws IOException {
+        loader=new FXMLLoader(getClass().getClassLoader().getResource("manageItem.fxml"));
+        root=loader.load();
+        manageStage=new Stage();
+        manageStage.initModality(Modality.APPLICATION_MODAL);
+        manageStage.setTitle("Manage item");
+        manageStage.setResizable(false);
+        scene = new Scene(root,600,400);
+        manageStage.setScene(scene);
+
+    }
+
+    void loadItempage(User user, Item item) throws IOException {
+        thisItem=item;
         nameField.setText(user.getFirstName() + " " + user.getLastName());
         usernameField.setText("@"+user.getUsername());
         emailField.setText(user.getEmail());
@@ -77,19 +140,31 @@ public class ItempageController {
         DescriptionArea.setEditable(false);
         DescriptionArea.setWrapText(true);
         currentItem=item;
+
+        if(currentItem.getOwner().equals(LoginController.getUsername()))
+            manageButton.setVisible(true);
+        else
+            manageButton.setVisible(false);
+
         loadPhoto();
         System.out.println(currentItem.getImages().size());
-
+      
         if(currentItem.getOwner().equals(LoginController.getUsername()))
             buyButton.setVisible(false);
         else
             buyButton.setVisible(true);
+
+        loadManageWindow();
+
     }
 
     void loadPhoto(){
         ID=currentItem.getID();
         itemImage.setImage(new Image("file:" + currentItem.getImages().get(0),523,425,false,false));
         System.out.println(ID);
+    }
+    String getName(){
+        return this.nameField.getText();
     }
 
     public void handleBuyAction(ActionEvent actionEvent) {
@@ -104,6 +179,11 @@ public class ItempageController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    public static Item getCurrentItem(){
+        return thisItem;
+    }
+    public static Stage getStage(){
+        return thisStage;
     }
 }
 

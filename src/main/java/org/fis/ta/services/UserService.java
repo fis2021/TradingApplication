@@ -23,6 +23,7 @@ public class UserService {
                 .openOrCreate("test", "test");
 
         userRepository = database.getRepository(User.class);
+        
     }
 
 
