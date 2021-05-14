@@ -1,5 +1,9 @@
 package org.fis.ta.controllers;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -27,6 +31,8 @@ public class DisplayItemsPageController {
     private Stage stage;
     private Scene scene;
     private Parent root;
+
+    private ObservableList<Item> itemList = FXCollections.observableArrayList();
 
     @FXML
     private Text displayMessage;
@@ -64,11 +70,10 @@ public class DisplayItemsPageController {
             itemsTableView.getColumns().add(col3);
         }
 
-
-
         for(Item item : items.find()){
             if(item.getCategory().equals(CategoryPageController.getCategory())) {
-                itemsTableView.getItems().add(item);
+                itemList.add(item);
+                //itemsTableView.getItems().add(item);
                 /*try{
                     ImageView imageView = new ImageView(item.getImage());
                     itemsTableView.getItems().add(imageView);
@@ -77,11 +82,31 @@ public class DisplayItemsPageController {
             }
         }
 
+
+        FilteredList<Item> filteredList = new FilteredList<>(itemList, b->true);
+
+        filterField.textProperty().addListener((observable, oldValue, newValue )->{
+            filteredList.setPredicate(item->{
+                if(newValue == null || newValue.isEmpty()){
+                    return true;
+                }
+                String lowerCaseFilter = newValue.toLowerCase();
+                if(item.getName().toLowerCase().indexOf(lowerCaseFilter) != -1){
+                    return true;
+                }else{
+                    return false;
+                }
+
+            });
+        });
+        SortedList<Item> sortedList= new SortedList<>(filteredList);
+        sortedList.comparatorProperty().bind(itemsTableView.comparatorProperty());
+        itemsTableView.setItems(sortedList);
     }
 
 
     private void addButtonToTable() {
-        TableColumn<Item, Void> colBtn = new TableColumn("Button Column");
+        TableColumn<Item, Void> colBtn = new TableColumn<>("Button Column");
 
         Callback<TableColumn<Item, Void>, TableCell<Item, Void>> cellFactory = new Callback<TableColumn<Item, Void>, TableCell<Item, Void>>() {
             @Override
