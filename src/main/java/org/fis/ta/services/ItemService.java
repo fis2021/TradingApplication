@@ -35,7 +35,7 @@ public class ItemService {
     public static ArrayList<Item> loadItemList(){
         ArrayList<Item> list = new ArrayList<>();
         for(Item item:itemRepository.find()){
-            if(UserService.getCurrentUser(LoginController.getUsername()).getUsername().equals(item.getOwner())){
+            if(UserService.getCurrentUser(LoginController.getUsername()).getUsername().equals(item.getOwner()) & !item.isSold()){
                 list.add(item);
             }
         }
@@ -55,24 +55,35 @@ public class ItemService {
         itemRepository.insert(item);
     }
 
-    public static String buyItem(Item item, String delivery, String country, String city, String street, String houseNumber, String fastDelivery, String newOwner)throws  EmptyFieldException{
+    public static String buyItem(Item item, String delivery, String country, String city, String street, String houseNumber, Boolean fastDelivery, String newOwner)throws  EmptyFieldException{
         checkNotEmptyFields(delivery);
         checkNotEmptyFields(country);
         checkNotEmptyFields(city);
         checkNotEmptyFields(street);
         checkNotEmptyFields(houseNumber);
-        int days = 7;
-            if(delivery.equals("Courier delivery")){
-                if(fastDelivery.equals("true")){
-                    days = 1;
-                } else{
-                    days = 2;
-                }
-            }
+
         item.setSold(true);
         item.setNewOwner(newOwner);
         itemRepository.update(item);
-        return "Item will arrive to you in "+ days +"days after it's current owner send it";
+        if(item.getCategory().equals("Real estates")){
+            return "Item bought!";
+        }
+        if(item.getCategory().equals("Cars, motorcycles and boats")){
+            return "Item bought!";
+        }
+        int days = 7;
+        if(delivery.equals("Courier delivery")){
+            if(fastDelivery){
+                days = 1;
+            } else{
+                days = 2;
+            }
+        }
+        if(days == 1){
+            return "Item will arrive to you in 1 day after it's current owner send it";
+        }else {
+            return "Item will arrive to you in " + days + "days after it's current owner send it";
+        }
     }
 
     private static void checkPrice(String price)throws PriceNotValidException {

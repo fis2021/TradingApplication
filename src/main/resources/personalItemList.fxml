@@ -13,7 +13,7 @@
 
     <Button onAction="#handleBackAction" text="Back" layoutX="50.0" layoutY="25.0"/>
 
-    <TableView fx:id="personalItemsTableView" layoutX="36.0" layoutY="120.0" prefHeight="250.0" prefWidth="600.0">
+    <TableView fx:id="personalItemsTableView" layoutX="36.0" layoutY="120.0" prefHeight="250.0" prefWidth="360.0">
         <columns>
 
         </columns>

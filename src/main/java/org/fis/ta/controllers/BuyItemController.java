@@ -44,20 +44,23 @@ public class BuyItemController {
         deliveryField.getItems().addAll( "Courier delivery","Post delivery");
         fastDeliveryField.setVisible(false);
         fastDeliveryText.setVisible(false);
+        deliveryField.getSelectionModel().selectedItemProperty().addListener((v, oldValue, newValue) -> {
+            if(newValue.equals("Courier delivery")) {
+                fastDeliveryField.setVisible(true);
+                fastDeliveryText.setVisible(true);
+            }else{
+                fastDeliveryField.setVisible(false);
+                fastDeliveryText.setVisible(false);
+                fastDeliveryField.setSelected(false);
+            }
+        });
     }
 
-    public void visible(){
-        if(deliveryField.getValue().equals("courier delivery")){
-            fastDeliveryField.setVisible(true);
-        }else{
-            fastDeliveryField.setVisible(false);
-        }
-    }
 
     @FXML
     public void handleBuyAction(ActionEvent actionEvent){
         try {
-            buyItemMessage.setText(ItemService.buyItem(currentItem, deliveryField.getValue(), countryField.getText(), cityField.getText(), streetField.getText(), houseNumberField.getText(), fastDeliveryField.getText(), LoginController.getUsername()));
+            buyItemMessage.setText(ItemService.buyItem(currentItem, deliveryField.getValue(), countryField.getText(), cityField.getText(), streetField.getText(), houseNumberField.getText(), fastDeliveryField.isSelected(), LoginController.getUsername()));
         }catch (EmptyFieldException e){
             buyItemMessage.setText(e.getMessage());
         }
