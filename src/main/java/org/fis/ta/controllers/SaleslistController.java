@@ -63,6 +63,7 @@ public class SaleslistController {
         stage = (Stage) table.getScene().getWindow();
         scene = new Scene(root, 600, 400);
         stage.setScene(scene);
+        ItempageController.setLastScene("saleslist");
         Rectangle2D primScreenBounds = Screen.getPrimary().getVisualBounds();
         stage.setX((primScreenBounds.getWidth() - stage.getWidth())/2);
         stage.setY((primScreenBounds.getHeight()-stage.getHeight())/2);

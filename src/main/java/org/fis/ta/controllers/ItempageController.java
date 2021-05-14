@@ -58,10 +58,16 @@ public class ItempageController {
     private Stage manageStage;
     private static Stage thisStage;
 
+    public static void setLastScene(String lastScene) {
+        ItempageController.lastScene = lastScene;
+    }
+
+    private static String lastScene;
+
 
     @FXML
     void handleBackAction() throws IOException {
-        if (currentItem.getOwner().equals(LoginController.getUsername())) {
+        if (lastScene.equals("saleslist")) {
             loader = new FXMLLoader(getClass().getClassLoader().getResource("saleslist.fxml"));
             root = loader.load();
             SaleslistController sc = loader.getController();
@@ -175,6 +181,9 @@ public class ItempageController {
             stage = (Stage) buyButton.getScene().getWindow();
             scene = new Scene(root, 919, 643);
             stage.setScene(scene);
+            Rectangle2D primScreenBounds = Screen.getPrimary().getVisualBounds();
+            stage.setX((primScreenBounds.getWidth() - stage.getWidth())/2);
+            stage.setY((primScreenBounds.getHeight()-stage.getHeight())/2);
         } catch (IOException e) {
             e.printStackTrace();
         }
