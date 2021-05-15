@@ -2,6 +2,7 @@ plugins {
     id 'java'
     id 'application'
     id 'org.openjfx.javafxplugin' version '0.0.8'
+    id 'jacoco'
 }
 javafx{
     version = "15"
@@ -36,6 +37,11 @@ targetCompatibility=11
 mainClassName ='org.fis.ta.MainApp'
 
 test {
+    finalizedBy jacocoTestReport // report is always generated after tests run
     useJUnitPlatform()
+}
+
+jacocoTestReport {
+    dependsOn test // tests are required to run before generating the report
 }
 
