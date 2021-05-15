@@ -39,7 +39,7 @@ public class BuyItemController {
     @FXML
     private Label fastDeliveryText;
 
-    private Item currentItem;
+    private static Item currentItem;
 
     @FXML
     public void initialize() {
@@ -83,7 +83,7 @@ public class BuyItemController {
         }
     }
 
-    public void loadBuyPage(Item item){
-        this.currentItem = item;
+    public static void loadBuyPage(Item item){
+        currentItem = item;
     }
 }
