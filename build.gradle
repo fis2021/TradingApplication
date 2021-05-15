@@ -2,6 +2,7 @@ plugins {
     id 'java'
     id 'application'
     id 'org.openjfx.javafxplugin' version '0.0.8'
+    id 'jacoco'
 }
 javafx{
     version = "15"
@@ -24,8 +25,6 @@ dependencies {
     implementation 'org.slf4j:slf4j-simple:2.0.0-alpha0'
 
 
-    testCompile group: 'junit', name: 'junit', version: '4.12'
-
     testCompile 'org.testfx:testfx-core:4.0.16-alpha'
     testCompile 'org.junit.jupiter:junit-jupiter-api:5.5.1'
     testCompile 'org.junit.jupiter:junit-jupiter-engine:5.5.1'
@@ -38,4 +37,12 @@ sourceCompatibility=11
 targetCompatibility=11
 mainClassName ='org.fis.ta.MainApp'
 
+test {
+    finalizedBy jacocoTestReport // report is always generated after tests run
+    useJUnitPlatform()
+}
+
+jacocoTestReport {
+    dependsOn test // tests are required to run before generating the report
+}
 

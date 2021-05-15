@@ -10,9 +10,9 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="275.0" prefWidth="380.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.fis.ta.controllers.LoginController">
    <children>
-      <TextField fx:id="usernameField" layoutX="102.0" layoutY="95.0" prefHeight="42.0" prefWidth="173.0" promptText="Username..." AnchorPane.leftAnchor="102.0" AnchorPane.rightAnchor="105.0" AnchorPane.topAnchor="95.0" />
-      <PasswordField fx:id="passwordField" layoutX="103.0" layoutY="147.0" prefHeight="42.0" prefWidth="173.0" promptText="Password" />
-      <Button layoutX="102.0" layoutY="209.0" mnemonicParsing="false" onAction="#handleLoginAction" prefHeight="32.0" prefWidth="70.0" text="Login" textFill="#0b0b0b" AnchorPane.bottomAnchor="34.0" AnchorPane.leftAnchor="102.0" AnchorPane.rightAnchor="208.0">
+      <TextField fx:id="usernameField" id = "loginUsername" layoutX="102.0" layoutY="95.0" prefHeight="42.0" prefWidth="173.0" promptText="Username..." AnchorPane.leftAnchor="102.0" AnchorPane.rightAnchor="105.0" AnchorPane.topAnchor="95.0" />
+      <PasswordField fx:id="passwordField" id = "loginPassword" layoutX="103.0" layoutY="147.0" prefHeight="42.0" prefWidth="173.0" promptText="Password" />
+      <Button layoutX="102.0" layoutY="209.0" mnemonicParsing="false" onAction="#handleLoginAction" id = "loginButton" prefHeight="32.0" prefWidth="70.0" text="Login" textFill="#0b0b0b" AnchorPane.bottomAnchor="34.0" AnchorPane.leftAnchor="102.0" AnchorPane.rightAnchor="208.0">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
@@ -22,11 +22,11 @@
             <Font name="Arial Black" size="22.0" />
          </font>
       </Label>
-      <Button layoutX="204.0" layoutY="209.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleRegisterAction" prefHeight="32.0" prefWidth="70.0" text="Register">
+      <Button layoutX="204.0" layoutY="209.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleRegisterAction" id = "loginRegisterButton" prefHeight="32.0" prefWidth="70.0" text="Register">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <Text fx:id="loginMessage" layoutX="161.0" layoutY="265.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+      <Text fx:id="loginMessage" id = "loginMessage" layoutX="161.0" layoutY="265.0" strokeType="OUTSIDE" strokeWidth="0.0" />
    </children>
 </AnchorPane>

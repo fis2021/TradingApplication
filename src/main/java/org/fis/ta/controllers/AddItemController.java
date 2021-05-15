@@ -38,7 +38,7 @@ public class AddItemController {
     private TextField descriptionField;
 
     @FXML
-    private final ArrayList<String> images = new ArrayList<>();
+    private static ArrayList<String> images = new ArrayList<>();
 
     @FXML
     public void initialize() {
@@ -92,4 +92,6 @@ public class AddItemController {
             e.printStackTrace();
         }
     }
+
+    public static void setImage(String image){ images.add(image); } // used for testing
 }

@@ -9,6 +9,7 @@ import org.fis.ta.exceptions.NoFileSelectedException;
 import org.fis.ta.exceptions.PriceNotValidException;
 import org.fis.ta.model.Item;
 
+import java.lang.reflect.Array;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -21,6 +22,7 @@ public class ItemService {
     private static ObjectRepository<Item> itemRepository;
 
     public static void initDatabase() {
+        FileSystemService.initDirectory();
         Nitrite database = Nitrite.builder()
                 .filePath(getPathToFile("trading-application-items.db").toFile())
                 .openOrCreate("test", "test");
@@ -118,6 +120,12 @@ public class ItemService {
             }
         }
         return aux;
+    }
+
+    public static ArrayList<String> getFakeList(){
+        ArrayList<String> list = new ArrayList<>();
+        list.add("imagine");
+        return list;
     }
 
     public static ObjectRepository<Item> getItemRepository(){
