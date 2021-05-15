@@ -9,6 +9,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.io.File;
+
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.testfx.assertions.api.Assertions.assertThat;
 
@@ -23,14 +25,15 @@ class UserServiceTest {
 
     @BeforeEach
     void setUp() throws Exception {
-        FileSystemService.APPLICATION_FOLDER = ".test-trading-application";
+        FileSystemService.APPLICATION_FOLDER = ".testUserService";
+        FileSystemService.initDirectory();
         FileUtils.cleanDirectory(FileSystemService.getApplicationHomeFolder().toFile());
         UserService.initDatabase();
     }
 
     @AfterEach
     void tearDown(){
-        UserService.getUserRepository().close();
+        UserService.getDataBase().close();
     }
 
     @Test

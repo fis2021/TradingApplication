@@ -26,7 +26,8 @@ class AddItemControllerTest {
 
     @BeforeEach
     void setUp() throws Exception {
-        FileSystemService.APPLICATION_FOLDER = ".test-trading-application";
+        FileSystemService.APPLICATION_FOLDER = ".testAddItem";
+        FileSystemService.initDirectory();
         FileUtils.cleanDirectory(FileSystemService.getApplicationHomeFolder().toFile());
         ItemService.initDatabase();
         UserService.initDatabase();
@@ -34,8 +35,8 @@ class AddItemControllerTest {
 
     @AfterEach
     void tearDown(){
-        UserService.getUserRepository().close();
-        ItemService.getItemRepository().close();
+        UserService.getDataBase().close();
+        ItemService.getDataBase().close();
     }
 
     @Start

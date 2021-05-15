@@ -30,14 +30,15 @@ class BuyItemControllerTest {
 
     @BeforeEach
     void setUp() throws Exception {
-        FileSystemService.APPLICATION_FOLDER = ".test-trading-application";
+        FileSystemService.APPLICATION_FOLDER = ".testBuyItem";
+        FileSystemService.initDirectory();
         FileUtils.cleanDirectory(FileSystemService.getApplicationHomeFolder().toFile());
         UserService.initDatabase();
     }
 
     @AfterEach
     void tearDown(){
-        UserService.getUserRepository().close();
+        UserService.getDataBase().close();
     }
 
     @Start
