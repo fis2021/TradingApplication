@@ -3,6 +3,7 @@ package org.fis.ta.controllers;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
 import org.apache.commons.io.FileUtils;
 import org.fis.ta.services.FileSystemService;
@@ -67,15 +68,34 @@ class AddItemControllerTest {
 
         robot.clickOn("#homepageAddButton");
 
-        robot.clickOn("addItemName");
+        robot.clickOn("#addItemName");
         robot.write("Item Name");
-        robot.clickOn("addItemPrice");
-        robot.write("12.34");
+        robot.clickOn("#addItemPrice");
+        robot.write("12.3");
 
         robot.clickOn("#addItemAddButton");
-        assertThat(robot.lookup("#addItemMessage").queryText()).hasText("Account created successfully!");
+        assertThat(robot.lookup("#addItemMessage").queryText()).hasText("All fields must be completed!");
 
+        robot.clickOn("#addItemCategory");
+        robot.type(KeyCode.DOWN);
+        robot.type(KeyCode.ENTER);
 
+        robot.clickOn("#addItemDescription");
+        robot.write("Item Description");
+
+        robot.clickOn("#addItemAddButton");
+        assertThat(robot.lookup("#addItemMessage").queryText()).hasText("Please enter a valid price!");
+
+        robot.clickOn("#addItemPrice");
+        robot.write("55.99");
+
+        robot.clickOn("#addItemAddButton");
+        assertThat(robot.lookup("#addItemMessage").queryText()).hasText("The item must have at least 1 image!");
+
+        AddItemController.setImage("Image link");
+
+        robot.clickOn("#addItemAddButton");
+        assertThat(robot.lookup("#addItemMessage").queryText()).hasText("Item added successfully!");
 
     }
 }
