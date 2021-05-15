@@ -21,6 +21,7 @@ public class ItemService {
     private static ObjectRepository<Item> itemRepository;
 
     public static void initDatabase() {
+        FileSystemService.initDirectory();
         Nitrite database = Nitrite.builder()
                 .filePath(getPathToFile("trading-application-items.db").toFile())
                 .openOrCreate("test", "test");
