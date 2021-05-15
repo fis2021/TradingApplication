@@ -34,7 +34,7 @@ public class LoginController {
         MainApp m = new MainApp();
         stage = (Stage) passwordField.getScene().getWindow();
         Parent viewRegisterPage = FXMLLoader.load(getClass().getClassLoader().getResource("register.fxml"));
-        Scene scene = new Scene(viewRegisterPage,380,275);
+        Scene scene = new Scene(viewRegisterPage,400,400);
         stage.setScene(scene);
         Rectangle2D primScreenBounds = Screen.getPrimary().getVisualBounds();
         stage.setX((primScreenBounds.getWidth() - stage.getWidth())/2);
