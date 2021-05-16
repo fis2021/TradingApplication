@@ -33,12 +33,15 @@ class BuyItemControllerTest {
         FileSystemService.APPLICATION_FOLDER = ".test-trading-application";
         FileUtils.cleanDirectory(FileSystemService.getApplicationHomeFolder().toFile());
         UserService.initDatabase();
+        ItemService.initDatabase();
     }
 
     @AfterEach
     void tearDown(){
         UserService.getDataBase().close();
+        ItemService.getDataBase().close();
     }
+
 
     @Start
     void start(Stage primaryStage) throws Exception {
@@ -51,6 +54,7 @@ class BuyItemControllerTest {
         Parent root = loader.load();
         BuyItemController.loadBuyPage(new Item("username", "Bicycle", "Sport", "New", images, "1.345.99", "23/10/2020"));
         primaryStage.setTitle("Trading application");
+        ItemService.getDataBase().close();
         primaryStage.setScene(new Scene(root, 380, 275));
         primaryStage.show();
     }
