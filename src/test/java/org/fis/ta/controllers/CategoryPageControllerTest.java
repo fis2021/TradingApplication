@@ -20,7 +20,6 @@ import java.io.IOException;
 
 @ExtendWith(ApplicationExtension.class)
 class CategoryPageControllerTest {
-
     @BeforeEach
     void setUp() throws IOException {
         FileSystemService.APPLICATION_FOLDER = ".test-trading-application";
