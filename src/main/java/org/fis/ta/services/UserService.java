@@ -17,10 +17,11 @@ import static org.fis.ta.services.FileSystemService.getPathToFile;
 public class UserService {
 
     private static ObjectRepository<User> userRepository;
+    private static Nitrite database;
 
     public static void initDatabase() {
         FileSystemService.initDirectory();
-        Nitrite database = Nitrite.builder()
+        database = Nitrite.builder()
                 .filePath(getPathToFile("trading-application-users.db").toFile())
                 .openOrCreate("test", "test");
 
@@ -28,6 +29,9 @@ public class UserService {
         
     }
 
+    public static Nitrite getDataBase(){
+        return database;
+    }
 
 
     public static void addUser(String username, String password, String confirmPassword, String firstName, String lastName, String email, String phoneNumber) throws UsernameAlreadyExistsException, PasswordDoesntMatchException, EmailNotValidException, EmptyFieldException, PhoneNumberNotValidException {

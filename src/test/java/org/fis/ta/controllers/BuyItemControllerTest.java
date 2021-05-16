@@ -11,26 +11,31 @@ import org.fis.ta.model.Item;
 import org.fis.ta.services.FileSystemService;
 import org.fis.ta.services.ItemService;
 import org.fis.ta.services.UserService;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.testfx.api.FxRobot;
 import org.testfx.framework.junit5.ApplicationExtension;
 import org.testfx.framework.junit5.Start;
-
 import java.util.ArrayList;
-
 import static org.testfx.assertions.api.Assertions.assertThat;
-
 
 @ExtendWith(ApplicationExtension.class)
 class BuyItemControllerTest {
 
     @BeforeEach
     void setUp() throws Exception {
-        FileSystemService.APPLICATION_FOLDER = ".test-trading-application";
+        FileSystemService.APPLICATION_FOLDER = ".testBuyItem";
+        FileSystemService.initDirectory();
         FileUtils.cleanDirectory(FileSystemService.getApplicationHomeFolder().toFile());
         UserService.initDatabase();
+    }
+
+    @AfterEach
+    void tearDown(){
+        UserService.getDataBase().close();
+        ItemService.getDataBase().close();
     }
 
     @Start
@@ -44,7 +49,7 @@ class BuyItemControllerTest {
         Parent root = loader.load();
         BuyItemController.loadBuyPage(new Item("username", "Bicycle", "Sport", "New", images, "1.345.99", "23/10/2020"));
         primaryStage.setTitle("Trading application");
-        primaryStage.setScene(new Scene(root, 380, 275));
+        primaryStage.setScene(new Scene(root, 800, 400));
         primaryStage.show();
     }
 
@@ -56,10 +61,7 @@ class BuyItemControllerTest {
 
         robot.clickOn("#buyItemDelivery");
         robot.type(KeyCode.DOWN);
-        robot.type(KeyCode.ENTER)
-        ;
-        //robot.clickOn("#buyItemFastDelivery");
-
+        robot.type(KeyCode.ENTER);
 
         robot.clickOn("#buyItemCountry");
         robot.write("Romania");
@@ -77,7 +79,15 @@ class BuyItemControllerTest {
         robot.write("28");
 
         robot.clickOn("#buyItemButton");
-        assertThat(robot.lookup("#buyItemMessage").queryText()).hasText("Item will arrive to you in 7days after it's current owner send it");
+        assertThat(robot.lookup("#buyItemMessage").queryText()).hasText("Item will arrive to you in 7 days after it's current owner send it");
+
+        robot.clickOn("#buyItemDelivery");
+        robot.type(KeyCode.DOWN);
+        robot.type(KeyCode.ENTER);
+        //robot.clickOn("#buyItemFastDelivery");
+
+        robot.clickOn("#buyItemButton");
+        assertThat(robot.lookup("#buyItemMessage").queryText()).hasText("Item will arrive to you in 2 days after it's current owner send it");
 
     }
 }

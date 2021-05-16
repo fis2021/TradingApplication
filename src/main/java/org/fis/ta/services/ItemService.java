@@ -20,9 +20,11 @@ public class ItemService {
 
     private static ObjectRepository<Item> itemRepository;
 
+    private static Nitrite database;
+
     public static void initDatabase() {
         FileSystemService.initDirectory();
-        Nitrite database = Nitrite.builder()
+        database = Nitrite.builder()
                 .filePath(getPathToFile("trading-application-items.db").toFile())
                 .openOrCreate("test", "test");
         itemRepository = database.getRepository(Item.class);
@@ -31,6 +33,10 @@ public class ItemService {
             count++;
         }
         Item.setCount(count);
+    }
+
+    public static Nitrite getDataBase(){
+        return database;
     }
 
     public static ArrayList<Item> loadItemList(){
@@ -86,7 +92,7 @@ public class ItemService {
         if(days == 1){
             return "Item will arrive to you in 1 day after it's current owner send it";
         }else {
-            return "Item will arrive to you in " + days + "days after it's current owner send it";
+            return "Item will arrive to you in " + days + " days after it's current owner send it";
         }
     }
 

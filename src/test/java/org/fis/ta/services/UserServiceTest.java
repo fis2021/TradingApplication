@@ -4,6 +4,7 @@ import org.apache.commons.io.FileUtils;
 import org.assertj.core.api.Assertions;
 import org.fis.ta.exceptions.*;
 import org.fis.ta.model.User;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -26,6 +27,12 @@ class UserServiceTest {
         FileUtils.cleanDirectory(FileSystemService.getApplicationHomeFolder().toFile());
         UserService.initDatabase();
     }
+
+    @AfterEach
+    void tearDown() {
+        UserService.getDataBase().close();
+    }
+
 
     @Test
     @DisplayName("Database is initialized and empty")

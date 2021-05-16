@@ -10,6 +10,7 @@ import org.fis.ta.exceptions.*;
 import org.fis.ta.services.FileSystemService;
 import org.fis.ta.services.ItemService;
 import org.fis.ta.services.UserService;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -29,6 +30,12 @@ class AddItemControllerTest {
         FileUtils.cleanDirectory(FileSystemService.getApplicationHomeFolder().toFile());
         ItemService.initDatabase();
         UserService.initDatabase();
+    }
+
+    @AfterEach
+    void tearDown() {
+        UserService.getDataBase().close();
+        ItemService.getDataBase().close();
     }
 
     @Start
