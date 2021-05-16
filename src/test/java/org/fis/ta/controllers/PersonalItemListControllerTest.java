@@ -24,7 +24,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(ApplicationExtension.class)
 class PersonalItemListControllerTest {
@@ -75,12 +74,12 @@ class PersonalItemListControllerTest {
 
         TableView<Item> table = PersonalItemListController.getTable();
 
-        assertThat(table.getColumns().get(0).getCellObservableValue(0).getValue()).isEqualTo("username");
+        assertThat(table.getColumns().get(0).getCellObservableValue(0).getValue()).isEqualTo("Sport");
         assertThat(table.getColumns().get(1).getCellObservableValue(0).getValue()).isEqualTo("Bicycle");
         assertThat(table.getColumns().get(2).getCellObservableValue(0).getValue()).isEqualTo("120.00");
         assertThat(table.getColumns().get(3).getCellObservableValue(0).getValue()).isEqualTo(Item.getThisDate());
 
-        assertThat(table.getColumns().get(0).getCellObservableValue(1).getValue()).isEqualTo("username");
+        assertThat(table.getColumns().get(0).getCellObservableValue(1).getValue()).isEqualTo("Electronics and appliances");
         assertThat(table.getColumns().get(1).getCellObservableValue(1).getValue()).isEqualTo("Phone");
         assertThat(table.getColumns().get(2).getCellObservableValue(1).getValue()).isEqualTo("1.200.00");
         assertThat(table.getColumns().get(3).getCellObservableValue(1).getValue()).isEqualTo(Item.getThisDate());
