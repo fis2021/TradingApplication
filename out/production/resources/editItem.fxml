@@ -10,17 +10,17 @@
    <children>
       <TextField fx:id="priceField" layoutX="300.0" layoutY="119.0" />
       <TextField fx:id="descriptionField" layoutX="300.0" layoutY="174.0" prefHeight="26.0" prefWidth="210.0" />
-      <Button layoutX="397.0" layoutY="298.0" mnemonicParsing="false" onAction="#handleEditAction" text="Edit">
+      <Button layoutX="397.0" layoutY="298.0" mnemonicParsing="false" onAction="#handleEditAction" text="Edit" id="editpageEditButton">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
-      <Text layoutX="189.0" layoutY="137.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Edit Price:">
+      <Text layoutX="189.0" layoutY="137.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Edit Price:" id="editpagePriceField">
          <font>
             <Font size="15.0" />
          </font>
       </Text>
-      <Text layoutX="146.0" layoutY="193.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Edit Description:">
+      <Text layoutX="146.0" layoutY="193.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Edit Description:" id="editpageDescriptionField">
          <font>
             <Font size="15.0" />
          </font>

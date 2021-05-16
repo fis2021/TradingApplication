@@ -54,7 +54,7 @@
         </graphic>
     </Button>
 
-    <Button onAction="#handleSportAction" layoutX="300.0" layoutY="255.0" mnemonicParsing="false">
+    <Button onAction="#handleSportAction" id="categorySportButton" layoutX="300.0" layoutY="255.0" mnemonicParsing="false">
 
         <font>
             <Font size="3.0" />

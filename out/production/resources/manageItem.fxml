@@ -20,7 +20,7 @@
          <children>
             <AnchorPane prefHeight="200.0" prefWidth="200.0">
                <children>
-                  <Button fx:id="button" layoutX="237.0" layoutY="100.0" mnemonicParsing="false" onAction="#handleEditAction" prefHeight="62.0" prefWidth="126.0" text="Edit item">
+                  <Button fx:id="button" layoutX="237.0" layoutY="100.0" mnemonicParsing="false" onAction="#handleEditAction" id="managepageEditButton" prefHeight="62.0" prefWidth="126.0" text="Edit item">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
@@ -29,7 +29,7 @@
             </AnchorPane>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
                <children>
-                  <Button layoutX="237.0" layoutY="37.0" mnemonicParsing="false" onAction="#handleDeleteAction" prefHeight="62.0" prefWidth="126.0" text="Delete item">
+                  <Button layoutX="237.0" layoutY="37.0" mnemonicParsing="false" onAction="#handleDeleteAction" id = "managepageDeleteButton" prefHeight="62.0" prefWidth="126.0" text="Delete item">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>

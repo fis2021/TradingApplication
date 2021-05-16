@@ -21,6 +21,12 @@ public class ManageItemController {
     @FXML
     private Button button;
 
+
+    @FXML
+    void handleCloseAction(){
+        stage=(Stage) button.getScene().getWindow();
+        stage.close();
+    }
     @FXML
     void handleDeleteAction() throws IOException {
         loader = new FXMLLoader(getClass().getClassLoader().getResource("deleteItemAlertBox.fxml"));
@@ -46,5 +52,6 @@ public class ManageItemController {
         EditItemController eic = loader.getController();
         eic.loadEditFields();
     }
+
 
 }

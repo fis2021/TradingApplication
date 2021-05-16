@@ -11,17 +11,17 @@
          <children>
             <AnchorPane prefHeight="200.0" prefWidth="200.0">
                <children>
-                  <Text fx:id="nameField" layoutX="22.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="161.33678817749023">
+                  <Text fx:id="nameField" id="itempageNameField" layoutX="22.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="161.33678817749023">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </Text>
-                  <Text fx:id="usernameField" layoutX="23.0" layoutY="106.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                  <Text fx:id="usernameField" id="itempageUsernameField" layoutX="23.0" layoutY="106.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </Text>
-                  <Text fx:id="emailField" layoutX="22.0" layoutY="141.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                  <Text fx:id="emailField" id="itempageEmailField" layoutX="22.0" layoutY="141.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
                      <font>
                         <Font size="16.0" />
                      </font>
@@ -30,7 +30,7 @@
                      <font>
                         <Font size="21.0" />
                      </font></Text>
-                  <Text fx:id="phoneField" layoutX="22.0" layoutY="180.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                  <Text fx:id="phoneField" id="itempagePhoneField" layoutX="22.0" layoutY="180.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
                      <font>
                         <Font size="16.0" />
                      </font>
@@ -38,12 +38,12 @@
                </children></AnchorPane>
             <AnchorPane prefHeight="200.0" prefWidth="200.0">
                <children>
-                  <Text fx:id="itemnameField" layoutX="16.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="199.736572265625">
+                  <Text fx:id="itemnameField" id="itempageItemnameField" layoutX="16.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="199.736572265625">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Text>
-                  <Text fx:id="priceField" layoutX="15.0" layoutY="137.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="201.20513153076172">
+                  <Text fx:id="priceField" id="itempagePriceField" layoutX="15.0" layoutY="137.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="201.20513153076172">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -55,7 +55,7 @@
                   </Text>
                </children></AnchorPane>
 
-            <Button fx:id="buyButton" mnemonicParsing="false" onAction="#handleBuyAction" text="Buy">
+            <Button fx:id="buyButton" mnemonicParsing="false" onAction="#handleBuyAction" id="itempageBuyButton" text="Buy">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
@@ -63,7 +63,7 @@
 
             <AnchorPane prefHeight="200.0" prefWidth="200.0">
                <children>
-                  <Button fx:id="manageButton" layoutX="71.0" layoutY="58.0" mnemonicParsing="false" onAction="#handleManageAction" text="Manage">
+                  <Button fx:id="manageButton" id="itempageManageButton" layoutX="71.0" layoutY="58.0" mnemonicParsing="false" onAction="#handleManageAction" text="Manage">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font></Button>
@@ -76,7 +76,7 @@
    <center>
       <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <bottom>
-            <TextArea fx:id="DescriptionArea" prefHeight="153.0" prefWidth="705.0" BorderPane.alignment="CENTER" />
+            <TextArea fx:id="DescriptionArea" id = "description" prefHeight="153.0" prefWidth="705.0" BorderPane.alignment="CENTER" />
          </bottom>
          <center>
             <ImageView fx:id="itemImage" fitHeight="425.0" fitWidth="523.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
@@ -92,7 +92,7 @@
    <top>
       <AnchorPane prefHeight="27.0" prefWidth="919.0" BorderPane.alignment="CENTER">
          <children>
-            <Button layoutX="23.0" layoutY="1.0" mnemonicParsing="false" onAction="#handleBackAction" text="Back" />
+            <Button layoutX="23.0" layoutY="1.0" mnemonicParsing="false" onAction="#handleBackAction" id="itempageBackButton" text="Back" />
          </children>
       </AnchorPane>
    </top>

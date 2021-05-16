@@ -49,7 +49,7 @@ public class SaleslistController {
     private Scene scene;
     private Parent root;
     private static Stage thisStage;
-
+    public static TableView<Item> thisTable;
     public static Stage getThisStage()
     {
         return thisStage;
@@ -108,5 +108,9 @@ public class SaleslistController {
         categoryColumn.setCellValueFactory(new PropertyValueFactory<>("category"));
         ownerColumn.setCellValueFactory(new PropertyValueFactory<>("owner"));
         table.setItems(UserService.getCurrentUser(username).getItems());
+        thisTable=table;
+    }
+    public static TableView<Item> getThisTable(){
+        return thisTable;
     }
 }

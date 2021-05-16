@@ -8,10 +8,13 @@ import org.fis.ta.exceptions.EmptyFieldException;
 import org.fis.ta.exceptions.NoFileSelectedException;
 import org.fis.ta.exceptions.PriceNotValidException;
 import org.fis.ta.model.Item;
+import org.fis.ta.model.User;
 
+import java.lang.reflect.Array;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 import java.util.regex.Pattern;
 
 import static org.fis.ta.services.FileSystemService.getPathToFile;
@@ -20,8 +23,10 @@ public class ItemService {
 
     private static ObjectRepository<Item> itemRepository;
 
+    private static Nitrite database;
     public static void initDatabase() {
-        Nitrite database = Nitrite.builder()
+        FileSystemService.initDirectory();
+         database = Nitrite.builder()
                 .filePath(getPathToFile("trading-application-items.db").toFile())
                 .openOrCreate("test", "test");
         itemRepository = database.getRepository(Item.class);
@@ -32,6 +37,12 @@ public class ItemService {
         Item.setCount(count);
     }
 
+    public static Nitrite getDataBase(){
+        return database;
+    }
+    public static List<Item> getAllItems() {
+        return itemRepository.find().toList();
+    }
     public static ArrayList<Item> loadItemList(){
         ArrayList<Item> list = new ArrayList<>();
         for(Item item:itemRepository.find()){
@@ -89,7 +100,7 @@ public class ItemService {
         }
     }
 
-    private static void checkPrice(String price)throws PriceNotValidException {
+    public static void checkPrice(String price)throws PriceNotValidException {
         String priceRegex ="\\d{1,3}(?:[.,]\\d{3})*(?:[.,]\\d{2})";
 
         Pattern pat = Pattern.compile(priceRegex);
@@ -118,6 +129,12 @@ public class ItemService {
             }
         }
         return aux;
+    }
+
+    public static ArrayList<String> getFakeList(){
+        ArrayList<String> list = new ArrayList<>();
+        list.add("imagine");
+        return list;
     }
 
     public static ObjectRepository<Item> getItemRepository(){

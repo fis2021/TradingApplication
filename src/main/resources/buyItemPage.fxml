@@ -13,34 +13,34 @@
     </padding>
 
     <Label text="Delivery:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
-    <ChoiceBox fx:id="deliveryField" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="0" value = "Post delivery">
+    <ChoiceBox fx:id="deliveryField" id = "buyItemDelivery" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="0" value = "Post delivery">
     </ChoiceBox>
 
     <CheckBox fx:id="fastDeliveryField" GridPane.columnIndex="1" GridPane.rowIndex="1"> </CheckBox>
-    <Label fx:id = "fastDeliveryText" text="Fast Delivery" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+    <Label fx:id = "fastDeliveryText" id = "buyItemFastDelivery" text="Fast Delivery" GridPane.columnIndex="0" GridPane.rowIndex="1" />
 
     <Label text="Address" GridPane.columnIndex="0" GridPane.rowIndex="2" />
 
     <Label text="Country:" GridPane.columnIndex="0" GridPane.rowIndex="3" />
-    <TextField fx:id="countryField" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+    <TextField fx:id="countryField" id = "buyItemCountry" GridPane.columnIndex="1" GridPane.rowIndex="3" />
 
     <Label text="City:" GridPane.columnIndex="0" GridPane.rowIndex="4" />
-    <TextField fx:id="cityField" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+    <TextField fx:id="cityField" id = "buyItemCity" GridPane.columnIndex="1" GridPane.rowIndex="4" />
 
     <Label text="Street:" GridPane.columnIndex="0" GridPane.rowIndex="5" />
-    <TextField fx:id="streetField" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+    <TextField fx:id="streetField" id = "buyItemStreet" GridPane.columnIndex="1" GridPane.rowIndex="5" />
 
     <Label text="Number:" GridPane.columnIndex="0" GridPane.rowIndex="6" />
-    <TextField fx:id="houseNumberField" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+    <TextField fx:id="houseNumberField" id = "buyItemNumber" GridPane.columnIndex="1" GridPane.rowIndex="6" />
 
-    <Text fx:id="buyItemMessage" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+    <Text fx:id="buyItemMessage" id = "buyItemMessage" GridPane.columnIndex="1" GridPane.rowIndex="9" />
 
     <HBox alignment="bottom_right" spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="10">
-        <Button onAction="#handleBuyAction" text="Buy" />
+        <Button onAction="#handleBuyAction" id = "buyItemButton" text="Buy" />
     </HBox>
 
     <HBox alignment="bottom_left" spacing="10" GridPane.columnIndex="0" GridPane.rowIndex="10">
-        <Button onAction="#handleBackAction" text="Back" />
+        <Button onAction="#handleBackAction" id = "buyItemBackButton" text="Back" />
     </HBox>
 
 
