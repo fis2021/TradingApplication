@@ -31,6 +31,9 @@ public class PersonalItemListController {
 
     @FXML
     private TableView personalItemsTableView;
+
+    private static TableView<Item> table; // for testing
+
     @FXML
     private void initialize(){
         fillTable();
@@ -77,7 +80,7 @@ public class PersonalItemListController {
                 }
             }
         }
-
+        table = personalItemsTableView;
     }
 
 
@@ -138,5 +141,7 @@ public class PersonalItemListController {
             e.printStackTrace();
         }
     }
+
+    public static TableView<Item> getTable(){ return table;} // for testing
 
 }

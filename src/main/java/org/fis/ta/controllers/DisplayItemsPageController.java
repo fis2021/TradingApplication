@@ -41,7 +41,7 @@ public class DisplayItemsPageController {
     @FXML
     private TableView<Item> itemsTableView;
 
-    private static TableView<Item> table;
+    private static TableView<Item> table; //for testing
 
     @FXML
     private TextField filterField;
@@ -179,5 +179,5 @@ public class DisplayItemsPageController {
         }
     }
 
-    public static TableView<Item> getTable(){ return table;}
+    public static TableView<Item> getTable(){ return table;} //for testing
 }
