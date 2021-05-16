@@ -26,8 +26,7 @@ class AddItemControllerTest {
 
     @BeforeEach
     void setUp() throws Exception {
-        FileSystemService.APPLICATION_FOLDER = ".testAddItem";
-        FileSystemService.initDirectory();
+        FileSystemService.APPLICATION_FOLDER = ".test-trading-application";
         FileUtils.cleanDirectory(FileSystemService.getApplicationHomeFolder().toFile());
         ItemService.initDatabase();
         UserService.initDatabase();

@@ -41,8 +41,7 @@ class SaleslistControllerTest {
 
     @BeforeEach
     void setUp() throws IOException {
-        FileSystemService.APPLICATION_FOLDER = ".testHomepage";
-        FileSystemService.initDirectory();
+        FileSystemService.APPLICATION_FOLDER = ".test-trading-application";
         FileUtils.cleanDirectory(FileSystemService.getApplicationHomeFolder().toFile());
         UserService.initDatabase();
         ItemService.initDatabase();

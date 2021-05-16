@@ -33,8 +33,7 @@ class LoginTest {
     public static final String PHONENUMBER = "+0726223773";
     @BeforeEach
     void setUp() throws IOException {
-        FileSystemService.APPLICATION_FOLDER = ".testLogin";
-        FileSystemService.initDirectory();
+        FileSystemService.APPLICATION_FOLDER = ".test-trading-application";
         FileUtils.cleanDirectory(FileSystemService.getApplicationHomeFolder().toFile());
         UserService.initDatabase();
     }

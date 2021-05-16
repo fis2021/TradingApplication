@@ -26,8 +26,7 @@ class RegistrationControllerTest {
 
     @BeforeEach
     void setUp() throws Exception {
-        FileSystemService.APPLICATION_FOLDER = ".testRegistration";
-        FileSystemService.initDirectory();
+        FileSystemService.APPLICATION_FOLDER = ".test-trading-application";
         FileUtils.cleanDirectory(FileSystemService.getApplicationHomeFolder().toFile());
         UserService.initDatabase();
     }

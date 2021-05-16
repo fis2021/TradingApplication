@@ -17,6 +17,7 @@ repositories {
 
 dependencies {
 
+    testCompile group: 'junit', name: 'junit', version: '4.12'
     implementation 'org.openjfx:javafx-controls:15'
     implementation 'org.openjfx:javafx-fxml:15'
     compile 'org.dizitart:nitrite:3.4.3'
@@ -42,19 +43,10 @@ test {
     useJUnitPlatform()
 }
 
-application{
-    mainClass='org.fis.ta.MainApp'
-}
-jacoco{
-    applyTo run
-}
-tasks.register('applicationCodeCoverageReport', JacocoReport){
-    executionData run
-    sourceSets sourceSets.main
-}
 jacocoTestReport {
     dependsOn test // tests are required to run before generating the report
 }
+
 
 
 
