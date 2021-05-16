@@ -42,7 +42,20 @@ test {
     useJUnitPlatform()
 }
 
+application{
+    mainClass='org.fis.ta.MainApp'
+}
+jacoco{
+    applyTo run
+}
+tasks.register('applicationCodeCoverageReport', JacocoReport){
+    executionData run
+    sourceSets sourceSets.main
+}
 jacocoTestReport {
     dependsOn test // tests are required to run before generating the report
 }
+
+
+
 

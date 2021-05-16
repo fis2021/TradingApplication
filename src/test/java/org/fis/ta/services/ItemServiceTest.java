@@ -10,6 +10,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -23,6 +24,8 @@ class ItemServiceTest {
     public static final String DESCRIPTION = "description";
     public static final ArrayList<String> IMAGES = ItemService.getFakeList();
     public static final String PRICE = "120.00";
+    public static final String DATE = "date";
+    public static final String NEWOWNER = "new owner";
 
     @BeforeEach
     void setUp()throws Exception{
@@ -61,5 +64,55 @@ class ItemServiceTest {
         assertThat(item.getImages()).isEqualTo(IMAGES);
         assertThat(item.getPrice()).isEqualTo(PRICE);
     }
+
+    @Test
+    @DisplayName("Item is successfully deleted from the database")
+    void testItemIsDeletedFromDatabase() throws EmptyFieldException, NoFileSelectedException, PriceNotValidException {
+
+        ItemService.addItem(OWNER,NAME,CATEGORY,DESCRIPTION,IMAGES,PRICE);
+        Item item = ItemService.getAllItems().get(0);
+        ItemService.deleteItem(item);
+        assertThat(ItemService.getAllItems()).isEmpty();
+    }
+
+    @Test
+    @DisplayName("Item is succesfully bought")
+    void testItemIsBought() throws EmptyFieldException, NoFileSelectedException, PriceNotValidException {
+        ItemService.addItem(OWNER,NAME,CATEGORY,DESCRIPTION,IMAGES,PRICE);
+        Item item = ItemService.getAllItems().get(0);
+        ItemService.buyItem(item,"delivery","romania","timisoara","Strada","casa",true,NEWOWNER);
+        assertThat(item.isSold()).isTrue();
+        assertThat(item.getNewOwner()).isEqualTo(NEWOWNER);
+    }
+
+    @Test
+    @DisplayName("Testing checkPrice")
+    void testCheckPrice() throws EmptyFieldException, NoFileSelectedException, PriceNotValidException {
+        assertThrows(PriceNotValidException.class, () -> {
+           ItemService.addItem(OWNER,NAME,CATEGORY,DESCRIPTION,IMAGES,"120");
+        });
+    }
+
+    @Test
+    @DisplayName("Testing checkNotEmptyFields")
+    void testcheckNotEmptyFields() {
+        assertThrows(EmptyFieldException.class, () -> {
+            ItemService.addItem(OWNER,NAME,CATEGORY,DESCRIPTION,IMAGES,"");
+        });
+    }
+
+    @Test
+    @DisplayName("Testing checkImageInserted")
+    void testcheckIfImageInserted(){
+        ArrayList<String> aux = new ArrayList<>();
+        assertThrows(NoFileSelectedException.class, () -> {
+            ItemService.addItem(OWNER,NAME,CATEGORY,DESCRIPTION,aux,PRICE);
+        });
+    }
+
+
+
+
+
 
 }

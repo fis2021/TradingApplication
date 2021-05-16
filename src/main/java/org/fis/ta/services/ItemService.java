@@ -100,7 +100,7 @@ public class ItemService {
         }
     }
 
-    private static void checkPrice(String price)throws PriceNotValidException {
+    public static void checkPrice(String price)throws PriceNotValidException {
         String priceRegex ="\\d{1,3}(?:[.,]\\d{3})*(?:[.,]\\d{2})";
 
         Pattern pat = Pattern.compile(priceRegex);
