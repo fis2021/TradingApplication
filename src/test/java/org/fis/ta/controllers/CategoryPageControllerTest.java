@@ -10,6 +10,7 @@ import org.fis.ta.services.ItemService;
 import org.fis.ta.services.UserService;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.testfx.api.FxRobot;
@@ -43,33 +44,24 @@ class CategoryPageControllerTest {
     }
 
     @Test
-    void testBackButton(FxRobot robot){
+    @DisplayName("Testing all buttons from category page.")
+    void testButtons(FxRobot robot){
         robot.clickOn("#categoryBackButton");
         robot.clickOn("#homepageCategory");
-    }
 
-    @Test
-    void testAutoButton(FxRobot robot){
         robot.clickOn("#categoryAutoButton");
         robot.clickOn("#displayItemBackButton");
-    }
 
-    @Test
-    void testEstateButton(FxRobot robot){
         robot.clickOn("#categoryEstateButton");
         robot.clickOn("#displayItemBackButton");
-    }
 
-    @Test
-    void testSportButton(FxRobot robot){
         robot.clickOn("#categorySportButton");
         robot.clickOn("#displayItemBackButton");
-    }
 
-    @Test
-    void testElectronicsButton(FxRobot robot){
         robot.clickOn("#categoryElectronicsButton");
         robot.clickOn("#displayItemBackButton");
     }
+
+
 
 }

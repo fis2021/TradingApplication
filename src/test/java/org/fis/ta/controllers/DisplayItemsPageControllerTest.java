@@ -52,29 +52,13 @@ class DisplayItemsPageControllerTest {
     }
 
     @Test
-    @DisplayName("Back button works from every page!")
-    void testBackButton(FxRobot robot){
-        robot.clickOn("#categoryAutoButton");
-        robot.clickOn("#displayItemBackButton");
-
-        robot.clickOn("#categoryEstateButton");
-        robot.clickOn("#displayItemBackButton");
-
-        robot.clickOn("#categorySportButton");
-        robot.clickOn("#displayItemBackButton");
-
-        robot.clickOn("#categoryElectronicsButton");
-        robot.clickOn("#displayItemBackButton");
-    }
-
-    @Test
-    @DisplayName("Sport page loads correctly and display the right items")
-    void testSportPage(FxRobot robot) throws PriceNotValidException, NoFileSelectedException, EmptyFieldException, PhoneNumberNotValidException, UsernameAlreadyExistsException, EmailNotValidException, PasswordDoesntMatchException {
+    @DisplayName("All pages loads correctly and display the right items")
+    void testPagesLoad(FxRobot robot) throws PriceNotValidException, NoFileSelectedException, EmptyFieldException, PhoneNumberNotValidException, UsernameAlreadyExistsException, EmailNotValidException, PasswordDoesntMatchException {
         UserService.addUser("username","password","password","firstname","lastName","mail@mail.com","+073231312");
         IMAGES.add("image");
         ItemService.addItem("username","Bicycle","Sport","Description",IMAGES,"120.00");
         ItemService.addItem("username","Car","Cars, motorcycles and boats","Description",IMAGES,"5.300.00");
-        ItemService.addItem("username","Apartment","Estate","Description",IMAGES,"50.000.00");
+        ItemService.addItem("username","Apartment","Real estates","Description",IMAGES,"50.000.00");
         ItemService.addItem("username","Phone","Electronics and appliances","Samsung",IMAGES,"1.200.00");
 
         robot.clickOn("#categorySportButton");
@@ -90,21 +74,11 @@ class DisplayItemsPageControllerTest {
         assertThat(table.getColumns().get(1).getCellObservableValue(1)).isNull();
         assertThat(table.getColumns().get(2).getCellObservableValue(1)).isNull();
         assertThat(table.getColumns().get(3).getCellObservableValue(1)).isNull();
-    }
 
-    @Test
-    @DisplayName("Auto page loads correctly and display the right items")
-    void testAutoPage(FxRobot robot) throws PriceNotValidException, NoFileSelectedException, EmptyFieldException, PhoneNumberNotValidException, UsernameAlreadyExistsException, EmailNotValidException, PasswordDoesntMatchException {
-        UserService.addUser("username","password","password","firstname","lastName","mail@mail.com","+073231312");
-        IMAGES.add("image");
-        ItemService.addItem("username","Bicycle","Sport","Description",IMAGES,"120.00");
-        ItemService.addItem("username","Car","Cars, motorcycles and boats","Description",IMAGES,"5.300.00");
-        ItemService.addItem("username","Apartment","Estate","Description",IMAGES,"50.000.00");
-        ItemService.addItem("username","Phone","Electronics and appliances","Samsung",IMAGES,"1.200.00");
-
+        robot.clickOn("#displayItemBackButton");
         robot.clickOn("#categoryAutoButton");
 
-        TableView<Item> table = DisplayItemsPageController.getTable();
+        table = DisplayItemsPageController.getTable();
 
         assertThat(table.getColumns().get(0).getCellObservableValue(0).getValue()).isEqualTo("username");
         assertThat(table.getColumns().get(1).getCellObservableValue(0).getValue()).isEqualTo("Car");
@@ -115,21 +89,11 @@ class DisplayItemsPageControllerTest {
         assertThat(table.getColumns().get(1).getCellObservableValue(1)).isNull();
         assertThat(table.getColumns().get(2).getCellObservableValue(1)).isNull();
         assertThat(table.getColumns().get(3).getCellObservableValue(1)).isNull();
-    }
 
-    @Test
-    @DisplayName("Estate page loads correctly and display the right items")
-    void testEstatePage(FxRobot robot) throws PriceNotValidException, NoFileSelectedException, EmptyFieldException, PhoneNumberNotValidException, UsernameAlreadyExistsException, EmailNotValidException, PasswordDoesntMatchException {
-        UserService.addUser("username","password","password","firstname","lastName","mail@mail.com","+073231312");
-        IMAGES.add("image");
-        ItemService.addItem("username","Bicycle","Sport","Description",IMAGES,"120.00");
-        ItemService.addItem("username","Car","Cars, motorcycles and boats","Description",IMAGES,"5.300.00");
-        ItemService.addItem("username","Apartment","Real estates","Description",IMAGES,"50.000.00");
-        ItemService.addItem("username","Phone","Electronics and appliances","Samsung",IMAGES,"1.200.00");
-
+        robot.clickOn("#displayItemBackButton");
         robot.clickOn("#categoryEstateButton");
 
-        TableView<Item> table = DisplayItemsPageController.getTable();
+        table = DisplayItemsPageController.getTable();
 
         assertThat(table.getColumns().get(0).getCellObservableValue(0).getValue()).isEqualTo("username");
         assertThat(table.getColumns().get(1).getCellObservableValue(0).getValue()).isEqualTo("Apartment");
@@ -140,21 +104,11 @@ class DisplayItemsPageControllerTest {
         assertThat(table.getColumns().get(1).getCellObservableValue(1)).isNull();
         assertThat(table.getColumns().get(2).getCellObservableValue(1)).isNull();
         assertThat(table.getColumns().get(3).getCellObservableValue(1)).isNull();
-    }
 
-    @Test
-    @DisplayName("Electronics page loads correctly and display the right items")
-    void testElectronicsPage(FxRobot robot) throws PriceNotValidException, NoFileSelectedException, EmptyFieldException, PhoneNumberNotValidException, UsernameAlreadyExistsException, EmailNotValidException, PasswordDoesntMatchException {
-        UserService.addUser("username","password","password","firstname","lastName","mail@mail.com","+073231312");
-        IMAGES.add("image");
-        ItemService.addItem("username","Bicycle","Sport","Description",IMAGES,"120.00");
-        ItemService.addItem("username","Car","Cars, motorcycles and boats","Description",IMAGES,"5.300.00");
-        ItemService.addItem("username","Apartment","Estate","Description",IMAGES,"50.000.00");
-        ItemService.addItem("username","Phone","Electronics and appliances","Samsung",IMAGES,"1.200.00");
-
+        robot.clickOn("#displayItemBackButton");
         robot.clickOn("#categoryElectronicsButton");
 
-        TableView<Item> table = DisplayItemsPageController.getTable();
+        table = DisplayItemsPageController.getTable();
 
         assertThat(table.getColumns().get(0).getCellObservableValue(0).getValue()).isEqualTo("username");
         assertThat(table.getColumns().get(1).getCellObservableValue(0).getValue()).isEqualTo("Phone");
@@ -165,7 +119,8 @@ class DisplayItemsPageControllerTest {
         assertThat(table.getColumns().get(1).getCellObservableValue(1)).isNull();
         assertThat(table.getColumns().get(2).getCellObservableValue(1)).isNull();
         assertThat(table.getColumns().get(3).getCellObservableValue(1)).isNull();
-    }
 
+        robot.clickOn("#displayItemBackButton");
+    }
 
 }
