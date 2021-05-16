@@ -1,10 +1,12 @@
 package org.fis.ta.controllers;
 
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
+import okhttp3.internal.ws.RealWebSocket;
 import org.apache.commons.io.FileUtils;
 import org.fis.ta.exceptions.*;
 import org.fis.ta.model.Item;
@@ -91,6 +93,7 @@ class ManageItemTest {
         robot.type(KeyCode.UP);
         robot.clickOn("#saleslistTable");
         robot.clickOn("#itempageManageButton");
+        robot.clickOn("#manageitemCloseButton");
     }
 
     @Test
@@ -113,6 +116,7 @@ class ManageItemTest {
         robot.clickOn("#saleslistTable");
         robot.clickOn("#itempageManageButton");
         robot.clickOn("#managepageEditButton");
+        robot.clickOn("#editpageCloseButton");
     }
 
     @Test
@@ -135,6 +139,7 @@ class ManageItemTest {
         robot.clickOn("#saleslistTable");
         robot.clickOn("#itempageManageButton");
         robot.clickOn("#managepageDeleteButton");
+        robot.clickOn("#noButton");
     }
     @Test
     @DisplayName("Item updates in the database")
@@ -158,7 +163,7 @@ class ManageItemTest {
         robot.clickOn("#managepageEditButton");
 
         robot.clickOn("#editpagePriceField");
-        robot.write("120");
+        robot.write("0");
 
         robot.clickOn("#editpageEditButton");
         assertThat(robot.lookup("#editpageErrorMessage").queryText()).hasText("Please enter a valid price!");
@@ -197,7 +202,6 @@ class ManageItemTest {
         robot.clickOn("#managepageDeleteButton");
         robot.clickOn("#yesButton");
         assertThat(ItemService.getAllItems()).isEmpty();
-
     }
 }
 
