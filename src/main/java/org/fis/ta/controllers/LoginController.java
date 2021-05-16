@@ -55,6 +55,7 @@ public class LoginController {
             }
             if (UserService.checkLoginCredentials(usernameField.getText(), passwordField.getText())) {
                 username = usernameField.getText();
+                loginMessage.setText("Login successful");
                 FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("homepage.fxml"));
                 root = loader.load();
                 HomepageController hc = loader.getController();
