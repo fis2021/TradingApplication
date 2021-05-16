@@ -11,7 +11,7 @@
 
     <Text fx:id="personalListMessage"/>
 
-    <Button onAction="#handleBackAction" text="Back" layoutX="50.0" layoutY="25.0"/>
+    <Button onAction="#handleBackAction" id = "personalItemBackButton" text="Back" layoutX="50.0" layoutY="25.0"/>
 
     <TableView fx:id="personalItemsTableView" layoutX="36.0" layoutY="120.0" prefHeight="250.0" prefWidth="360.0">
         <columns>

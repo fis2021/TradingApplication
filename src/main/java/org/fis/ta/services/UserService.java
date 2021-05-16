@@ -19,7 +19,6 @@ public class UserService {
     private static ObjectRepository<User> userRepository;
     private static Nitrite database;
 
-    private static Nitrite database;
     public static void initDatabase() {
         FileSystemService.initDirectory();
         database = Nitrite.builder()
