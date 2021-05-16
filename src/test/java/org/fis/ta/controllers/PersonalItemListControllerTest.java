@@ -53,7 +53,7 @@ class PersonalItemListControllerTest {
 
     @Test
     @DisplayName("Testing if page loads and display items.")
-    void testBackButton(FxRobot robot) throws PhoneNumberNotValidException, UsernameAlreadyExistsException, EmailNotValidException, EmptyFieldException, PasswordDoesntMatchException, PriceNotValidException, NoFileSelectedException {
+    void testPageLoad(FxRobot robot) throws PhoneNumberNotValidException, UsernameAlreadyExistsException, EmailNotValidException, EmptyFieldException, PasswordDoesntMatchException, PriceNotValidException, NoFileSelectedException {
         UserService.addUser("username","password","password","firstname","lastName","mail@mail.com","+073231312");
         UserService.addUser("username2","password","password","firstname","lastName","mail@mail.com","+073231312");
         IMAGES.add("image");
@@ -62,6 +62,11 @@ class PersonalItemListControllerTest {
         ItemService.addItem("username2","Apartment","Estate","Description",IMAGES,"50.000.00");
         ItemService.addItem("username","Phone","Electronics and appliances","Samsung",IMAGES,"1.200.00");
 
+        for(Item item:ItemService.getItemRepository().find()){
+            item.setSold(true);
+            ItemService.getItemRepository().update(item);
+        }
+
         robot.clickOn("#loginUsername");
         robot.write("username");
 
@@ -69,7 +74,6 @@ class PersonalItemListControllerTest {
         robot.write("password");
 
         robot.clickOn("#loginButton");
-
         robot.clickOn("#homepageHistory");
 
         TableView<Item> table = PersonalItemListController.getTable();
@@ -77,16 +81,13 @@ class PersonalItemListControllerTest {
         assertThat(table.getColumns().get(0).getCellObservableValue(0).getValue()).isEqualTo("Sport");
         assertThat(table.getColumns().get(1).getCellObservableValue(0).getValue()).isEqualTo("Bicycle");
         assertThat(table.getColumns().get(2).getCellObservableValue(0).getValue()).isEqualTo("120.00");
-        assertThat(table.getColumns().get(3).getCellObservableValue(0).getValue()).isEqualTo(Item.getThisDate());
 
         assertThat(table.getColumns().get(0).getCellObservableValue(1).getValue()).isEqualTo("Electronics and appliances");
         assertThat(table.getColumns().get(1).getCellObservableValue(1).getValue()).isEqualTo("Phone");
         assertThat(table.getColumns().get(2).getCellObservableValue(1).getValue()).isEqualTo("1.200.00");
-        assertThat(table.getColumns().get(3).getCellObservableValue(1).getValue()).isEqualTo(Item.getThisDate());
 
         assertThat(table.getColumns().get(0).getCellObservableValue(2)).isNull();
         assertThat(table.getColumns().get(1).getCellObservableValue(2)).isNull();
         assertThat(table.getColumns().get(2).getCellObservableValue(2)).isNull();
-        assertThat(table.getColumns().get(3).getCellObservableValue(2)).isNull();
     }
 }
