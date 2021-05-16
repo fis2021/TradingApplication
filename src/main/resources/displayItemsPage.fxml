@@ -9,11 +9,9 @@
     <Text fx:id="displayMessage" />
     <Label layoutX="195.0" layoutY="80.0" text="Search:" />
     <TextField fx:id="filterField" layoutX="244.0" layoutY="76.0" />
-
     <Button layoutX="50.0" layoutY="25.0" onAction="#handleBackAction" id = "displayItemBackButton" text="Back" />
 
-
-    <TableView fx:id="itemsTableView" layoutX="36.0" layoutY="120.0" prefHeight="300.0" prefWidth="600.0">
+    <TableView fx:id="itemsTableView" id="displayItemsTable" layoutX="36.0" layoutY="120.0" prefHeight="300.0" prefWidth="600.0">
         <columns>
 
         </columns>

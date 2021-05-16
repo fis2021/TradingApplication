@@ -35,6 +35,12 @@ public class EditItemController {
     private Scene scene;
     private Parent root;
     private FXMLLoader loader;
+
+    @FXML
+    void handleCloseAction(){
+        stage = (Stage) descriptionField.getScene().getWindow();
+        stage.close();
+    }
     @FXML
     void handleEditAction() throws IOException, PriceNotValidException {
         Item item;
@@ -60,6 +66,7 @@ public class EditItemController {
             Rectangle2D primScreenBounds = Screen.getPrimary().getVisualBounds();
             bgStage.setX((primScreenBounds.getWidth() - bgStage.getWidth())/2);
             bgStage.setY((primScreenBounds.getHeight()-bgStage.getHeight())/2);
+            errorMessage.setText("success");
         }
         catch(PriceNotValidException e){
             errorMessage.setText(e.getMessage());

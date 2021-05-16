@@ -12,12 +12,12 @@
             <Font name="Arial Black" size="18.0" />
          </font>
       </Text>
-      <Button layoutX="150.0" layoutY="209.0" mnemonicParsing="false" onAction="#handleYesAction" prefHeight="51.0" prefWidth="67.0" text="YES" textFill="#0eac33">
+      <Button layoutX="150.0" layoutY="209.0" mnemonicParsing="false" onAction="#handleYesAction"  id="yesButton" prefHeight="51.0" prefWidth="67.0" text="YES" textFill="#0eac33">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
-      <Button layoutX="375.0" layoutY="209.0" mnemonicParsing="false" onAction="#handleNoAction" prefHeight="51.0" prefWidth="67.0" text="NO" textFill="#d20505">
+      <Button layoutX="375.0" layoutY="209.0" mnemonicParsing="false" onAction="#handleNoAction" id="noButton" prefHeight="51.0" prefWidth="67.0" text="NO" textFill="#d20505">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>

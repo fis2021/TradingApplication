@@ -22,7 +22,7 @@
                   <Font size="21.0" />
                </font>
             </Label>
-            <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleLogoutAction" prefHeight="30.0" prefWidth="71.0" text="Log Out">
+            <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleLogoutAction" id = "homepageLogout" prefHeight="30.0" prefWidth="71.0" text="Log Out">
                <HBox.margin>
                   <Insets left="250.0" right="30.0" top="20.0" />
                </HBox.margin>
@@ -45,7 +45,7 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button mnemonicParsing="false" onAction="#handleCategoriesAction" prefHeight="45.0" prefWidth="95.0" text="Categories">
+            <Button mnemonicParsing="false" onAction="#handleCategoriesAction" id = "homepageCategory" prefHeight="45.0" prefWidth="95.0" text="Categories">
                <GridPane.margin>
                   <Insets left="260.0" />
                </GridPane.margin>
@@ -53,7 +53,7 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" onAction="#handleHistoryAction" prefHeight="45.0" prefWidth="95.0" text="Your history" GridPane.rowIndex="2">
+            <Button mnemonicParsing="false" onAction="#handleHistoryAction" id = "homepageHistory" prefHeight="45.0" prefWidth="95.0" text="Your history" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets left="260.0" />
                </GridPane.margin>
@@ -61,7 +61,7 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" onAction="#handleAddItemAction" prefHeight="45.0" prefWidth="95.0" text="Add item" GridPane.rowIndex="1">
+            <Button mnemonicParsing="false" onAction="#handleAddItemAction" id = "homepageAddButton" prefHeight="45.0" prefWidth="95.0" text="Add item" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets left="260.0" />
                </GridPane.margin>
@@ -69,7 +69,7 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" onAction="#handleSaleslistAction" prefHeight="45.0" prefWidth="95.0" text="Your items" GridPane.rowIndex="3">
+            <Button mnemonicParsing="false" onAction="#handleSaleslistAction" id = "homepageSalesList" prefHeight="45.0" prefWidth="95.0" text="Your items" GridPane.rowIndex="3">
                <GridPane.margin>
                   <Insets left="260.0" />
                </GridPane.margin>

@@ -16,6 +16,8 @@ import org.testfx.api.FxRobot;
 import org.testfx.framework.junit5.ApplicationExtension;
 import org.testfx.framework.junit5.Start;
 
+import java.io.File;
+
 import static org.testfx.assertions.api.Assertions.assertThat;
 
 

@@ -18,7 +18,7 @@ public class FileSystemService {
     }
 
     public static void initDirectory() {
-        Path applicationHomePath = FileSystemService.getApplicationHomeFolder();
+        Path applicationHomePath = getApplicationHomeFolder();
         if (!Files.exists(applicationHomePath))
             applicationHomePath.toFile().mkdirs();
     }

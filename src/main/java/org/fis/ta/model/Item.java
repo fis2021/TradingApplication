@@ -22,6 +22,7 @@ public class Item {
     private String price;
     private int counter =0;
     private String dateAdded;
+    public static String thisDate;
     private boolean sold;
     private String newOwner;
     private static String thisDate;

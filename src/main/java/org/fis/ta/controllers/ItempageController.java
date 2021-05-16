@@ -130,8 +130,7 @@ public class ItempageController {
         manageStage.setScene(scene);
 
     }
-
-    void loadItempage(User user, Item item) throws IOException {
+     void loadItempage(User user, Item item) throws IOException {
         thisItem = item;
         nameField.setText(user.getFirstName() + " " + user.getLastName());
         usernameField.setText("@" + user.getUsername());

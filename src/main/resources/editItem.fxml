@@ -8,27 +8,28 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.fis.ta.controllers.EditItemController">
    <children>
-      <TextField fx:id="priceField" layoutX="300.0" layoutY="119.0" />
-      <TextField fx:id="descriptionField" layoutX="300.0" layoutY="174.0" prefHeight="26.0" prefWidth="210.0" />
-      <Button layoutX="397.0" layoutY="298.0" mnemonicParsing="false" onAction="#handleEditAction" text="Edit">
+      <TextField fx:id="priceField"  id="editpagePriceField" layoutX="300.0" layoutY="119.0" />
+      <TextField fx:id="descriptionField" id="editpageDescriptionField" layoutX="300.0" layoutY="174.0" prefHeight="26.0" prefWidth="210.0" />
+      <Button id="editpageEditButton" layoutX="397.0" layoutY="298.0" mnemonicParsing="false" onAction="#handleEditAction" text="Edit">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
-      <Text layoutX="189.0" layoutY="137.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Edit Price:">
+      <Text  layoutX="189.0" layoutY="137.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Edit Price:">
          <font>
             <Font size="15.0" />
          </font>
       </Text>
-      <Text layoutX="146.0" layoutY="193.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Edit Description:">
+      <Text  layoutX="146.0" layoutY="193.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Edit Description:">
          <font>
             <Font size="15.0" />
          </font>
       </Text>
-      <Text fx:id="errorMessage" fill="#d50606" layoutX="300.0" layoutY="238.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="246.4000000000001">
+      <Text id="editpageErrorMessage" fx:id="errorMessage" fill="#d50606" layoutX="300.0" layoutY="238.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="246.4000000000001">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Text>
+      <Button layoutX="38.0" layoutY="286.0" mnemonicParsing="false" onAction="#handleCloseAction" text="close" id="editpageCloseButton" />
    </children>
 </AnchorPane>

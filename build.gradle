@@ -16,6 +16,7 @@ repositories {
 }
 
 dependencies {
+
     testCompile group: 'junit', name: 'junit', version: '4.12'
     implementation 'org.openjfx:javafx-controls:15'
     implementation 'org.openjfx:javafx-fxml:15'
@@ -23,6 +24,7 @@ dependencies {
     implementation 'com.fasterxml.jackson.core:jackson-databind:2.10.1'
     implementation 'org.slf4j:slf4j-api:2.0.0-alpha1'
     implementation 'org.slf4j:slf4j-simple:2.0.0-alpha0'
+
 
     testCompile 'org.testfx:testfx-core:4.0.16-alpha'
     testCompile 'org.junit.jupiter:junit-jupiter-api:5.5.1'
@@ -44,4 +46,8 @@ test {
 jacocoTestReport {
     dependsOn test // tests are required to run before generating the report
 }
+
+
+
+
 

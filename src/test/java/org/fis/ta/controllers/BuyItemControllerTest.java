@@ -8,6 +8,7 @@ import javafx.stage.Stage;
 import org.apache.commons.io.FileUtils;
 import org.fis.ta.exceptions.*;
 import org.fis.ta.model.Item;
+import org.fis.ta.model.User;
 import org.fis.ta.services.FileSystemService;
 import org.fis.ta.services.ItemService;
 import org.fis.ta.services.UserService;
@@ -30,6 +31,13 @@ class BuyItemControllerTest {
         FileSystemService.initDirectory();
         FileUtils.cleanDirectory(FileSystemService.getApplicationHomeFolder().toFile());
         UserService.initDatabase();
+        ItemService.initDatabase();
+    }
+
+    @AfterEach
+    void tearDown(){
+        UserService.getDataBase().close();
+        ItemService.getDataBase().close();
     }
 
     @AfterEach
