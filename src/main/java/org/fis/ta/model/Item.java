@@ -24,6 +24,7 @@ public class Item {
     private String dateAdded;
     private boolean sold;
     private String newOwner;
+    private static String thisDate;
 
 
     public Item(String owner, String name, String category, String description, ArrayList<String> images, String price,String dateAdded)
@@ -39,6 +40,7 @@ public class Item {
         this.dateAdded=dateAdded;
         this.sold = false;
         this.newOwner = "";
+        thisDate=dateAdded;
     }
     public Item()
     { }
@@ -55,6 +57,7 @@ public class Item {
     public boolean isSold() { return sold; }
     public int getCounter(){return counter;}
     public String getNewOwner() { return newOwner; }
+    public static String getThisDate(){return thisDate;}
 
     public void setName(String name) {
         this.name = name;
