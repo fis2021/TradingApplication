@@ -8,9 +8,11 @@ import org.apache.commons.io.FileUtils;
 import org.fis.ta.exceptions.*;
 import org.fis.ta.model.User;
 import org.fis.ta.services.FileSystemService;
+import org.fis.ta.services.ItemService;
 import org.fis.ta.services.UserService;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.testfx.api.FxRobot;
@@ -22,8 +24,12 @@ import java.io.IOException;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.testfx.assertions.api.Assertions.assertThat;
 
+
+import java.io.IOException;
+
+import static org.junit.jupiter.api.Assertions.*;
 @ExtendWith({ApplicationExtension.class})
-class LoginTest {
+class HomepageControllerTest {
     public static final String USERNAME = "username";
     public static final String PASSWORD = "password";
     public static final String CONFIRMPASSWORD = "password";
@@ -31,17 +37,20 @@ class LoginTest {
     public static final String LASTNAME = "lastName";
     public static final String EMAIL = "email@yahoo.com";
     public static final String PHONENUMBER = "+0726223773";
+
     @BeforeEach
     void setUp() throws IOException {
-        FileSystemService.APPLICATION_FOLDER = ".testLogin";
+        FileSystemService.APPLICATION_FOLDER = ".testHomepage";
         FileSystemService.initDirectory();
         FileUtils.cleanDirectory(FileSystemService.getApplicationHomeFolder().toFile());
         UserService.initDatabase();
+        ItemService.initDatabase();
     }
 
     @AfterEach
     void tearDown(){
         UserService.getDataBase().close();
+        ItemService.getDataBase().close();
     }
 
 
@@ -54,67 +63,64 @@ class LoginTest {
     }
 
     @Test
-    void testLogin(FxRobot robot) throws PhoneNumberNotValidException, EmptyFieldException, EmailNotValidException, PasswordDoesntMatchException, UsernameAlreadyExistsException {
+    @DisplayName("Logout button works")
+    void testLogoutButton(FxRobot robot) throws PhoneNumberNotValidException, EmptyFieldException, EmailNotValidException, PasswordDoesntMatchException, UsernameAlreadyExistsException {
         UserService.addUser(USERNAME,PASSWORD,CONFIRMPASSWORD,FIRSTNAME,LASTNAME,EMAIL,PHONENUMBER);
         User user = UserService.getAllUsers().get(0);
-
         robot.clickOn("#loginUsername");
         robot.write(USERNAME);
         robot.clickOn("#loginPassword");
         robot.write(PASSWORD);
         robot.clickOn("#loginButton");
+        robot.clickOn("#homepageLogout");
     }
-
     @Test
-    void testIncorrectUsername(FxRobot robot) throws PhoneNumberNotValidException, EmptyFieldException, EmailNotValidException, PasswordDoesntMatchException, UsernameAlreadyExistsException {
+    @DisplayName("Categories button works")
+    void testCategoriesButton(FxRobot robot) throws PhoneNumberNotValidException, EmptyFieldException, EmailNotValidException, PasswordDoesntMatchException, UsernameAlreadyExistsException {
         UserService.addUser(USERNAME,PASSWORD,CONFIRMPASSWORD,FIRSTNAME,LASTNAME,EMAIL,PHONENUMBER);
         User user = UserService.getAllUsers().get(0);
         robot.clickOn("#loginUsername");
-        robot.write(USERNAME+"1");
+        robot.write(USERNAME);
         robot.clickOn("#loginPassword");
         robot.write(PASSWORD);
         robot.clickOn("#loginButton");
-
-        assertThat(robot.lookup("#loginMessage").queryText()).hasText("Username or password do not exist!");
+        robot.clickOn("#homepageCategory");
     }
     @Test
-    void testIncorrectPassword(FxRobot robot) throws PhoneNumberNotValidException, EmptyFieldException, EmailNotValidException, PasswordDoesntMatchException, UsernameAlreadyExistsException {
+    @DisplayName("Add item button works")
+    void testAddItemButton(FxRobot robot) throws PhoneNumberNotValidException, EmptyFieldException, EmailNotValidException, PasswordDoesntMatchException, UsernameAlreadyExistsException {
         UserService.addUser(USERNAME,PASSWORD,CONFIRMPASSWORD,FIRSTNAME,LASTNAME,EMAIL,PHONENUMBER);
         User user = UserService.getAllUsers().get(0);
         robot.clickOn("#loginUsername");
         robot.write(USERNAME);
         robot.clickOn("#loginPassword");
-        robot.write(PASSWORD+"1");
+        robot.write(PASSWORD);
         robot.clickOn("#loginButton");
-
-        assertThat(robot.lookup("#loginMessage").queryText()).hasText("Username or password do not exist!");
+        robot.clickOn("#homepageAddButton");
     }
-
     @Test
-    void testEmptyUsername(FxRobot robot) throws PhoneNumberNotValidException, EmptyFieldException, EmailNotValidException, PasswordDoesntMatchException, UsernameAlreadyExistsException {
-        UserService.addUser(USERNAME,PASSWORD,CONFIRMPASSWORD,FIRSTNAME,LASTNAME,EMAIL,PHONENUMBER);
-        User user = UserService.getAllUsers().get(0);
-        robot.clickOn("#loginPassword");
-        robot.write(PASSWORD+"1");
-        robot.clickOn("#loginButton");
-
-        assertThat(robot.lookup("#loginMessage").queryText()).hasText("All fields must be completed!");
-    }
-
-    @Test
-    void testEmptyPassword(FxRobot robot) throws PhoneNumberNotValidException, EmptyFieldException, EmailNotValidException, PasswordDoesntMatchException, UsernameAlreadyExistsException {
+    @DisplayName("History button works")
+    void testHistoryButton(FxRobot robot) throws PhoneNumberNotValidException, EmptyFieldException, EmailNotValidException, PasswordDoesntMatchException, UsernameAlreadyExistsException {
         UserService.addUser(USERNAME,PASSWORD,CONFIRMPASSWORD,FIRSTNAME,LASTNAME,EMAIL,PHONENUMBER);
         User user = UserService.getAllUsers().get(0);
         robot.clickOn("#loginUsername");
         robot.write(USERNAME);
+        robot.clickOn("#loginPassword");
+        robot.write(PASSWORD);
         robot.clickOn("#loginButton");
-
-        assertThat(robot.lookup("#loginMessage").queryText()).hasText("All fields must be completed!");
+        robot.clickOn("#homepageHistory");
     }
 
     @Test
-    void testRegisterButton(FxRobot robot){
-        robot.clickOn("#loginRegisterButton");
+    void testSaleslistButton(FxRobot robot) throws PhoneNumberNotValidException, EmptyFieldException, EmailNotValidException, PasswordDoesntMatchException, UsernameAlreadyExistsException {
+        UserService.addUser(USERNAME,PASSWORD,CONFIRMPASSWORD,FIRSTNAME,LASTNAME,EMAIL,PHONENUMBER);
+        User user = UserService.getAllUsers().get(0);
+        robot.clickOn("#loginUsername");
+        robot.write(USERNAME);
+        robot.clickOn("#loginPassword");
+        robot.write(PASSWORD);
+        robot.clickOn("#loginButton");
+        robot.clickOn("#homepageSalesList");
     }
 
 }
