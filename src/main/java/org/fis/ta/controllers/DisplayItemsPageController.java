@@ -12,7 +12,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
@@ -40,7 +39,9 @@ public class DisplayItemsPageController {
     private Text displayMessage;
 
     @FXML
-    private TableView itemsTableView;
+    private TableView<Item> itemsTableView;
+
+    private static TableView<Item> table; //for testing
 
     @FXML
     private TextField filterField;
@@ -109,6 +110,7 @@ public class DisplayItemsPageController {
         SortedList<Item> sortedList= new SortedList<>(filteredList);
         sortedList.comparatorProperty().bind(itemsTableView.comparatorProperty());
         itemsTableView.setItems(sortedList);
+        table = itemsTableView;
     }
 
 
@@ -176,4 +178,6 @@ public class DisplayItemsPageController {
             e.printStackTrace();
         }
     }
+
+    public static TableView<Item> getTable(){ return table;} //for testing
 }

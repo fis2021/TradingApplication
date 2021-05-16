@@ -32,7 +32,7 @@ class RegistrationControllerTest {
     }
 
     @AfterEach
-    void tearDown(){
+    void tearDown() {
         UserService.getDataBase().close();
     }
 

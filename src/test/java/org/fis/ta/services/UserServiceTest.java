@@ -31,7 +31,7 @@ class UserServiceTest {
     }
 
     @AfterEach
-    void tearDown(){
+    void tearDown() {
         UserService.getDataBase().close();
     }
 

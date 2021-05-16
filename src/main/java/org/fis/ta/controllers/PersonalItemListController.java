@@ -10,7 +10,6 @@ import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Callback;
@@ -31,6 +30,9 @@ public class PersonalItemListController {
 
     @FXML
     private TableView personalItemsTableView;
+
+    private static TableView<Item> table; // for testing
+
     @FXML
     private void initialize(){
         fillTable();
@@ -42,13 +44,14 @@ public class PersonalItemListController {
     private Parent root;
 
 
-    TableColumn<ImageView, ImageView> col1 = new TableColumn<>("Picture");
+    TableColumn<Item, String> col1 = new TableColumn<>("Category");
     TableColumn<Item, String> col2 = new TableColumn<>("Name");
     TableColumn<Item, String> col3 = new TableColumn<>("Price");
 
 
     public void fillTable(){
         col1.setMinWidth(100);
+        col1.setCellValueFactory(new PropertyValueFactory<>("category"));
 
         col2.setMinWidth(100);
         col2.setCellValueFactory(new PropertyValueFactory<>("name"));
@@ -77,7 +80,7 @@ public class PersonalItemListController {
                 }
             }
         }
-
+        table = personalItemsTableView;
     }
 
 
@@ -138,5 +141,7 @@ public class PersonalItemListController {
             e.printStackTrace();
         }
     }
+
+    public static TableView<Item> getTable(){ return table;} // for testing
 
 }

@@ -25,6 +25,7 @@ public class Item {
     public static String thisDate;
     private boolean sold;
     private String newOwner;
+    private static String thisDate;
 
 
     public Item(String owner, String name, String category, String description, ArrayList<String> images, String price,String dateAdded)

@@ -33,7 +33,7 @@ class AddItemControllerTest {
     }
 
     @AfterEach
-    void tearDown(){
+    void tearDown() {
         UserService.getDataBase().close();
         ItemService.getDataBase().close();
     }
