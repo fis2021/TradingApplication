@@ -8,9 +8,9 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="643.0" prefWidth="919.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.fis.ta.controllers.SaleslistController">
    <center>
-      <TableView fx:id="table" onMousePressed="#goToItempage" prefHeight="356.0" prefWidth="480.0" BorderPane.alignment="CENTER">
+      <TableView fx:id="table" id="saleslistTable" onMousePressed="#goToItempage" prefHeight="356.0" prefWidth="480.0" BorderPane.alignment="CENTER">
         <columns>
-          <TableColumn fx:id="ownerColumn" prefWidth="75.0" text="C1" />
+          <TableColumn fx:id="ownerColumn" id="saleslistOwnerColumn" prefWidth="75.0" text="C1" />
           <TableColumn fx:id="nameColumn" prefWidth="75.0" text="C2" />
             <TableColumn fx:id="priceColumn" prefWidth="75.0" text="C3" />
             <TableColumn fx:id="categoryColumn" prefWidth="75.0" text="Column X" />
@@ -21,7 +21,7 @@
    <top>
       <AnchorPane prefHeight="49.0" prefWidth="919.0" BorderPane.alignment="CENTER">
          <children>
-            <Button layoutX="420.0" layoutY="9.0" mnemonicParsing="false" onAction="#handleHomepageAction" text="homepage" />
+            <Button layoutX="420.0" layoutY="9.0" mnemonicParsing="false" onAction="#handleHomepageAction" id="saleslistHomepageButton" text="homepage" />
          </children>
       </AnchorPane>
    </top>
