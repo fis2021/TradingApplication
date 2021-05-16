@@ -16,10 +16,10 @@
     <Label text="Electronics and appliances" layoutX="80.0" layoutY="405.0"/>
     <Label text="Sport" layoutX="380.0" layoutY="405.0"/>
 
-    <Button onAction="#handleBackAction" text="Back" layoutX="50.0" layoutY="25.0"/>
+    <Button onAction="#handleBackAction" id = "categoryBackButton" text="Back" layoutX="50.0" layoutY="25.0"/>
 
 
-    <Button onAction="#handleAutoAction" layoutX="50.0" layoutY="75.0" mnemonicParsing="false">
+    <Button onAction="#handleAutoAction" id = "categoryAutoButton" layoutX="50.0" layoutY="75.0" mnemonicParsing="false">
         <font>
             <Font size="3.0" />
         </font>
@@ -30,7 +30,7 @@
         </graphic>
     </Button>
 
-    <Button onAction="#handleEstateAction" layoutX="300.0" layoutY="75.0" mnemonicParsing="false">
+    <Button onAction="#handleEstateAction" id = "categoryEstateButton" layoutX="300.0" layoutY="75.0" mnemonicParsing="false">
 
         <font>
             <Font size="3.0" />
@@ -42,7 +42,7 @@
         </graphic>
     </Button>
 
-    <Button onAction="#handleElectronicsAction" layoutX="50.0" layoutY="255.0" mnemonicParsing="false">
+    <Button onAction="#handleElectronicsAction" id = "categoryElectronicsButton" layoutX="50.0" layoutY="255.0" mnemonicParsing="false">
 
         <font>
             <Font size="3.0" />
@@ -54,7 +54,7 @@
         </graphic>
     </Button>
 
-    <Button onAction="#handleSportAction" layoutX="300.0" layoutY="255.0" mnemonicParsing="false">
+    <Button onAction="#handleSportAction" id = "categorySportButton" layoutX="300.0" layoutY="255.0" mnemonicParsing="false">
 
         <font>
             <Font size="3.0" />
