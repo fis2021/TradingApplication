@@ -25,7 +25,7 @@
             <Font size="15.0" />
          </font>
       </Text>
-      <Text fx:id="errorMessage" fill="#d50606" layoutX="300.0" layoutY="238.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="246.4000000000001">
+      <Text fx:id="errorMessage" id="editpageErrorMessage" fill="#d50606" layoutX="300.0" layoutY="238.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="246.4000000000001">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
